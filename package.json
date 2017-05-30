@@ -1,0 +1,43 @@
+{
+  "name": "CentroUI",
+  "version": "0.0.1",
+  "description": "UI library for building VR websites with speed and efficiency",
+  "dependencies": {
+    "aframe": "^0.5.0",
+    "aframe-animation-component": "^3.2.5",
+    "aframe-particle-system-component": "^1.0.8",
+    "aframe-react": "^4.0.x",
+    "aframe-animation-component": "^3.0.1",
+    "aframe-bmfont-text-component": "^0.1.4",
+    "aframe-mouse-cursor-component": "^0.4.1",
+    "babel-polyfill": "^6.3.14",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-scripts": "0.9.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "publish": "npm run build && gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/centroida/centroui"
+  },
+  "keywords": [
+    "aframe",
+    "react",
+    "vr",
+    "boilerplate",
+    "a-frame",
+    "mozvr",
+    "reactvr",
+    "aframe-react",
+    "webvr"
+  ],
+  "devDependencies": {
+    "gh-pages": "^0.12.0"
+  }
+}
