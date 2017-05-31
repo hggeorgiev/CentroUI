@@ -1,7 +1,6 @@
 ## CentroUI
 
-CentroUI is a library for building VR websites fast.
-We're creating the Web UI of the future. 
+CentroUI is a library for building user interfaces for VR websites.
 *The project is currently in a very experimental stage.*
 
 CentroUI is based on
