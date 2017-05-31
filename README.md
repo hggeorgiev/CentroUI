@@ -8,7 +8,7 @@ CentroUI is based on
 [aframe-react](https://github.com/ngokevin/aframe-react).
 
 ## TODO 
-- Crea a pano a.k.a skydome a.k.a skybox layout
+- Create a pano a.k.a skydome a.k.a skybox layout
 - Create a data-bindable table
 - Create data-bindable text elements (similar to paragraph tags)
 - Create a navbar (representation)
