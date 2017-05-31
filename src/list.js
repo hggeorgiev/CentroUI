@@ -15,7 +15,9 @@ export default class CnList extends React.Component {
             selectedItem: undefined,
             btnText: '+',
             base: 0,
-            color: 'red'
+            btnBase: 0,
+            color: 'red',
+            called: false
         }
     }
 
@@ -33,6 +35,7 @@ export default class CnList extends React.Component {
         this.setState({base: 0, selectedItem: item, btnText: 'Save'});
     }
 
+
     addOrUpdate() {
         if (this.state.selectedItem) {
             this.props.items.map((item) => {
@@ -43,7 +46,7 @@ export default class CnList extends React.Component {
             });
 
             this.state.keyboard.setText('');
-            this.setState({people: this.props.items, base: 0, selectedItem: '', btnText: '+'});
+            this.setState({people: this.props.items, base: 0, btnBase: 0, selectedItem: '', btnText: '+'});
         } else {
             let newPerson = {
                 firstName: this.state.keyboard.getText(),
@@ -52,14 +55,18 @@ export default class CnList extends React.Component {
             };
             this.props.items.push(newPerson);
             this.state.keyboard.setText('');
-            this.setState({people: this.props.items, base: 0})
+            this.setState({people: this.props.items, base: 0, btnBase: 0})
         }
+    }
+
+    removeItem(index) {
+        this.setState({people: this.props.items.splice(index, 1), base: 0, btnBase: 0})
     }
 
 
     render() {
         return (
-            <Entity>
+            <a-entity>
                 {this.props.items.map((item, i) =>
 
                     <Entity material="color: #337ab7; shader: flat" rotation="0 0 0"
@@ -76,6 +83,19 @@ export default class CnList extends React.Component {
                                 lineHeight: 0.85
                             }} geometry="primitive: plane; width: 1.5; height: 0.80"/>
                 )}
+                {this.props.items.map((item, i) =>
+                    <Entity material="color: #f2dede; shader: flat" rotation="0 0 0"
+                            events={{click: (e) => {e.preventDefault(); this.removeItem(i)}}}
+                            key={i}
+                            position={{x: 0.9, y: this.state.btnBase += 0.8, z: -3}}
+                            text={{
+                                value: 'x',
+                                color: '#a94442',
+                                align: 'center',
+                                width: 5,
+                                height: 5
+                            }} geometry="primitive: plane; width: 0.2; height: 0.2"/>
+                )}
 
                 <Entity position="-0.5 0 -3" material="color: #337ab7; shader:flat"
                         text={{value: this.state.btnText, align: 'center', width: 5, height: 2, lineHeight: 1}}
@@ -86,7 +106,7 @@ export default class CnList extends React.Component {
                          transparent="false" opacity="0.5"></a-video>
 
                 <a-entity camera="userHeight: 1.5" look-controls mouse-cursor></a-entity>
-            </Entity>
+            </a-entity>
         );
 
     }
