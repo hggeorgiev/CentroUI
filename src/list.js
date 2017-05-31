@@ -8,10 +8,15 @@ import {default as Keyboard} from './libs/editor/Keyboard';
  *  Simple list for adding and removing items.
  *  TODO Separate list logic from input box
  */
-export class CnList extends React.Component {
+export default class CnList extends React.Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            selectedItem: undefined,
+            btnText: '+',
+            base: 0,
+            color: 'red'
+        }
     }
 
 
@@ -19,7 +24,6 @@ export class CnList extends React.Component {
         window.addEventListener('load', () => {
             this.state.keyboard = new Keyboard();
             this.state.keyboard.init(window, "#keyboardCanvas");
-
         });
 
     }
@@ -31,7 +35,7 @@ export class CnList extends React.Component {
 
     addOrUpdate() {
         if (this.state.selectedItem) {
-            this.state.items.map((item) => {
+            this.props.items.map((item) => {
                 if (item.id === this.state.selectedItem.id) {
                     item[this.props.itemProp] = this.state.keyboard.getText();
                 }
@@ -39,16 +43,16 @@ export class CnList extends React.Component {
             });
 
             this.state.keyboard.setText('');
-            this.setState({people: this.state.items, base: 0, selectedItem: '', btnText: '+'});
+            this.setState({people: this.props.items, base: 0, selectedItem: '', btnText: '+'});
         } else {
             let newPerson = {
                 firstName: this.state.keyboard.getText(),
                 lastName: "",
                 id: Math.floor(Math.random() * 150) + 1
             };
-            this.state.items.push(newPerson);
+            this.props.items.push(newPerson);
             this.state.keyboard.setText('');
-            this.setState({people: this.state.items, base: 0})
+            this.setState({people: this.props.items, base: 0})
         }
     }
 
@@ -56,7 +60,7 @@ export class CnList extends React.Component {
     render() {
         return (
             <Entity>
-                {this.state.items.map((item, i) =>
+                {this.props.items.map((item, i) =>
 
                     <Entity material="color: #337ab7; shader: flat" rotation="0 0 0"
                             events={{click: () => this.selectItem(item)}}
