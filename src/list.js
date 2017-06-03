@@ -53,7 +53,7 @@ export default class CnList extends React.Component {
                 lastName: "",
                 id: Math.floor(Math.random() * 150) + 1
             };
-            this.props.items.push(newPerson);
+            this.props.items.unshift(newPerson);
             this.state.keyboard.setText('');
             this.setState({people: this.props.items, base: 0, btnBase: 0})
         }
@@ -67,6 +67,8 @@ export default class CnList extends React.Component {
     render() {
         return (
             <a-entity>
+
+
                 {this.props.items.map((item, i) =>
 
                     <Entity material="color: #337ab7; shader: flat" rotation="0 0 0"
@@ -87,7 +89,7 @@ export default class CnList extends React.Component {
                     <Entity material="color: #f2dede; shader: flat" rotation="0 0 0"
                             events={{click: (e) => {e.preventDefault(); this.removeItem(i)}}}
                             key={i}
-                            position={{x: 0.9, y: this.state.btnBase += 0.8, z: -3}}
+                            position={{x: 0.55, y: this.state.btnBase += 0.85, z: -2.8}}
                             text={{
                                 value: 'x',
                                 color: '#a94442',

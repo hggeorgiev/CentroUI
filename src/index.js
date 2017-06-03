@@ -27,13 +27,13 @@ class App extends React.Component {
                 <a-assets>
                     <canvas id="keyboardCanvas" width="512" height="128"></canvas>
                 </a-assets>
-
+                <CnList items={this.state.people} itemProp="firstName"/>
 
                 <Entity primitive="a-sky" color="#ECECEC"/>
 
 
 
-                <CnList items={this.state.people} itemProp="firstName"/>
+
                 <a-entity camera="userHeight: 1.5" look-controls mouse-cursor>
                 </a-entity>
             </Scene>
