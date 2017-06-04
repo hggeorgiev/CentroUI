@@ -1,7 +1,19 @@
-## CentroUI
+<h1 align="center">CentroUI</h1>
 
+<br/>
+
+<div align="center">
+  <img src="https://github.com/Centroida/CentroUI/raw/master/centroui.png" height="200">
+</div>
+
+<h5 align="center">
 CentroUI is a library for building user interfaces for VR websites.
-*The project is currently in a very experimental stage.*
+</h5>
+
+
+</div>
+
+
 
 CentroUI is based on
 [A-Frame](https://aframe.io) and React with
