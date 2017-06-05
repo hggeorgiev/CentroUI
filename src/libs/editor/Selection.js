@@ -2,6 +2,8 @@
  * Creates new selection for the editor.
  * @param {Editor} editor.
  * @constructor
+ *
+ *  TODO Convert to ES6 class
  */
 export function Selection(editor, color) {
   this.editor = editor;

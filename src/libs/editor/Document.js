@@ -3,7 +3,11 @@
  * Creates new document from provided text.
  * @param {string} text Full document text.
  * @constructor
+ *
+ * TODO Convert to ES6 class
  */
+
+
 export function Document(text) {
   text = text || '';
   this.storage = Document.prepareText(text);

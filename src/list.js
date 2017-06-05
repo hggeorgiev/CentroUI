@@ -2,7 +2,7 @@ import React from 'react';
 import 'aframe';
 import 'babel-polyfill';
 import {Entity, Scene} from 'aframe-react';
-import {default as Keyboard} from './libs/editor/Keyboard';
+import {default as TextBox} from './libs/editor/TextBox';
 
 /***
  *  Simple list for adding and removing items.
@@ -24,14 +24,14 @@ export default class CnList extends React.Component {
 
     componentDidMount() {
         window.addEventListener('load', () => {
-            this.state.keyboard = new Keyboard();
-            this.state.keyboard.init(window, "#keyboardCanvas");
+            this.state.textbox = new TextBox(window, "#keyboardCanvas");
+            console.log(this.state.textbox);
         });
 
     }
 
     selectItem(item) {
-        this.state.keyboard.setText(item[this.props.itemProp]);
+        this.state.textbox.setText(item[this.props.itemProp]);
         this.setState({base: 0, selectedItem: item, btnText: 'Save'});
     }
 
@@ -40,21 +40,21 @@ export default class CnList extends React.Component {
         if (this.state.selectedItem) {
             this.props.items.map((item) => {
                 if (item.id === this.state.selectedItem.id) {
-                    item[this.props.itemProp] = this.state.keyboard.getText();
+                    item[this.props.itemProp] = this.state.textbox.getText();
                 }
                 return item;
             });
 
-            this.state.keyboard.setText('');
+            this.state.textbox.setText('');
             this.setState({people: this.props.items, base: 0, btnBase: 0, selectedItem: '', btnText: '+'});
         } else {
             let newPerson = {
-                firstName: this.state.keyboard.getText(),
+                firstName: this.state.textbox.getText(),
                 lastName: "",
                 id: Math.floor(Math.random() * 150) + 1
             };
             this.props.items.unshift(newPerson);
-            this.state.keyboard.setText('');
+            this.state.textbox.setText('');
             this.setState({people: this.props.items, base: 0, btnBase: 0})
         }
     }

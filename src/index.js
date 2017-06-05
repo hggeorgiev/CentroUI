@@ -4,6 +4,7 @@ import 'babel-polyfill';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {default as Keyboard} from './libs/editor/Keyboard';
 import CnList from './list';
 
 class App extends React.Component {
@@ -18,7 +19,10 @@ class App extends React.Component {
         };
     };
 
+    componentDidMount() {
+        this.state.keyboard = new Keyboard();
 
+    }
 
 
     render() {
@@ -32,10 +36,8 @@ class App extends React.Component {
                 <Entity primitive="a-sky" color="#ECECEC"/>
 
 
-
-
-                <a-entity camera="userHeight: 1.5" look-controls mouse-cursor>
-                </a-entity>
+                <Entity camera="userHeight: 1.5" look-controls mouse-cursor/>
+                <a-entity id="keyboard" scale="0.01 0.01 0.01" position="0 1.2 -0.24"></a-entity>
             </Scene>
         );
     }

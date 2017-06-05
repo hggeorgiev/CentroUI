@@ -1,66 +1,68 @@
-import {default as CanvasTextEditor} from './CanvasTextEditor';
-import {default as Document} from './Document';
-
+import * as d3 from "d3";
 
 export class Keyboard {
 
+    kbLayout = [
+        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']'],
+        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\''],
+        ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/']
+    ];
 
-    init(window, elementId) {
+    constructor() {
+        let scene = d3.select('a-scene');
 
-        window.addEventListener('keyup', this.handleKeyUp);
-        window.addEventListener('keydown', this.handleKeyDown);
-        window.addEventListener('keypress', this.handleKeyPress);
+        let that = this;
 
-        let canvas = document.querySelector(elementId);
-        let doc = new Document('');
-        this.editor = new CanvasTextEditor(doc, {
-            canvas,
-            backgroundColor: '#fff',
-            textColor: '#000',
-            selectionColor: 'yellow',
-            focusColor: 'green',
-            fontFamily: 'Verdana',
-            fontSize: 18,
-            width: 512,
-            height: 128
-        });
+        let i = 0
+        // TODO Make the id of the keyboard generic
+        let boxes = scene
+            .select('#keyboard')
+            .selectAll('a-entity')
+            .data(this.kbLayout)
+            .enter();
+
+        let rows = boxes.append('a-entity')
+            .selectAll('.key')
+            .data(d => d)
+            .enter();
 
 
-        window['editor'] = this.editor;
 
-        return window['editor'];
+        let posArr = []
+        let keys = rows.append('a-entity')
+            .attr('class', 'key')
+            .attr('data-key', d => d)
+            .attr('position', function(d, i, j) {
+                let row = that.kbLayout.indexOf(d3.select(this.parentNode).datum());
+                posArr.push({ x: 2.5 * i, y:  -1 * row, z: 2.5 * row})
+            });
+
+            keys.each( function(i, p) {
+                this.setAttribute('position', posArr[p]);
+                this.baseYPosition = posArr[p]['y'];
+                console.log(posArr[p])
+                console.log(this);
+            });
+
+        let buttons = keys.append('a-box')
+            .attr('color', '#ffffff')
+            .attr('opacity', 0.5)
+            .attr('depth', 2)
+            .attr('width', 2)
+            .attr('height', 0.3);
+
+        let letters = keys.append('a-plane')
+            .attr('color', '#000000')
+            .attr('rotation', '-90 0 0')
+            .attr('text', d => `text: ${d}`)
+            .attr('position', '0 0.2 0')
+            .attr('curveSegments', 1);
     }
 
-    setText(content) {
-        this.editor.getDocument().deleteRange(0, 0, 999, 999);
-        this.editor.getDocument().insertText(content, 0, 0);
-        this.editor.render();
-    }
-
-    getText() {
-        return this.editor.getDocument().storage[0];
-    }
 
 
-    handleKeyUp(event) {
-        let key = document.querySelector(`[data-key="${event.key.toUpperCase()}"]`);
-        if (key) {
-            //key.setAttribute('position', 'y', key['baseYPosition']);
-        }
-        window['editor'].dispatchEvent('keyup', event);
-    }
 
-    handleKeyDown(event) {
-        let key = document.querySelector(`[data-key="${event.key.toUpperCase()}"]`);
-        if (key) {
-            //key.setAttribute('position', 'y', key['baseYPosition'] - 1);
-        }
-        window['editor'].dispatchEvent('keydown', event)
-    }
-
-    handleKeyPress(event) {
-        window['editor'].dispatchEvent('keypress', event)
-    }
 }
+
 
 export default Keyboard;

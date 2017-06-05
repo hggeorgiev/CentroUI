@@ -1,7 +1,3 @@
-
-
-
-
 import FontMetrics from './FontMetrics';
 import Document from './Document';
 import Selection from './Selection';
@@ -9,6 +5,8 @@ import Selection from './Selection';
 /**
  * Simple plain-text text editor using html5 canvas.
  * @constructor
+ *
+ *  TODO Convert to ES6 class
  */
 export function CanvasTextEditor(doc, options) {
   this._document = doc || (new Document());

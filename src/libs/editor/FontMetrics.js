@@ -5,6 +5,8 @@
  * @param {String} family Font Family (same as in CSS)
  * @param {Number} size Size in px
  * @constructor
+ *
+ *  TODO Convert to ES6 class
  */
 export function FontMetrics(family, size) {
   this._family = family || (family = "Monaco, 'Courier New', Courier, monospace");
