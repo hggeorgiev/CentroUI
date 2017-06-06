@@ -4,7 +4,7 @@ export class Keyboard {
 
     kbLayout = [
         ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']'],
-        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\''],
+        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', ''],
         ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/']
     ];
 
@@ -32,16 +32,17 @@ export class Keyboard {
         let keys = rows.append('a-entity')
             .attr('class', 'key')
             .attr('data-key', d => d)
-            .attr('position', function(d, i, j) {
-                let row = that.kbLayout.indexOf(d3.select(this.parentNode).datum());
-                posArr.push({ x: 2.5 * i, y:  -1 * row, z: 2.5 * row})
+            .attr('position', (d, i, j) => {
+                let el = document.querySelectorAll(`[data-key='${d}'`)[0];
+                let row = that.kbLayout.indexOf(d3.select(el.parentNode).datum());
+                posArr.push({ x: 2.5 * i, y:  -1 * row, z: 2.5 * row});
+                return { x: 2.5 * i, y:  -1 * row, z: 2.5 * row}
             });
 
-            keys.each( function(i, p) {
-                this.setAttribute('position', posArr[p]);
-                this.baseYPosition = posArr[p]['y'];
-                console.log(posArr[p])
-                console.log(this);
+            keys.each((d, i) => {
+                let el = document.querySelectorAll(`[data-key='${d}'`)[0];
+                el.baseYPosition = posArr[i]['y']
+
             });
 
         let buttons = keys.append('a-box')
@@ -51,12 +52,14 @@ export class Keyboard {
             .attr('width', 2)
             .attr('height', 0.3);
 
-        let letters = keys.append('a-plane')
+        let letters = keys.append('a-text')
             .attr('color', '#000000')
             .attr('rotation', '-90 0 0')
-            .attr('text', d => `text: ${d}`)
+            .attr('value', (d) => `${d}`)
             .attr('position', '0 0.2 0')
-            .attr('curveSegments', 1);
+            .attr('depth', 10)
+            .attr('width', 10)
+
     }
 
 

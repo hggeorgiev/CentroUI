@@ -46,7 +46,7 @@ export class TextBox {
     handleKeyUp(event) {
         let key = document.querySelector(`[data-key="${event.key.toUpperCase()}"]`);
         if (key) {
-            //key.setAttribute('position', 'y', key['baseYPosition']);
+            key.setAttribute('position', 'y', key['baseYPosition']);
         }
         window['editor'].dispatchEvent('keyup', event);
     }
@@ -54,7 +54,7 @@ export class TextBox {
     handleKeyDown(event) {
         let key = document.querySelector(`[data-key="${event.key.toUpperCase()}"]`);
         if (key) {
-            //key.setAttribute('position', 'y', key['baseYPosition'] - 1);
+            key.setAttribute('position', 'y', key['baseYPosition'] - 1);
         }
         window['editor'].dispatchEvent('keydown', event)
     }

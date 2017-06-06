@@ -36,8 +36,10 @@ class App extends React.Component {
                 <Entity primitive="a-sky" color="#ECECEC"/>
 
 
-                <Entity camera="userHeight: 1.5" look-controls mouse-cursor/>
-                <a-entity id="keyboard" scale="0.01 0.01 0.01" position="0 1.2 -0.24"></a-entity>
+                <a-entity camera="userHeight: 1.5" look-controls mouse-cursor>
+                    <a-entity id="keyboard" scale="0.01 0.01 0.01" position="0 -0.100 -0.250" rotation="50 0 0"></a-entity>
+                </a-entity>
+
             </Scene>
         );
     }

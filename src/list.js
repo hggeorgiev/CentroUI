@@ -32,7 +32,7 @@ export default class CnList extends React.Component {
 
     selectItem(item) {
         this.state.textbox.setText(item[this.props.itemProp]);
-        this.setState({base: 0, selectedItem: item, btnText: 'Save'});
+        this.setState({base: 0, btnBase: 0, selectedItem: item, btnText: 'Save'});
     }
 
 
@@ -107,7 +107,6 @@ export default class CnList extends React.Component {
                 <a-video src="#keyboardCanvas" width="1.21" height="0.300" rotation="0 0 0" position="0.5 0.1 -3"
                          transparent="false" opacity="0.5"></a-video>
 
-                <a-entity camera="userHeight: 1.5" look-controls mouse-cursor></a-entity>
             </a-entity>
         );
 
