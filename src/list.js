@@ -66,7 +66,7 @@ export default class CnList extends React.Component {
 
     render() {
         return (
-            <a-entity>
+            <a-entity >
 
 
                 {this.props.items.map((item, i) =>
