@@ -3,7 +3,6 @@
  * @param {Editor} editor.
  * @constructor
  *
- *  TODO Convert to ES6 class
  */
 export class Selection {
 
