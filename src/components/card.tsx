@@ -1,13 +1,13 @@
-import React from 'react';
+import * as React from "react";
 import 'aframe-animation-component';
 import 'aframe-href-component';
 import 'aframe';
 import 'babel-polyfill';
 
 
-export default class CnCard extends React.Component {
+export default class CnCard extends React.Component<any, any> {
 
-    constructor(props) {
+    constructor(props:any) {
         super(props);
         // Dynamic position
     };

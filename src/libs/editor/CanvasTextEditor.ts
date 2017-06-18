@@ -1,6 +1,7 @@
 import FontMetrics from './FontMetrics';
 import Document from './Document';
 import Selection from './Selection';
+import FormEvent = React.FormEvent;
 
 /**
  * Simple plain-text text editor using html5 canvas.
@@ -10,9 +11,19 @@ import Selection from './Selection';
  */
 export class CanvasTextEditor {
 
+    public document: Document;
+    public metrics: FontMetrics;
+    public selection: Selection;
+    public options: any;
+    public wrapper: any;
+    public canvas: HTMLCanvasElement | any;
+    public context: CanvasRenderingContext2D;
+    public inputEl: HTMLTextAreaElement;
+    public needsClearing: boolean;
 
-    constructor(doc, options) {
-        this._document = doc || (new Document());
+
+    constructor(doc: Document, options: any) {
+        this.document = doc || (new Document());
 
         this.options = {
             textColor: 'WindowText',
@@ -24,7 +35,7 @@ export class CanvasTextEditor {
             padding: 5,
             width: 640,
             height: 480,
-            canvas: null
+            canvas: undefined
         };
 
         if (typeof options === 'object') {
@@ -33,12 +44,14 @@ export class CanvasTextEditor {
             }
         }
 
-        this._metrics = new FontMetrics(this.options.fontFamily, this.options.fontSize);
+        this.metrics = new FontMetrics(this.options.fontFamily, this.options.fontSize);
         this._createWrapper();
-        this._selection = new Selection(this, this.options.textColor);
-        this._selection.onchange = this.selectionChange.bind(this);
+        this.selection = new Selection(this, this.options.textColor);
+        this.selection.onchange = this.selectionChange.bind(this);
         this._createCanvas();
         this._createInput();
+
+        // Global objects
         document.addEventListener('keydown', this.addKeyModifier.bind(this), true);
         document.addEventListener('keyup', this.removeKeyModfier.bind(this), true);
         window.addEventListener('focus', this.clearKeyModifiers.bind(this), true);
@@ -46,7 +59,7 @@ export class CanvasTextEditor {
 
     };
 
-    dispatchEvent = function (type, event) {
+    dispatchEvent(type: string, event: KeyboardEvent) {
         switch (type) {
             case 'keydown':
                 this.addKeyModifier.call(this, event);
@@ -90,7 +103,7 @@ export class CanvasTextEditor {
      * Determines if current browser is Opera
      * @type {Boolean}
      */
-    isOpera = ('opera' in window) && ('version' in window.opera);
+    isOpera = false;
 
     /**
      * CSS class that is assigned to the wrapper.
@@ -108,7 +121,7 @@ export class CanvasTextEditor {
      * Marks important for us key modfiers as pressed
      * @param {Event} e
      */
-    addKeyModifier = function (e) {
+    addKeyModifier(e: KeyboardEvent) {
         if (e.keyCode === 16) {
             this.shiftPressed = true;
         }
@@ -118,7 +131,7 @@ export class CanvasTextEditor {
      * Unmarks important for us key modfiers as pressed
      * @param {Event} e
      */
-    removeKeyModfier = function (e) {
+    removeKeyModfier(e:KeyboardEvent) {
         if (e.keyCode === 16) {
             this.shiftPressed = false;
         }
@@ -127,7 +140,7 @@ export class CanvasTextEditor {
     /**
      * Clears all key modifiers
      */
-    clearKeyModifiers = function () {
+    clearKeyModifiers() {
         this.shiftPressed = false;
     };
 
@@ -135,15 +148,15 @@ export class CanvasTextEditor {
      * Returns selection for this editor
      * @return {Selection}
      */
-    getSelection = function () {
-        return this._selection;
+    getSelection() {
+        return this.selection;
     };
 
     /**
      * Returns current top offset
      * @return {number}
      */
-    scrollTop = function () {
+    scrollTop() {
         return this._scrollTop;
     };
 
@@ -151,22 +164,22 @@ export class CanvasTextEditor {
      * Returns current left offset
      * @return {number}
      */
-    scrollLeft = function () {
+    scrollLeft() {
         return this._scrollLeft;
     };
 
     /**
      * Handles selection change
      */
-    selectionChange = function () {
+    selectionChange() {
         // Assume that selection is empty
         let selectedText = '';
 
         // if it's not we put together selected text from document
-        if (!this._selection.isEmpty()) {
-            let ranges = this._selection.lineRanges();
+        if (!this.selection.isEmpty()) {
+            let ranges = this.selection.lineRanges();
             for (let key in ranges) {
-                selectedText += this._document.getLine(parseInt(key)).slice(
+                selectedText += this.document.getLine(parseInt(key)).slice(
                     ranges[key][0], ranges[key][1] === true ? undefined : ranges[key][1]
                 );
             }
@@ -183,7 +196,7 @@ export class CanvasTextEditor {
      * Creates wrapper element for all parts of the editor
      * @private
      */
-    _createWrapper = function () {
+    _createWrapper() {
         this.wrapper = document.createElement('div');
         this.wrapper.className = this.className;
         this.wrapper.style.display = 'inline-block';
@@ -199,7 +212,7 @@ export class CanvasTextEditor {
      * Creates canvas for drawing
      * @private
      */
-    _createCanvas = function () {
+    _createCanvas() {
         this.canvas = this.options.canvas || document.createElement('canvas');
         this.canvas.style.display = 'block';
         this.context = this.canvas.getContext('2d');
@@ -212,10 +225,10 @@ export class CanvasTextEditor {
      * Makes sure that cursor is visible
      * @return {[type]} [description]
      */
-    _checkScroll = function () {
-        let maxHeight = Math.ceil(this.canvas.height / this._metrics.getHeight()) - 1,
-            maxWidth = Math.ceil(this.canvas.width / this._metrics.getWidth()) - 1,
-            cursorPosition = this._selection.getPosition();
+    _checkScroll() {
+        let maxHeight = Math.ceil(this.canvas.height / this.metrics.getHeight()) - 1,
+            maxWidth = Math.ceil(this.canvas.width / this.metrics.getWidth()) - 1,
+            cursorPosition = this.selection.getPosition();
         if (cursorPosition[0] > this._scrollLeft + maxWidth) {
             this._scrollLeft = cursorPosition[0] - maxWidth;
         } else if (cursorPosition[0] < this._scrollLeft) {
@@ -226,20 +239,20 @@ export class CanvasTextEditor {
         } else if (cursorPosition[1] < this._scrollTop) {
             this._scrollTop = cursorPosition[1];
         }
-        this._selection.updateCursorStyle();
+        this.selection.updateCursorStyle();
     };
 
     /**
      * Renders document onto the canvas
      * @return {[type]} [description]
      */
-    render = function () {
-        let baselineOffset = this._metrics.getBaseline(),
-            lineHeight = this._metrics.getHeight(),
-            characterWidth = this._metrics.getWidth(),
+    render() {
+        let baselineOffset = this.metrics.getBaseline(),
+            lineHeight = this.metrics.getHeight(),
+            characterWidth = this.metrics.getWidth(),
             maxHeight = Math.ceil(this.canvas.height / lineHeight) + this._scrollTop,
-            lineCount = this._document.getLineCount(),
-            selectionRanges = this._selection.lineRanges(),
+            lineCount = this.document.getLineCount(),
+            selectionRanges = this.selection.lineRanges(),
             selectionWidth = 0;
 
         // Making sure we don't render something that we won't see
@@ -281,7 +294,7 @@ export class CanvasTextEditor {
 
             // Drawing text
             this.context.fillText(
-                this._document.getLine(i).slice(this._scrollLeft), 0, topOffset + baselineOffset
+                this.document.getLine(i).slice(this._scrollLeft), 0, topOffset + baselineOffset
             );
         }
     };
@@ -290,7 +303,7 @@ export class CanvasTextEditor {
      * Creates textarea that will handle user input and copy-paste actions
      * @private
      */
-    _createInput = function () {
+    _createInput() {
         this.inputEl = document.createElement('textarea');
         this.inputEl.style.position = 'absolute';
         this.inputEl.style.top = '-25px';
@@ -306,8 +319,8 @@ export class CanvasTextEditor {
      * Handles regular text input into our proxy field
      * @param  {Event} e
      */
-    handleInput = function (e) {
-        let value = e.target.value;
+    handleInput(e:any) {
+        let value: string = e.target["value"];
         if (this.isOpera) {
             // Opera doesn't need a placeholder
             value = value.substring(0, value.length);
@@ -322,7 +335,7 @@ export class CanvasTextEditor {
     /**
      * Makes input contain only placeholder character and places cursor at start
      */
-    setInputText = function (text, force) {
+    setInputText(text: string, force: boolean) {
         if (this.needsClearing || force === true) {
             if (this.isOpera) {
                 this.inputEl.value = text;
@@ -340,19 +353,19 @@ export class CanvasTextEditor {
      * Inserts text at the current cursor position
      * @param  {string} text
      */
-    insertTextAtCurrentPosition = function (text) {
+    insertTextAtCurrentPosition(text: string) {
         // If selection is not empty we need to "replace" selected text with inserted
         // one which means deleting old selected text before inserting new one
-        if (!this._selection.isEmpty()) {
+        if (!this.selection.isEmpty()) {
             this.deleteCharAtCurrentPosition();
         }
 
-        let pos = this._selection.getPosition();
+        let pos = this.selection.getPosition();
 
         // Inserting new text and changing position of cursor to a new one
-        this._selection.setPosition.apply(
-            this._selection,
-            this._document.insertText(text, pos[0], pos[1])
+        this.selection.setPosition.apply(
+            this.selection,
+            this.document.insertText(text, pos[0], pos[1])
         );
         this.render();
     };
@@ -361,22 +374,22 @@ export class CanvasTextEditor {
      * Deletes text at the current cursor position
      * @param  {string} text
      */
-    deleteCharAtCurrentPosition = function (forward) {
+    deleteCharAtCurrentPosition(forward?: any) {
         // If there is a selection we just remove it no matter what direction is
-        if (!this._selection.isEmpty()) {
-            this._selection.setPosition.apply(
-                this._selection,
-                this._document.deleteRange(
-                    this._selection.start.character, this._selection.start.line,
-                    this._selection.end.character, this._selection.end.line
+        if (!this.selection.isEmpty()) {
+            this.selection.setPosition.apply(
+                this.selection,
+                this.document.deleteRange(
+                    this.selection.start.character, this.selection.start.line,
+                    this.selection.end.character, this.selection.end.line
                 )
             );
         } else {
-            let pos = this._selection.getPosition();
+            let pos = this.selection.getPosition();
             // Deleting text and changing position of cursor to a new one
-            this._selection.setPosition.apply(
-                this._selection,
-                this._document.deleteChar(forward, pos[0], pos[1])
+            this.selection.setPosition.apply(
+                this.selection,
+                this.document.deleteChar(forward, pos[0], pos[1])
             );
         }
         this.render();
@@ -386,16 +399,16 @@ export class CanvasTextEditor {
      * Real handler code for editor gaining focus.
      * @private
      */
-    _inputFocus = function () {
+    _inputFocus() {
         this.wrapper.style.outline = '1px solid ' + this.options.focusColor;
-        this._selection.setVisible(true);
+        this.selection.setVisible(true);
     };
 
     /**
      * Returns main editor node so it can be inserted into document.
      * @return {HTMLElement}
      */
-    getEl = function () {
+    getEl() {
         return this.wrapper;
     };
 
@@ -403,16 +416,16 @@ export class CanvasTextEditor {
      * Returns font metrics used in this editor.
      * @return {FontMetrics}
      */
-    getFontMetrics = function () {
-        return this._metrics;
+    getFontMetrics() {
+        return this.metrics;
     };
 
     /**
      * Returns current document.
      * @return {Document}
      */
-    getDocument = function () {
-        return this._document;
+    getDocument() {
+        return this.document;
     };
 
     /**
@@ -420,18 +433,18 @@ export class CanvasTextEditor {
      * @param  {Number} width
      * @param  {Number} height
      */
-    resize = function (width, height) {
+    resize(width: number, height: number) {
         this.canvas.width = width;
         this.canvas.height = height;
         // We need to update context settings every time we resize
-        this.context.font = this._metrics.getSize() + 'px ' + this._metrics.getFamily();
+        this.context.font = this.metrics.getSize() + 'px ' + this.metrics.getFamily();
     };
 
     /**
      * Main keydown handler
      * @param  {Event} e
      */
-    keydown = function (e) {
+    keydown(e: KeyboardEvent) {
         let handled = true;
         switch (e.keyCode) {
             case 8: // Backspace
@@ -444,16 +457,16 @@ export class CanvasTextEditor {
                 this.insertTextAtCurrentPosition('\n');
                 break;
             case 37: // Left arrow
-                this._selection.moveLeft(1, this.shiftPressed);
+                this.selection.moveLeft(1, this.shiftPressed);
                 break;
             case 38: // Up arrow
-                this._selection.moveUp(1, this.shiftPressed);
+                this.selection.moveUp(1, this.shiftPressed);
                 break;
             case 39: // Right arrow
-                this._selection.moveRight(1, this.shiftPressed);
+                this.selection.moveRight(1, this.shiftPressed);
                 break;
             case 40: // Down arrow
-                this._selection.moveDown(1, this.shiftPressed);
+                this.selection.moveDown(1, this.shiftPressed);
                 break;
             default:
                 //   this.inputEl.textContent += e.key;
@@ -467,15 +480,15 @@ export class CanvasTextEditor {
     /**
      * Blur handler.
      */
-    blur = function () {
+    blur() {
         this.wrapper.style.outline = 'none';
-        this._selection.setVisible(false);
+        this.selection.setVisible(false);
     };
 
     /**
      * Focus handler. Acts as a proxy to input focus.
      */
-    focus = function () {
+    focus() {
         this.inputEl.focus();
     };
 

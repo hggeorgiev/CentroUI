@@ -1,11 +1,14 @@
 import {default as CanvasTextEditor} from './CanvasTextEditor';
 import {default as Document} from './Document';
+import DOMElement = React.DOMElement;
 
 
 export class TextBox {
 
+    public editor:CanvasTextEditor;
 
-    constructor(window, elementId) {
+
+    constructor(window:any, elementId:string) {
 
         window.addEventListener('keyup', this.handleKeyUp);
         window.addEventListener('keydown', this.handleKeyDown);
@@ -26,11 +29,11 @@ export class TextBox {
         });
 
 
-        window['editor'] = this.editor;
+        window["editor"] = this.editor;
 
     }
 
-    setText(content) {
+    setText(content:string) {
         this.editor.getDocument().deleteRange(0, 0, 999, 999);
         this.editor.getDocument().insertText(content, 0, 0);
         this.editor.render();
@@ -43,24 +46,24 @@ export class TextBox {
 
     //TODO Move to the Keyboard class
 
-    handleKeyUp(event) {
-        let key = document.querySelector(`[data-key="${event.key.toUpperCase()}"]`);
+    handleKeyUp(event:KeyboardEvent) {
+        let key:any = document.querySelector(`[data-key="${event.key.toUpperCase()}"]`);
         if (key) {
             key.setAttribute('position', 'y', key['baseYPosition']);
         }
-        window['editor'].dispatchEvent('keyup', event);
+        window["editor"].dispatchEvent('keyup', event);
     }
 
-    handleKeyDown(event) {
-        let key = document.querySelector(`[data-key="${event.key.toUpperCase()}"]`);
+    handleKeyDown(event:KeyboardEvent) {
+        let key:any= document.querySelector(`[data-key="${event.key.toUpperCase()}"]`);
         if (key) {
             key.setAttribute('position', 'y', key['baseYPosition'] - 1);
         }
-        window['editor'].dispatchEvent('keydown', event)
+        window["editor"].dispatchEvent('keydown', event)
     }
 
-    handleKeyPress(event) {
-        window['editor'].dispatchEvent('keypress', event)
+    handleKeyPress(event:KeyboardEvent) {
+        window["editor"].dispatchEvent('keypress', event)
     }
 }
 

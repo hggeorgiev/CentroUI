@@ -1,15 +1,15 @@
 import 'aframe';
 import 'aframe-mouse-cursor-component';
 import 'babel-polyfill';
-import {Entity, Scene} from 'aframe-react';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import {default as Keyboard} from './libs/editor/Keyboard';
-import CnList from './list';
-import CnCard from './card';
+import CnList from './components/list';
+import CnCard from './components/card';
 
-class App extends React.Component {
-    constructor(props) {
+class App extends React.Component< any , any> {
+    public state:any;
+    constructor(props:any) {
         super(props);
         this.state = {
             people: [
@@ -28,7 +28,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <Scene>
+            <a-scene>
                 <a-assets>
                     <canvas id="keyboardCanvas" width="512" height="128"></canvas>
                     <img id="photo" src="https://res.cloudinary.com/dybluctxg/image/upload/v1495307503/owl_vsg52w.jpg"/>
@@ -43,7 +43,7 @@ class App extends React.Component {
                 </a-assets>
                 <CnList items={this.state.people} itemProp="firstName"/>
                 <CnCard/>
-                <Entity primitive="a-sky" color="#ECECEC"/>
+                <a-entity primitive="a-sky" color="#ECECEC"></a-entity>
 
 
                 <a-entity camera="userHeight: 1.5" look-controls mouse-cursor>
@@ -51,7 +51,7 @@ class App extends React.Component {
                               rotation="50 0 0"></a-entity>
                 </a-entity>
 
-            </Scene>
+            </a-scene>
         );
     }
 }

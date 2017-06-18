@@ -3,16 +3,17 @@
  * @param {string} text Full document text.
  * @constructor
  *
- * TODO Convert to ES6 class
  */
 
 
 export class Document {
 
 
-    constructor(text) {
+    public storage: any;
+
+    constructor(text?: string) {
         text = text || '';
-        this.storage = this.constructor.prepareText(text);
+        this.storage = Document.prepareText(text);
     }
 
 
@@ -23,8 +24,8 @@ export class Document {
      * @return {Array.{string}}
      */
 
-    static prepareText(text) {
-        var lines = [],
+    public static prepareText(text: string) {
+        let lines = [],
             index = 0,
             newIndex;
         do {
@@ -42,7 +43,7 @@ export class Document {
      * Returns line count for the document
      * @return {number}
      */
-    getLineCount = function () {
+    getLineCount() {
         return this.storage.length;
     };
 
@@ -51,7 +52,7 @@ export class Document {
      * @param  {number} 0-based index of the line
      * @return {string}
      */
-    getLine = function (index) {
+    getLine(index: number) {
         return this.storage[index];
     };
 
@@ -59,9 +60,9 @@ export class Document {
      * Returns linear length of the document.
      * @return {number}
      */
-    getLength = function () {
-        var sum = 0;
-        for (var i = this.storage.length - 1; i >= 0; --i) {
+    getLength() {
+        let sum = 0;
+        for (let i = this.storage.length - 1; i >= 0; --i) {
             sum += this.storage[i].length;
         }
         return sum;
@@ -72,7 +73,7 @@ export class Document {
      * @param  {number} offset
      * @return {string|undefined}
      */
-    charAt = function (column, row) {
+    charAt(column: number, row: string) {
         row = this.storage[row];
         if (row) {
             return row.charAt(column);
@@ -86,13 +87,13 @@ export class Document {
      * @param  {number} row
      * @return {Array} new position in the document
      */
-    insertText = function (text, column, row) {
+    insertText(textInput:string, column:number, row:number) {
         // First we need to split inserting text into array lines
-        text = Document.prepareText(text);
+        let text:any = Document.prepareText(textInput);
 
         // First we calculate new column position because
         // text array will be changed in the process
-        var newColumn = text[text.length - 1].length;
+        let newColumn = text[text.length - 1].length;
         if (text.length === 1) {
             newColumn += column;
         }
@@ -105,7 +106,7 @@ export class Document {
 
         // now we are ready to splice other new lines
         // (not first and not last) into our storage
-        var args = [row + 1, 0].concat(text.slice(1));
+        let args = [row + 1, 0].concat(text.slice(1));
         this.storage.splice.apply(this.storage, args);
 
         // Finally we calculate new position
@@ -122,7 +123,7 @@ export class Document {
      * @param  {number} endColumn
      * @param  {number} endRow
      */
-    deleteRange = function (startColumn, startRow, endColumn, endRow) {
+    deleteRange(startColumn:number, startRow:number, endColumn:number, endRow:number) {
 
         // Check bounds
         startRow >= 0 || (startRow = 0);
@@ -153,12 +154,12 @@ export class Document {
      * @param  {number}  row
      * @return {Array}   new position
      */
-    deleteChar = function (forward, startColumn, startRow) {
-        var endRow = startRow,
+    deleteChar(forward:boolean, startColumn:number, startRow:number) {
+        let endRow = startRow,
             endColumn = startColumn;
 
         if (forward) {
-            var characterCount = this.storage[startRow].trim('\n').length;
+            let characterCount = this.storage[startRow].trim('\n').length;
             // If there are characters after cursor on this line we simple remove one
             if (startColumn < characterCount) {
                 ++endColumn;

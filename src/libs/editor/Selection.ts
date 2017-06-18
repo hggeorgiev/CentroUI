@@ -1,3 +1,4 @@
+import {CanvasTextEditor} from "./CanvasTextEditor";
 /**
  * Creates new selection for the editor.
  * @param {Editor} editor.
@@ -6,10 +7,40 @@
  */
 export class Selection {
 
+    public el: HTMLElement;
+    public editor: CanvasTextEditor;
+    public interval: any;
+    public start:any = {
+        line: 0,
+        character: 0
+    };
 
-    constructor(editor, color) {
+    public end:any = {
+        line: 0,
+        character: 0
+    };
+    public visible: boolean;
+
+    /**
+     * This callback called when selection size has changed
+     * @type {Function}
+     */
+   public  onchange = function(ref:any , start:any, end:any) {};
+
+
+
+    /**
+     * Hold blink interval for the cursor
+     * @type {Number}
+     */
+
+    public blinkInterval = 500;
+
+
+    constructor(editor: CanvasTextEditor, color: string) {
 
         this.editor = editor;
+
 
         this.el = document.createElement('div');
         this.el.style.position = 'absolute';
@@ -21,28 +52,10 @@ export class Selection {
         color || (color = '#000');
     }
 
-    start = {
-        line: 0,
-        character: 0
-    };
-
-    end = {
-        line: 0,
-        character: 0
-    };
 
 
-    /**
-     * Hold blink interval for the cursor
-     * @type {Number}
-     */
-    blinkInterval = 500;
 
-    /**
-     * This callback called when selection size has changed
-     * @type {Function}
-     */
-    onchange = null;
+
 
     /**
      * If true that means that we currently manipulate right side of the selection
@@ -55,10 +68,10 @@ export class Selection {
      * @return {void}
      */
     blink() {
-        if (parseInt(this.el.style.opacity, 10)) {
-            this.el.style.opacity = 0;
+        if (this.el.style.opacity) {
+            this.el.style.opacity = "0";
         } else {
-            this.el.style.opacity = 1;
+            this.el.style.opacity = "1";
         }
     };
 
@@ -84,7 +97,7 @@ export class Selection {
      * Comparator for two cursor positions
      * @return {number}
      */
-    comparePosition(one, two) {
+    comparePosition(one: any, two: any) {
         if (one.line < two.line) {
             return -1;
         } else if (one.line > two.line) {
@@ -115,7 +128,7 @@ export class Selection {
      * @param {number} line
      * @param {number} character
      */
-    setPosition(character, line, keepSelection) {
+    setPosition(character: number, line: number, keepSelection?: boolean) {
 
         let position = this._forceBounds(character, line);
 
@@ -132,7 +145,7 @@ export class Selection {
      * Checks and forces bounds for proposed position updates
      * @return {Array}
      */
-    _forceBounds(character, line) {
+    _forceBounds(character:number, line:number) {
         let position = this.getPosition();
 
         // Checking lower bounds
@@ -166,7 +179,7 @@ export class Selection {
     /**
      * Updates cursor styles so it matches current position
      */
-    updateCursorStyle = function () {
+    updateCursorStyle() {
         // Calculating new position on the screen
         let metrics = this.editor.getFontMetrics(),
             position = this.getPosition(),
@@ -179,7 +192,7 @@ export class Selection {
         // state on a new position. Try to move cursror in any editor and you
         // will see this in action.
         if (this.isVisible()) {
-            this.el.style.opacity = 1;
+            this.el.style.opacity = "1";
             clearInterval(this.interval);
             this.interval = setInterval(this.blink.bind(this), this.blinkInterval);
         }
@@ -191,7 +204,7 @@ export class Selection {
      * @param  {number} line
      * @param  {boolean} keepSelection
      */
-    _doSetPosition = function (character, line, keepSelection) {
+    _doSetPosition(character: number, line: number, keepSelection?: boolean) {
         // If this is a selection range
         if (keepSelection) {
 
@@ -239,7 +252,7 @@ export class Selection {
      * Returns current position of the end of the selection
      * @return {Array}
      */
-    getPosition = function () {
+    getPosition() {
         if (this.activeEndSide) {
             return [this.end.character, this.end.line];
         } else {
@@ -251,7 +264,7 @@ export class Selection {
      * Moves up specified amount of lines.
      * @param  {number} length
      */
-    moveUp = function (length, keepSelection) {
+    moveUp(length: number, keepSelection?: boolean) {
         arguments.length || (length = 1);
         let position = this.getPosition();
         this.setPosition(position[0], position[1] - length, keepSelection);
@@ -261,7 +274,7 @@ export class Selection {
      * Moves down specified amount of lines.
      * @param  {number} length
      */
-    moveDown = function (length, keepSelection) {
+    moveDown(length: number, keepSelection?: boolean) {
         arguments.length || (length = 1);
         let position = this.getPosition();
         this.setPosition(position[0], position[1] + length, keepSelection);
@@ -271,7 +284,7 @@ export class Selection {
      * Moves up specified amount of lines.
      * @param  {number} length
      */
-    moveLeft = function (length, keepSelection) {
+    moveLeft(length: number, keepSelection?: boolean) {
         arguments.length || (length = 1);
         let position = this.getPosition();
         this.setPosition(position[0] - length, position[1], keepSelection);
@@ -281,7 +294,7 @@ export class Selection {
      * Moves down specified amount of lines.
      * @param  {number} length
      */
-    moveRight = function (length, keepSelection) {
+    moveRight(length: number, keepSelection?: boolean) {
         arguments.length || (length = 1);
         let position = this.getPosition();
         this.setPosition(position[0] + length, position[1], keepSelection);
@@ -291,11 +304,11 @@ export class Selection {
      * Shows or hides cursor.
      * @param {void} visible Whether cursor should be visible
      */
-    setVisible = function (visible) {
+    setVisible(visible: boolean) {
         clearInterval(this.interval);
         if (visible) {
             this.el.style.display = 'block';
-            this.el.style.opacity = 1;
+            this.el.style.opacity = "1";
             this.interval = setInterval(this.blink.bind(this), this.blinkInterval);
         } else {
             this.el.style.display = 'none';
@@ -307,7 +320,7 @@ export class Selection {
      * Returns visibility of the cursor.
      * @return {Boolean}
      */
-    isVisible = function () {
+    isVisible() {
         return this.visible;
     };
 

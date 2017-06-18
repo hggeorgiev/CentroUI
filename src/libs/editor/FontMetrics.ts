@@ -1,3 +1,4 @@
+import {Font} from "three";
 /**
  * A simple wrapper for system fonts to provide
  * @param {String} family Font Family (same as in CSS)
@@ -7,12 +8,19 @@
  */
 export class FontMetrics {
 
-    constructor(family, size) {
+
+    public _size: number;
+    public _family: string;
+    public _width: number;
+    public _height: number;
+    public _baseline: number;
+
+    constructor(family: string, size: any) {
         this._family = family || (family = "Monaco, 'Courier New', Courier, monospace");
         this._size = parseInt(size) || (size = 12);
 
         // Preparing container
-        var line = document.createElement('div'),
+        let line = document.createElement('div'),
             body = document.body;
         line.style.position = 'absolute';
         line.style.whiteSpace = 'nowrap';
@@ -20,14 +28,14 @@ export class FontMetrics {
         body.appendChild(line);
 
         // Now we can measure width and height of the letter
-        var text = 'mmmmmmmmmm'; // 10 symbols to be more accurate with width
+        let text = 'mmmmmmmmmm'; // 10 symbols to be more accurate with width
         line.innerHTML = text;
         this._width = line.offsetWidth / text.length;
         this._height = line.offsetHeight;
 
         // Now creating 1px sized item that will be aligned to baseline
         // to calculate baseline shift
-        var span = document.createElement('span');
+        let span = document.createElement('span');
         span.style.display = 'inline-block';
         span.style.overflow = 'hidden';
         span.style.width = '1px';
@@ -46,7 +54,7 @@ export class FontMetrics {
      * @return {String}
      */
 
-    getFamily = function () {
+    getFamily() {
         return this._family;
     };
 
@@ -55,7 +63,7 @@ export class FontMetrics {
      * @return {Number}
      */
 
-    getSize = function () {
+    getSize() {
         return this._size;
     };
 
@@ -64,7 +72,7 @@ export class FontMetrics {
      * @return {Number}
      */
 
-    getHeight = function () {
+    getHeight() {
         return this._height;
     };
 
@@ -73,7 +81,7 @@ export class FontMetrics {
      * @return {Number}
      */
 
-    getWidth = function () {
+    getWidth() {
         return this._width;
     };
 
@@ -82,7 +90,7 @@ export class FontMetrics {
      * @return {Number}
      */
 
-    getBaseline = function () {
+    getBaseline() {
         return this._baseline;
     };
 
