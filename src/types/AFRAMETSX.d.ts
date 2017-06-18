@@ -8,5 +8,6 @@ declare namespace JSX {
         "a-mixin":any;
         "a-scene":any;
         "a-text":any;
+        "a-sky":any;
     }
 }

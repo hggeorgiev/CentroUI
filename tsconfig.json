@@ -6,6 +6,7 @@
     "suppressImplicitAnyIndexErrors": true,
     // compile to ES2015 (Babel will do the rest)
     "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
     // see below
     "baseUrl": "src",
     // enables you to import relative to this folder
