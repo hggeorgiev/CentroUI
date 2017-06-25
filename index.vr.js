@@ -9,10 +9,13 @@ import {
     Cylinder
 
 } from 'react-vr';
-import CnContainer from "./container"
-import CnNavbar from "./navbar"
-import CnNavItem from "./navItem"
-
+import CnContainer from "./components/core/container"
+import CnNavbar from "./components/navbar/navbar"
+import CnNavItem from "./components/navbar/navItem"
+import CnCard from "./components/card/card"
+import CnRow from "./components/core/row"
+import CnCardHeader from "./components/card/card-header"
+// Kitchen sink
 export default class centrovrui extends React.Component {
     render() {
         return (
@@ -23,17 +26,21 @@ export default class centrovrui extends React.Component {
                 <CnContainer >
                     <CnNavbar>
                         <CnNavItem>
-                            Top kek
+                            Item 1
                         </CnNavItem>
                         <CnNavItem>
-                            Top kek
+                            Item 2
                         </CnNavItem>
-                        <CnNavItem>
-                            Top kek
-                        </CnNavItem>
-
-
                     </CnNavbar>
+
+                    <CnRow>
+                        <CnCard>
+                            <CnCardHeader>
+                                New card
+                            </CnCardHeader>
+                        </CnCard>
+                    </CnRow>
+
                 </CnContainer>
 
             </View>

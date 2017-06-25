@@ -26,7 +26,9 @@ export default class CnNavbar extends React.Component {
             //Note changing row to column
 
             <View style={{
-                    flex: 1,
+                    display:  'flex',
+                    flex: 0,
+                    flexWrap: 'wrap',
                     flexDirection: 'row',
                     alignItems: 'stretch',
                     height: 0.5,
