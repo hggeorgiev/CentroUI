@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ac9d074-150f-4fc1-8580-9bad5fe91d3e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/card/card-content.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/card/card-footer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/card/card-header.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/card/card.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/core/row.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/container.js" afterPath="$PROJECT_DIR$/components/core/container.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/navItem.js" afterPath="$PROJECT_DIR$/components/navbar/navItem.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/navbar.js" afterPath="$PROJECT_DIR$/components/navbar/navbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.vr.js" afterPath="$PROJECT_DIR$/index.vr.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,17 +21,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vr/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.vr.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.vr.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.vr.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="570">
@@ -48,6 +29,19 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="390">
+                <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -171,6 +165,7 @@
         <option value="$PROJECT_DIR$/components/core/container.js" />
         <option value="$PROJECT_DIR$/components/card/card.js" />
         <option value="$PROJECT_DIR$/index.vr.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -373,12 +368,12 @@
       <workItem from="1498162723987" duration="1400000" />
       <workItem from="1498249584606" duration="5986000" />
       <workItem from="1498256405132" duration="495000" />
-      <workItem from="1498415667523" duration="6275000" />
+      <workItem from="1498415667523" duration="6505000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14156000" />
+    <option name="totallyTimeSpent" value="14386000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -701,6 +696,17 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="390">
+            <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
