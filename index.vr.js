@@ -72,6 +72,24 @@ export default class centrovrui extends React.Component {
 
                 </CnContainer>
 
+
+                <CnContainer direction="left">
+                    <CnNavbar>
+                        <CnNavItem>
+                            Item 1
+                        </CnNavItem>
+                    </CnNavbar>
+                </CnContainer>
+
+                <CnContainer direction="back">
+
+                </CnContainer>
+
+                <CnContainer direction="right">
+
+                </CnContainer>
+
+
             </View>
         );
     }

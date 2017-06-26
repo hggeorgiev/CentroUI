@@ -12,8 +12,8 @@ import {
 
 
 export default class CnContainer extends React.Component {
-    //TODO Implement
-    direction: string;
+    direction:any;
+    rotation:any;
 
     constructor() {
         super();
@@ -21,8 +21,36 @@ export default class CnContainer extends React.Component {
 
 
     render() {
+        let {direction} = this.props;
+        if(direction === undefined ){
+            this.direction = [0, 1.5, -5.5];
+            this.rotation = 0;
+        } else {
+            switch(this.props.direction) {
+                case 'left': {
+                    this.direction = [5, 5.5 , 0];
+                    this.rotation = -90;
 
-        //TODO add option for direction
+                    break;
+                }
+                case 'back': {
+                    this.direction = [0, 9 , 5.5];
+                    this.rotation = 180;
+
+                    break;
+                }
+
+                case 'right': {
+                    this.direction = [-5, 13.2 , 0];
+                    this.rotation = 90;
+
+                    break;
+
+                }
+            }
+
+        }
+
         return (
             <View
                 style={{
@@ -35,7 +63,7 @@ export default class CnContainer extends React.Component {
                 height: 4,
                 justifyContent: 'flex-start',
                 flexDirection: 'column',
-                transform: [{translate: [0, 1.5, -5.5]}],
+                transform: [{translate: this.direction}, {rotateY : this.rotation}],
                 backgroundColor: "#fff"
             }}>
 
