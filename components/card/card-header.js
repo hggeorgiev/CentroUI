@@ -16,8 +16,8 @@ export default class CnCardHeader extends React.Component {
 
         return (
 
-            <View style={{ display:  'flex', flex: 0, height: 0.3, padding: 0.02, backgroundColor: "#0275d8"}}>
-                <Text style={{fontSize: 0.15, flex: 1, textAlign: 'left', textAlignVertical: 'center', color: "#ffffff" }}>
+            <View style={{ display:  'flex', flex: 0,  height: 0.3, padding: 0.02, backgroundColor: "#f7f7f9"}}>
+                <Text style={{fontSize: 0.15, flex: 1, textAlign: 'left', textAlignVertical: 'center', color: "#000" }}>
                     {this.props.children}
                 </Text>
             </View>
