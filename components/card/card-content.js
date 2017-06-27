@@ -17,7 +17,7 @@ export default class CnCardContent extends React.Component {
         return (
 
             //Think about resizing images
-            <View style={{ display:  'flex', flex: 0}}>
+            <View style={{ display:  'flex', flex: 1}}>
                 {this.props.children}
             </View>
         );
