@@ -18,12 +18,13 @@ export default class CnContainer extends React.Component {
         super(props);
 
         this.state = {
-            backgroundColor: this.props.backgroundColor || "rgba(255,255,255,0.3)",
+            backgroundColor: this.props.backgroundColor,
             opacity: this.props.opacity || 1,
             direction: [0, 1.5, -5.5],
             rotation: 0
         };
         this.setDireciton();
+        this.setColor();
     }
 
     setDireciton() {
@@ -42,13 +43,29 @@ export default class CnContainer extends React.Component {
             }
 
             case 'right': {
-                this.state.direction = [-5, 13.2, 0];
+                this.state.direction = [-5.5, 9, 0];
                 this.state.rotation = 90;
 
                 break;
             }
 
 
+        }
+    }
+
+    setColor() {
+        switch(this.props.backgroundColor) {
+            case 'transparent': {
+                this.state.backgroundColor = "rgba(255,255,255,0.0)";
+                break
+            }
+            case undefined: {
+                this.state.backgroundColor = "rgba(255,255,255,0.3)";
+                break;
+            }
+            default: {
+                this.state.backgroundColor = this.props.backgroundColor
+            }
         }
     }
 
