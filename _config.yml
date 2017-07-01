@@ -23,7 +23,11 @@ baseurl: "/CentroUI" # the subpath of your site, e.g. /blog
 url: "https://centroida.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: hggeorgiev
 github_username:  kaizeras
-
+safe: true
+source: .
+destination: _site
+lsi: false
+pygments: true
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-cayman
