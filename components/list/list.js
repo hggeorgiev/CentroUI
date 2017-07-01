@@ -11,7 +11,7 @@ import {
 } from 'react-vr';
 
 
-export default class CnListItem extends React.Component {
+export default class CnList extends React.Component {
 
 
     constructor(props) {
@@ -51,4 +51,4 @@ export default class CnListItem extends React.Component {
     }
 };
 
-AppRegistry.registerComponent('CnListItem', () => CnListItem);
+AppRegistry.registerComponent('CnList', () => CnList);
