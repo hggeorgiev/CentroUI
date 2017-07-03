@@ -7,7 +7,7 @@
 </div>
 
 <h5 align="center">
-CentroUI is a library for building user interfaces for VR websites.
+CentroUI is a library for building user interfaces for WebVR.
 </h5>
 
 
