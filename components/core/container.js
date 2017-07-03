@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    AppRegistry,
     asset,
     Pano,
     Text,
@@ -99,4 +98,4 @@ export default class CnContainer extends React.Component {
 }
 ;
 
-AppRegistry.registerComponent('CnContainer', () => CnContainer);
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    AppRegistry,
+
     asset,
     Pano,
     Text,
@@ -42,4 +42,4 @@ export default class CnCard extends React.Component {
     }
 };
 
-AppRegistry.registerComponent('CnCard', () => CnCard);
+

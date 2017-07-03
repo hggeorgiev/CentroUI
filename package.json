@@ -1,7 +1,8 @@
 {
-  "name": "centrovrui",
-  "version": "0.0.1",
-  "private": true,
+  "name": "centro-ui",
+  "version": "0.0.2",
+  "private": false,
+  "author": "Centroida",
   "scripts": {
     "start": "node -e \"console.log('open browser at http://localhost:8081/vr/\\n\\n');\" && node node_modules/react-native/local-cli/cli.js start",
     "bundle": "node node_modules/react-vr/scripts/bundle.js",
