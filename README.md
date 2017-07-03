@@ -24,4 +24,4 @@ CentroUI is based on ReactVR
 - Create a navbar (representation) - done
 - Create a zooming technique
 
-![Imgur](https://media3.giphy.com/avatars/nikdudukovic/ylDRTR05sy6M.gif)
+![Imgur](http://i.imgur.com/ElGHkgj.gif)
