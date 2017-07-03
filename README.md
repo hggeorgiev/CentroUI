@@ -19,10 +19,8 @@ CentroUI is based on ReactVR
 
 
 ## Example
-
-![Screenshot](http://i.imgur.com/rX8LX1f.png)
-
 ![Video](http://i.imgur.com/ElGHkgj.gif)
+![Screenshot](http://i.imgur.com/rX8LX1f.png)
 
 
 #### Markup
