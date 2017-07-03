@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/centro-ui.svg)](https://badge.fury.io/js/centro-ui)
 <h1 align="center">CentroUI</h1>
 
 <br/>
