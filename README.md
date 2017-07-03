@@ -13,9 +13,13 @@ CentroUI is a library for building user interfaces for WebVR.
 
 </div>
 
+**CentroUI**  is a JavaScript library providing a set of reusable and extendable UI controls for building interfaces for WebVR applications. Based on [React VR](https://github.com/facebook/react-vr), CentroUI gives developers with plug-and-play text input controls, cards, lists, navigation items and grids, all built with cross-device and cross-browser compatibility to ensure consistent experience with any environment and device.
 
 
-CentroUI is based on ReactVR
+## Resources
+* [Wiki](https://github.com/Centroida/CentroUI/wiki)
+* [Example](https://github.com/Centroida/CentroUI#example)
+
 
 
 ## Example
