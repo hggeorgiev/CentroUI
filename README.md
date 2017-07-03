@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/centro-ui.svg)](https://badge.fury.io/js/centro-ui)
 
-https://img.shields.io/github/license/centroui/apistatus.svg
+![license](https://img.shields.io/github/license/centroui/apistatus.svg)
 
 <h1 align="center">CentroUI</h1>
 
