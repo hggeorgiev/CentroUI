@@ -25,6 +25,7 @@ CentroUI is a library for building user interfaces for WebVR.
 
 
 ## Example
+[Live demo](https://www.centroida.co/vr/)
 ![Video](http://i.imgur.com/ElGHkgj.gif)
 ![Screenshot](http://i.imgur.com/rX8LX1f.png)
 
