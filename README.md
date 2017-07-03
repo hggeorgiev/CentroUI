@@ -40,7 +40,7 @@ import { CnContainer } from 'centro-ui';
 <CnContainer> </CnContainer>
 ```
 
-** [Read the documentation to learn more about the API](https://github.com/Centroida/CentroUI/wiki) **
+**[Read the documentation to learn more about the API](https://github.com/Centroida/CentroUI/wiki)**
 
 
 ## Example
