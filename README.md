@@ -22,7 +22,25 @@ CentroUI is a library for building user interfaces for WebVR.
 * [Example](https://github.com/Centroida/CentroUI#example)
 
 ## Getting started 
-*Coming soon*
+
+1. __Install via npm__
+```
+npm install centro-ui --save
+```
+
+2. __Import in your project__
+
+```
+import { CnContainer } from 'centro-ui';
+```
+
+3. __Ivoke the component(s) in your view__
+
+```
+<CnContainer> </CnContainer>
+```
+
+*** [Read the documentation to learn more about the API](https://github.com/Centroida/CentroUI/wiki) ***
 
 
 ## Example
