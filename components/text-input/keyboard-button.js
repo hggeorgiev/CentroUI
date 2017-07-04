@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React  from 'react';
 import {View, VrButton, StyleSheet, Text, Animated} from 'react-vr';
 
 var styles = StyleSheet.create({
@@ -20,7 +20,7 @@ var styles = StyleSheet.create({
     }
 });
 
-class KeyboardButton extends Component {
+class KeyboardButton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

@@ -6,7 +6,7 @@ import CnRow from "./components/core/row"
 import CnCardHeader from "./components/card/card-header"
 import CnCardContent from "./components/card/card-content"
 import CnCardFooter from "./components/card/card-footer"
-import TextInput from "./components/text-input/text-input"
+import CnTextInput from "./components/text-input/text-input"
 import CnList from "./components/list/list"
 import CnListItem from "./components/list/list-item"
 
@@ -19,7 +19,7 @@ module.exports = {
     CnCardHeader,
     CnCardContent,
     CnCardFooter,
-    TextInput,
+    CnTextInput,
     CnList,
     CnListItem
 

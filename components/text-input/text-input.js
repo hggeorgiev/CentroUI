@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import { View, VrButton, StyleSheet, Text } from 'react-vr';
 import Keyboard from './keyboard';
 import Scroll from './text-input-scroll'
 
-class TextInput extends Component {
+class CnTextInput  extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -488,4 +488,4 @@ class TextInput extends Component {
     }
 }
 
-export default TextInput;
+export default CnTextInput;
