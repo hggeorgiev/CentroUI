@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/centro-ui.svg)](https://badge.fury.io/js/centro-ui) 
+
 <h1 align="center">CentroUI</h1>
 
 <br/>
@@ -20,9 +22,32 @@ CentroUI is a library for building user interfaces for WebVR.
 * [Wiki](https://github.com/Centroida/CentroUI/wiki)
 * [Example](https://github.com/Centroida/CentroUI#example)
 
+## Getting started 
+
+1. __Install via npm__
+```
+npm install centro-ui --save
+```
+
+2. __Import in your project__
+
+```
+import { CnContainer } from 'centro-ui';
+```
+
+3. __Ivoke the component(s) in your view__
+
+```
+<CnContainer> </CnContainer>
+```
+
+**[Read the documentation to learn more about the API](https://github.com/Centroida/CentroUI/wiki)**
 
 
 ## Example
+#### [Live demo](https://www.centroida.co/vr/)
+
+
 ![Video](http://i.imgur.com/ElGHkgj.gif)
 ![Screenshot](http://i.imgur.com/rX8LX1f.png)
 
@@ -98,3 +123,25 @@ CentroUI is a library for building user interfaces for WebVR.
                 </CnContainer>
 
             </View>
+```
+
+## Contributing
+*Coming soon*
+
+## License Information
+
+This project has been released under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html), the text of which is included below. This license applies ONLY to the source of this repository and does not extend to any other CentroUI distribution or variant, or any other 3rd party libraries used in a repository. For licensing information about CentroUI, see the [License Agreements page (Coming Soon)]() at [CentroUI.com](http://www.kendoui.com).
+
+> Copyright © 2017 Centroida
+
+> Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+> [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+>  Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
