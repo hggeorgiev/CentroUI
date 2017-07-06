@@ -4,9 +4,6 @@ import {
     Pano,
     Text,
     View,
-    Plane,
-
-
 } from 'react-vr';
 
 
@@ -97,5 +94,3 @@ export default class CnContainer extends React.Component {
     }
 }
 ;
-
-
