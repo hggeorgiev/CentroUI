@@ -35,7 +35,7 @@ npm install centro-ui --save
 import { CnContainer } from 'centro-ui';
 ```
 
-3. __Ivoke the component(s) in your view__
+3. __Invoke the component(s) in your view__
 
 ```
 <CnContainer> </CnContainer>
