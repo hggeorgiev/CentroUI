@@ -6,14 +6,31 @@ import {
     Text,
     View,
     Plane,
+    StyleSheet
 
 
 } from 'react-vr';
 
-const DEFAULT_BACKGROUND_COLOR = "#fff"
-const DEFAULT_HOVER_COLOR = "#000"
+const DEFAULT_BACKGROUND_COLOR = "#fff";
+const DEFAULT_HOVER_COLOR = "#000";
 
-export default class CnCard extends React.Component {
+const styles = StyleSheet.create({
+   base: {
+       display: 'flex',
+       flex: 1,
+       margin: 0.02,
+       minHeight: 0.5,
+       maxWidth: 2,
+
+   },
+   active: {
+       borderColor: "#0275d8",
+   },
+   inactive: {
+       borderColor: "#eceeef"
+   }
+});
+class CnCard extends React.Component {
 
     state = {
         currentBackgroundColor: this.props.bg || DEFAULT_BACKGROUND_COLOR,
@@ -21,31 +38,21 @@ export default class CnCard extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const { bg } = nextProps
-        const { hovered } = this.props
+        const { bg } = nextProps;
+        const { hovered } = this.props;
         if (!hovered) {
             this.setState({ currentBackgroundColor: bg || DEFAULT_BACKGROUND_COLOR })
         }
     }
 
     render() {
-        const { hover, hoverColor, bg } = this.props
-        const { currentBackgroundColor } = this.state
+        const { hover, hoverColor, bg } = this.props;
+        const { currentBackgroundColor } = this.state;
         // TODO have setters for height and width
         return (
             //Note changing row to column
 
-            <View style={{
-                display: 'flex',
-                flex: 1,
-                // Hardcoding for now
-                margin: 0.02,
-                minHeight: 0.5,
-                maxWidth: 2,
-                borderColor: "#eceeef",
-                borderWidth: 0.015,
-                backgroundColor: currentBackgroundColor
-            }}
+            <View style={styles.base}
                 onEnter={hover ? () => this.setState({ hovered: true, currentBackgroundColor: hoverColor || DEFAULT_HOVER_COLOR }) : null}
                 onExit={hover ? () => this.setState({ hovered: false, currentBackgroundColor: bg || DEFAULT_BACKGROUND_COLOR }) : null}>
                 {this.props.children}
@@ -55,3 +62,4 @@ export default class CnCard extends React.Component {
 };
 
 
+export default CnCard

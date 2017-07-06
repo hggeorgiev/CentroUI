@@ -1,5 +1,5 @@
 import React  from 'react';
-import { View, VrButton, StyleSheet, Text } from 'react-vr';
+import { View, VrButton,  Text } from 'react-vr';
 import Keyboard from './keyboard';
 import Scroll from './text-input-scroll'
 

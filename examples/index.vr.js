@@ -15,7 +15,7 @@ export default class Example extends React.Component {
         return (
             <View>
                 <CnContainer>
-                    <CnCard>
+                    <CnCard hover>
                         <CnCardHeader>
                             test
                         </CnCardHeader>
