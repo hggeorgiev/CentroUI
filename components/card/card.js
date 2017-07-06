@@ -11,55 +11,58 @@ import {
 
 } from 'react-vr';
 
-const DEFAULT_BACKGROUND_COLOR = "#fff";
-const DEFAULT_HOVER_COLOR = "#000";
 
 const styles = StyleSheet.create({
-   base: {
-       display: 'flex',
-       flex: 1,
-       margin: 0.02,
-       minHeight: 0.5,
-       maxWidth: 2,
+    base: {
+        display: 'flex',
+        flex: 1,
+        margin: 0.02,
+        minHeight: 0.5,
+        maxWidth: 2,
+        borderWidth: 0.020,
+        backgroundColor: "#eceeef"
 
-   },
-   active: {
-       borderColor: "#0275d8",
-   },
-   inactive: {
-       borderColor: "#eceeef"
-   }
+    },
 });
+
+const DEFAULT_ACTIVE_BORDER_COLOR = "#0275d8";
+const DEFAULT_INACTIVE_BORDER_COLOR = "#eceeef";
+
 class CnCard extends React.Component {
 
-    state = {
-        currentBackgroundColor: this.props.bg || DEFAULT_BACKGROUND_COLOR,
-        hovered: false
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentBorderColor: DEFAULT_INACTIVE_BORDER_COLOR,
+            inactiveBorderColor: DEFAULT_INACTIVE_BORDER_COLOR,
+            activeBorderColor: this.props.borderColor || DEFAULT_ACTIVE_BORDER_COLOR,
+            hovered: false
+        };
+
     }
 
-    componentWillReceiveProps(nextProps) {
-        const { bg } = nextProps;
-        const { hovered } = this.props;
-        if (!hovered) {
-            this.setState({ currentBackgroundColor: bg || DEFAULT_BACKGROUND_COLOR })
-        }
-    }
 
     render() {
-        const { hover, hoverColor, bg } = this.props;
-        const { currentBackgroundColor } = this.state;
-        // TODO have setters for height and width
+
+
+        const {hover} = this.props;
+        const {activeBorderColor, inactiveBorderColor, currentBorderColor} = this.state;
+
+        console.log(currentBorderColor)
+
         return (
             //Note changing row to column
 
-            <View style={styles.base}
-                onEnter={hover ? () => this.setState({ hovered: true, currentBackgroundColor: hoverColor || DEFAULT_HOVER_COLOR }) : null}
-                onExit={hover ? () => this.setState({ hovered: false, currentBackgroundColor: bg || DEFAULT_BACKGROUND_COLOR }) : null}>
+            <View style={[styles.base, {borderColor: currentBorderColor } ]}
+                  onEnter={hover ? () => this.setState({ hovered: true, currentBorderColor: activeBorderColor }) : null}
+                  onExit={hover ? () => this.setState({ hovered: false, currentBorderColor: inactiveBorderColor}) : null}>
                 {this.props.children}
             </View>
         );
     }
-};
+}
+;
 
 
 export default CnCard
