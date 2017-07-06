@@ -4,12 +4,16 @@
 
 // Auto-generated content.
 import {VRInstance} from 'react-vr-web';
+import {CnRayCaster} from "../utilities/caster";
 
 function init(bundle, parent, options) {
   const vr = new VRInstance(bundle, 'Example', parent, {
-    // Add custom options here
-    enableHotReload: true,
-    ...options,
+      raycasters: [
+          CnRayCaster
+      ],
+      cursorVisibility: "visible", // Add cursorVisibility
+      enableHotReload: true,
+      ...options,
   });
   vr.render = function() {
     // Any custom behavior you want to perform on each frame goes here

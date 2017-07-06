@@ -25,4 +25,4 @@ export default class CnNavItem extends React.Component {
     }
 };
 
-AppRegistry.registerComponent('CnNavItem', () => CnNavItem);
+

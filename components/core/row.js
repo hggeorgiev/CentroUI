@@ -18,7 +18,6 @@ export default class CnRow extends React.Component {
         super();
     }
 
-
     render() {
 
         return (
@@ -42,4 +41,4 @@ export default class CnRow extends React.Component {
     }
 };
 
-AppRegistry.registerComponent('CnRow', () => CnRow);
+

@@ -9,7 +9,7 @@ import CnCardFooter from "./components/card/card-footer"
 import CnTextInput from "./components/text-input/text-input"
 import CnList from "./components/list/list"
 import CnListItem from "./components/list/list-item"
-
+import CnRayCaster from "./utilities/caster"
 module.exports = {
     CnContainer,
     CnRow,
@@ -21,6 +21,7 @@ module.exports = {
     CnCardFooter,
     CnTextInput,
     CnList,
-    CnListItem
+    CnListItem,
+    CnRayCaster
 
 };

@@ -46,4 +46,4 @@ export default class CnNavbar extends React.Component {
     }
 };
 
-AppRegistry.registerComponent('CnNavbar', () => CnNavbar);
+

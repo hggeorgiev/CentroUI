@@ -56,4 +56,4 @@ export default class CnListItem extends React.Component {
     }
 };
 
-AppRegistry.registerComponent('CnListItem', () => CnListItem);
+
