@@ -5,24 +5,36 @@ import {
     Text,
     View,
     Plane,
+    StyleSheet
 } from 'react-vr';
 
-const DEFAULT_BACKGROUND_COLOR = "#fff"
-const DEFAULT_HOVER_COLOR = "#000"
 
-export default class CnCard extends React.Component {
+const styles = StyleSheet.create({
+    base: {
+      width: 1,
+      display: 'flex',
+      flex: 1,
+      margin: 0.02,
+      minHeight: 0.5,
+      maxWidth: 2
+    },
+});
 
-    state = {
-        currentBackgroundColor: this.props.bg || DEFAULT_BACKGROUND_COLOR,
-        hovered: false
-    }
+const DEFAULT_ACTIVE_BORDER_COLOR = "#0275d8";
+const DEFAULT_INACTIVE_BORDER_COLOR = "#eceeef";
 
-    componentWillReceiveProps(nextProps) {
-        const { bg } = nextProps
-        const { hovered } = this.props
-        if (!hovered) {
-            this.setState({ currentBackgroundColor: bg || DEFAULT_BACKGROUND_COLOR })
-        }
+class CnCard extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentBorderColor: DEFAULT_INACTIVE_BORDER_COLOR,
+            inactiveBorderColor: DEFAULT_INACTIVE_BORDER_COLOR,
+            activeBorderColor: this.props.borderColor || DEFAULT_ACTIVE_BORDER_COLOR,
+            hovered: false
+        };
+
     }
 
     getPadding() {
@@ -117,13 +129,7 @@ export default class CnCard extends React.Component {
         // TODO have setters for height and width
         return (
             <View style={{
-                width: 1,
-                display: 'flex',
-                flex: 1,
-                // Hardcoding for now
-                margin: 0.02,
-                minHeight: 0.5,
-                maxWidth: 2,
+                ...styles.base,
                 backgroundColor: currentBackgroundColor,
                 ...this.getBorderStyle(),
                 ...this.getItemsAlignment(),
@@ -135,6 +141,8 @@ export default class CnCard extends React.Component {
             </View>
         );
     }
-};
+}
+;
 
 
+export default CnCard

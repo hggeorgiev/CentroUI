@@ -4,7 +4,7 @@ import KeyboardButton from './keyboard-button';
 
 import layout from './keyboard-layout';
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container : {
     },
     numbers : {
@@ -82,7 +82,7 @@ class Keyboard extends React.Component {
     }
 
     render() {
-        var layoutArray = this.getLayout();
+        let layoutArray = this.getLayout();
         numberArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
         return (
             <View>
