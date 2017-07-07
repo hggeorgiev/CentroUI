@@ -4,15 +4,21 @@
 
 // Auto-generated content.
 import {VRInstance} from 'react-vr-web';
-import {CnRayCaster} from "../utilities/caster";
+import CnAdvancedRayCaster from "../utilities/6DoFRaycaster";
+import * as THREE from 'three'
 
 function init(bundle, parent, options) {
+  const scene = new THREE.Scene();
+  console.log(CnAdvancedRayCaster);
   const vr = new VRInstance(bundle, 'Example', parent, {
       raycasters: [
-          CnRayCaster
+          new CnAdvancedRayCaster(scene)
       ],
       cursorVisibility: "visible", // Add cursorVisibility
-      enableHotReload: true,
+      // Add scene to render the custom Raycasters
+      scene: scene,
+
+      //enableHotReload: true,
       ...options,
   });
   vr.render = function() {
