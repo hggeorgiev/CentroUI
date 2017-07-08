@@ -4,7 +4,7 @@
 
 // Auto-generated content.
 import {VRInstance} from 'react-vr-web';
-import CnAdvancedRayCaster from "../utilities/6DoFRaycaster";
+import CnAdvancedRayCaster from "../utilities/cn-raycaster";
 import * as THREE from 'three'
 
 function init(bundle, parent, options) {

@@ -122,9 +122,11 @@ class CnCard extends React.Component {
         return style
     }
 
+
     render() {
         const { hover, hoverColor, bg } = this.props
         const { currentBackgroundColor } = this.state
+
 
         // TODO have setters for height and width
         return (

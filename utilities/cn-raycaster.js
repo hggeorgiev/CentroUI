@@ -1,71 +1,67 @@
-
-
 import * as THREE from 'three';
 import {RayCaster} from 'ovrui';
+import StareRayCaster from './stareCaster.js'
+import {MouseRayCaster} from 'ovrui';
 
 const LEFT_ORIGIN = [-0.3, -0.5, -0.3];
 const RIGHT_ORIGIN = [0.3, -0.5, -0.3];
 
 const blueButtonColor = new THREE.Color('#2b87ca');
 const yellowButtonColor = new THREE.Color('#ede81f');
+
 /**
- * Create the gradient material for the beam emitting from the controller
+ *  TODO Add a Gamepad class and refactor this abomination
  */
-function createFadeMaterial() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1024;
-    canvas.height = 32;
-    const cx = canvas.getContext('2d');
-    const gradient = cx.createLinearGradient(0, 0, 1024, 0);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
-    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-    cx.fillStyle = gradient;
-    cx.fillRect(0, 0, 1024, 32);
-    const texture = new THREE.Texture(canvas);
-    texture.needsUpdate = true;
-    const fadeMaterial = new THREE.MeshBasicMaterial({
-        map: texture,
-        transparent: true,
-    });
-    return fadeMaterial;
-}
+export default class CnRayCaster extends RayCaster {
 
 
-export default class CnAdvancedRayCaster extends RayCaster {
     constructor(scene) {
         super();
 
         this._scene = scene;
 
-        this._active = true;
         this._gamepadIndex = -1;
-
-        this._createController();
-        // Preallocate THREE objects
-        this._vector = new THREE.Vector3();
-        this._controllerQuaternion = new THREE.Quaternion();
-        this._cameraQuaternion = new THREE.Quaternion();
+        this._gamepadActive = false;
+        this._mouseActive = false;
 
 
+        this._stareCaster = new StareRayCaster();
+        this._mouseCaster = new MouseRayCaster();
 
-        // Chceck if
-        if(typeof navigator.getGamepads !== 'function') {
+
+        // Check if there are controllers
+        if (typeof navigator.getGamepads !== 'function') {
             return
+
         }
-        const initialGamepads = navigator.getGamepads();
-        let i = 0;
-        while (i < initialGamepads.length && this._gamepadIndex < 0) {
-            const gamepad = initialGamepads[i];
-            if (gamepad && gamepad.pose) {
-                this._setUpGamepad(gamepad);
-            }
-            i++;
-        }
+
+
+        window.addEventListener("mousemove", (e) => {
+            this._mouseActive = true;
+        }, false);
 
         window.addEventListener('gamepadconnected', (e) => {
+            this._mouseActive = false;
+            this._createController();
+            // Preallocate THREE objects for the gamepads
+            this._vector = new THREE.Vector3();
+            this._controllerQuaternion = new THREE.Quaternion();
+            this._cameraQuaternion = new THREE.Quaternion();
+
+            const initialGamepads = navigator.getGamepads();
+            let i = 0;
+            while (i < initialGamepads.length && this._gamepadIndex < 0) {
+                const gamepad = initialGamepads[i];
+                if (gamepad && gamepad.pose) {
+                    this._setUpGamepad(gamepad);
+                }
+                i++;
+            }
+            this._gamepadActive = true;
             console.log('gamepad connected!')
             if (this._gamepadIndex < 0 && e.gamepad.pose) {
                 this._setUpGamepad(e.gamepad);
+                this.drawsCursor();
             }
         });
         window.addEventListener('gamepaddisconnected', (e) => {
@@ -73,22 +69,23 @@ export default class CnAdvancedRayCaster extends RayCaster {
             if (this._gamepadIndex === e.gamepad.index) {
                 this._scene.remove(this._mesh);
                 this._gamepadIndex = -1;
-                this._active = false;
+                this._gamepadActive = false;
+                this.drawsCursor();
             }
         });
+
+
     }
 
     _getGamepad() {
         const gamepads = navigator.getGamepads();
-
-        console.log(gamepads);
         return gamepads[this._gamepadIndex];
     }
 
     _setUpGamepad(gamepad) {
         this._gamepadIndex = gamepad.index;
         this._scene.add(this._mesh);
-        this._active = true;
+        this._gamepadActive = true;
         if (gamepad.hand === 'left') {
             this._origin = LEFT_ORIGIN;
             this._mesh.position.set(LEFT_ORIGIN[0], LEFT_ORIGIN[1], LEFT_ORIGIN[2]);
@@ -98,10 +95,35 @@ export default class CnAdvancedRayCaster extends RayCaster {
         }
     }
 
+    /**
+     * Create the gradient material for the beam emitting from the controller
+     */
+    _createFadeMaterial() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1024;
+        canvas.height = 32;
+        const cx = canvas.getContext('2d');
+        const gradient = cx.createLinearGradient(0, 0, 1024, 0);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        cx.fillStyle = gradient;
+        cx.fillRect(0, 0, 1024, 32);
+        const texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        const fadeMaterial = new THREE.MeshBasicMaterial({
+            map: texture,
+            transparent: true,
+        });
+        return fadeMaterial;
+    }
+
+
     _createController() {
         if (this._mesh) {
             return;
         }
+
+        // Geometry and a beam for simple controller
         const beamGeom = new THREE.Geometry();
         beamGeom.vertices.push(
             new THREE.Vector3(-0.01, 0.01, 0),
@@ -142,7 +164,7 @@ export default class CnAdvancedRayCaster extends RayCaster {
         beamGeom.elementsNeedUpdate = true;
         const beam = new THREE.Mesh(
             beamGeom,
-            createFadeMaterial()
+            this._createFadeMaterial()
         );
 
         const wand = new THREE.Mesh(
@@ -169,7 +191,7 @@ export default class CnAdvancedRayCaster extends RayCaster {
 
     // Begin RayCaster implementation details
     getType() {
-        return '6dof';
+        return 'universal';
     }
 
     /**
@@ -177,9 +199,11 @@ export default class CnAdvancedRayCaster extends RayCaster {
      * orientation data from the gamepad.
      */
     frame() {
-        if (!this._active) {
+        if (!this._gamepadActive) {
             return;
         }
+
+        this._mouseActive = false;
         const gamepad = this._getGamepad();
         if (gamepad && gamepad.pose && gamepad.pose.hasOrientation) {
             const orientation = gamepad.pose.orientation;
@@ -194,53 +218,69 @@ export default class CnAdvancedRayCaster extends RayCaster {
                 }
             }
         }
-        if(gamepad && gamepad.pose && gamepad.pose.hasPosition) {
+        if (gamepad && gamepad.pose && gamepad.pose.hasPosition) {
             const position = gamepad.pose.position
             this._mesh.position.set(position[0], position[1], position[2])
         }
     }
 
-    /**
-     * Return an array containing the x,y,z coordinates of the controller, which
-     * is used as the starting point for casting the ray.
-     */
+
     getRayOrigin(camera) {
-        if (!this._active) {
-            return null;
+        if (!this._gamepadActive) {
+            if (this._mouseActive) {
+                return this._mouseCaster.getRayOrigin()
+            } else {
+                return  this._stareCaster.getRayOrigin();
+            }
+        } else {
+            return [
+                this._mesh.position.x - camera.position.x,
+                this._mesh.position.y - camera.position.y,
+                this._mesh.position.z - camera.position.z,
+            ]
         }
-        return [
-            this._mesh.position.x - camera.position.x,
-            this._mesh.position.y - camera.position.y,
-            this._mesh.position.z - camera.position.z,
-        ]
+
     }
 
-    /**
-     * Return an array containing the vector components of the controller's
-     * current orientation, which is used as the direction of the ray.
-     * Since the controller rotation is not relative to the camera, we multiply
-     * by the inverse of the camera's quaternion.
-     */
-    getRayDirection(camera) {
-        if (!this._active || this._gamepadIndex < 0) {
-            return null;
-        }
-        const gamepad = this._getGamepad();
-        if (gamepad && gamepad.pose && gamepad.pose.orientation) {
-            // Rotate <0, 0, -1> by the controller pose quaternion
-            this._vector.set(0, 0, -1);
-            const orientation = gamepad.pose.orientation;
-            this._controllerQuaternion.set(orientation[0], orientation[1], orientation[2], orientation[3]);
-            this._cameraQuaternion.copy(camera.quaternion);
-            this._cameraQuaternion.inverse();
 
-            this._vector.applyQuaternion(this._controllerQuaternion);
-            this._vector.applyQuaternion(this._cameraQuaternion);
-            return [this._vector.x, this._vector.y, this._vector.z];
+    getRayDirection(camera) {
+
+
+        if (!this._gamepadActive || this._gamepadIndex < 0) {
+            if (this._mouseActive) {
+                return this._mouseCaster.getRayDirection(camera)
+            } else {
+                return this._stareCaster.getRayDirection();
+            }
+        } else {
+            const gamepad = this._getGamepad();
+            if (gamepad && gamepad.pose && gamepad.pose.orientation) {
+                // Rotate <0, 0, -1> by the controller pose quaternion
+                this._vector.set(0, 0, -1);
+                const orientation = gamepad.pose.orientation;
+                this._controllerQuaternion.set(orientation[0], orientation[1], orientation[2], orientation[3]);
+                this._cameraQuaternion.copy(camera.quaternion);
+                this._cameraQuaternion.inverse();
+
+                this._vector.applyQuaternion(this._controllerQuaternion);
+                this._vector.applyQuaternion(this._cameraQuaternion);
+                return [this._vector.x, this._vector.y, this._vector.z];
+            }
         }
+
     }
 
     drawsCursor() {
-        return true;
+
+        if(this._mouseActive) {
+            return false;
+        } else {
+            return true;
+        }
+
     }
+}
+
+class GamePadCaster {
+
 }
