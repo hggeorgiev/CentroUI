@@ -8,33 +8,35 @@ import {
     StyleSheet
 } from 'react-vr';
 
-
-const styles = StyleSheet.create({
-    base: {
-      width: 1,
-      display: 'flex',
-      flex: 1,
-      margin: 0.02,
-      minHeight: 0.5,
-      maxWidth: 2
-    },
-});
-
+const DEFAULT_BACKGROUND_COLOR = "#fff"
+const DEFAULT_HOVER_COLOR = "#000"
 const DEFAULT_ACTIVE_BORDER_COLOR = "#0275d8";
 const DEFAULT_INACTIVE_BORDER_COLOR = "#eceeef";
 
-class CnCard extends React.Component {
+const style = StyleSheet.create({
+    base: {
+        display: 'flex',
+        flex: 1,
+        margin: 0.02,
+        minHeight: 0.5,
+        maxWidth: 2,
+        borderWidth: 0.020,
+    },
+})
 
-    constructor(props) {
-        super(props);
+export default class CnCard extends React.Component {
 
-        this.state = {
-            currentBorderColor: DEFAULT_INACTIVE_BORDER_COLOR,
-            inactiveBorderColor: DEFAULT_INACTIVE_BORDER_COLOR,
-            activeBorderColor: this.props.borderColor || DEFAULT_ACTIVE_BORDER_COLOR,
-            hovered: false
-        };
+    state = {
+        currentBackgroundColor: this.props.bg || DEFAULT_BACKGROUND_COLOR,
+        hovered: false
+    }
 
+    componentWillReceiveProps(nextProps) {
+        const { bg } = nextProps
+        const { hovered } = this.props
+        if (!hovered) {
+            this.setState({ currentBackgroundColor: bg || DEFAULT_BACKGROUND_COLOR })
+        }
     }
 
     getPadding() {
@@ -108,10 +110,12 @@ class CnCard extends React.Component {
 
     getBorderStyle() {
         const { border } = this.props
+        const { hovered } = this.state
         var style = {}
         if (border) {
+            var borderColor = hovered ? border.activeColor || border.color || DEFAULT_ACTIVE_BORDER_COLOR : border.inactiveColor || border.color || DEFAULT_INACTIVE_BORDER_COLOR
             style = {
-                borderColor: border.color,
+                borderColor,
                 borderWidth: border.width,
                 borderTopWidth: border.top || border.width,
                 borderBottomWidth: border.bottom || border.width,
@@ -122,13 +126,28 @@ class CnCard extends React.Component {
         return style
     }
 
+    onEnter() {
+        const { hover, hoverColor } = this.props
+        if (hover) {
+            this.setState({
+                hovered: true,
+                currentBackgroundColor: hoverColor || DEFAULT_HOVER_COLOR
+            })
+        }
+    }
+
+    onExit() {
+        const { hover, bg } = this.props
+        if (hover) {
+            this.setState({
+                hovered: false,
+                currentBackgroundColor: bg || DEFAULT_BACKGROUND_COLOR
+            })
+        }
+    }
 
     render() {
-        const { hover, hoverColor, bg } = this.props
         const { currentBackgroundColor } = this.state
-
-
-        // TODO have setters for height and width
         return (
             <View style={{
                 ...styles.base,
@@ -137,14 +156,12 @@ class CnCard extends React.Component {
                 ...this.getItemsAlignment(),
                 ...this.getPadding(),
             }}
-                onEnter={hover ? () => this.setState({ hovered: true, currentBackgroundColor: hoverColor || DEFAULT_HOVER_COLOR }) : null}
-                onExit={hover ? () => this.setState({ hovered: false, currentBackgroundColor: bg || DEFAULT_BACKGROUND_COLOR }) : null}>
+                onEnter={this.onEnter.bind(this)}
+                onExit={this.onExit.bind(this)}>
                 {this.props.children}
             </View>
         );
     }
-}
-;
+};
 
 
-export default CnCard
