@@ -12,6 +12,10 @@ import {
 
 
 export default class CnCardFooter extends React.Component {
+
+    constructor(props) {
+        super(props)
+    }
     render() {
 
         //TODO make direction settable

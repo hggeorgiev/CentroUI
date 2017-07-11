@@ -1,5 +1,5 @@
 import React  from 'react';
-import { Image, StyleSheet } from 'react-vr';
+import {Image, StyleSheet} from 'react-vr';
 
 styles = StyleSheet.create({
     iconStyles: {
@@ -13,18 +13,22 @@ styles = StyleSheet.create({
 
 export default class CnIcon extends React.Component {
 
-  render() {
-
-
-    //Has unknown modules with ES6 interpolations (`../../static_assets/${this.props.name}`)
-    //Will fix it later
-    if (this.props.name === 'shopping-cart') {
-      return (
-        <Image source={require('../../static_assets/shopping-cart-icon.png')} style={styles.iconStyles} />
-      );
+    constructor(props) {
+        super(props)
     }
-    return null;
-  }
+
+    render() {
+
+
+        //Has unknown modules with ES6 interpolations (`../../static_assets/${this.props.name}`)
+        //Will fix it later
+        if (this.props.name === 'shopping-cart') {
+            return (
+                <Image source={require('../../static_assets/shopping-cart-icon.png')} style={styles.iconStyles}/>
+            );
+        }
+        return null;
+    }
 }
 
 

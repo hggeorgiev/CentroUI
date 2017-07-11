@@ -11,6 +11,9 @@ import {
 
 
 export default class CnCardContent extends React.Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
 
         return (
