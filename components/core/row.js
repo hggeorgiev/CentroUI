@@ -14,8 +14,8 @@ import {
 export default class CnRow extends React.Component {
 
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
     render() {

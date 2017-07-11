@@ -1,9 +1,9 @@
-import {RayCaster} from 'ovrui';
 
-export default class StareRayCaster extends RayCaster {
+
+export default class StareRayCaster  {
 
     constructor() {
-        super();
+
     }
 
     getType() {

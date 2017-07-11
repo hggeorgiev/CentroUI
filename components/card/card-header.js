@@ -12,6 +12,10 @@ import {
 
 
 export default class CnCardHeader extends React.Component {
+
+    constructor(props) {
+        super(props)
+    }
     render() {
 
         return (

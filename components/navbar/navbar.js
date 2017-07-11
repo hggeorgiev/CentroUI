@@ -12,6 +12,11 @@ import {
 
 
 export default class CnNavbar extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
 
         // var children = this.props.children.map(function(item, i) {

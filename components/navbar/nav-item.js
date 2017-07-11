@@ -11,15 +11,21 @@ import {
 } from 'react-vr';
 
 
-const DEFAULT_BACKGROUND_COLOR = "#fff"
-const DEFAULT_HOVER_COLOR = "#000"
+//TODO Refactor
+
+const DEFAULT_BACKGROUND_COLOR = "#fff";
+const DEFAULT_HOVER_COLOR = "#000";
 
 export default class CnNavItem extends React.Component {
+
+    constructor(props) {
+        super(props)
+    }
 
     state = {
         currentBackgroundColor: this.props.bg || DEFAULT_BACKGROUND_COLOR,
         hovered: false
-    }
+    };
 
     componentWillReceiveProps(nextProps) {
         const { bg } = nextProps
@@ -49,4 +55,3 @@ export default class CnNavItem extends React.Component {
     }
 };
 
-AppRegistry.registerComponent('CnNavItem', () => CnNavItem);

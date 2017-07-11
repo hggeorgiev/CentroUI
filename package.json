@@ -1,8 +1,17 @@
 {
   "name": "centro-ui",
-  "version": "0.0.5",
+  "main":"index.js",
+  "version": "0.0.68",
   "private": false,
   "author": "Centroida",
+  "keywords": [
+    "react",
+    "reactvr",
+    "vr",
+    "ui",
+    "components",
+    "webvr"
+  ],
   "scripts": {
     "start": "node -e \"console.log('open browser at http://localhost:8081/vr/\\n\\n');\" && node node_modules/react-native/local-cli/cli.js start",
     "bundle": "node scripts/bundle.js",
