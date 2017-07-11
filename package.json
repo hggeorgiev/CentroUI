@@ -1,8 +1,7 @@
 {
   "name": "centro-ui",
-  "version": "0.0.67",
   "main":"index.js",
-  "version": "0.0.6",
+  "version": "0.0.68",
   "private": false,
   "author": "Centroida",
   "keywords": [
