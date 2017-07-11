@@ -1,7 +1,7 @@
 
 import CnContainer from "./components/core/container"
 import CnNavbar from "./components/navbar/navbar"
-import CnNavItem from "./components/navbar/navItem"
+import CnNavItem from "./components/navbar/nav-item"
 import CnCard from "./components/card/card"
 import CnRow from "./components/core/row"
 import CnCardHeader from "./components/card/card-header"
@@ -25,5 +25,4 @@ module.exports = {
     CnList,
     CnListItem,
     CnRayCaster
-
-}
+};

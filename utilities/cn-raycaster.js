@@ -1,7 +1,6 @@
 import * as THREE from 'three';
-import {RayCaster} from 'ovrui';
-import StareRayCaster from './stareCaster.js'
-import {MouseRayCaster} from 'ovrui';
+import StareRayCaster from './stare-caster.js'
+import {MouseRayCaster} from './mouse-caster';
 
 const LEFT_ORIGIN = [-0.3, -0.5, -0.3];
 const RIGHT_ORIGIN = [0.3, -0.5, -0.3];
@@ -12,14 +11,11 @@ const yellowButtonColor = new THREE.Color('#ede81f');
 /**
  *  TODO Add a Gamepad class and refactor this abomination
  */
-export default class CnRayCaster extends RayCaster {
+export default class CnRayCaster {
 
 
     constructor(scene) {
-        super();
-
         this._scene = scene;
-
         this._gamepadIndex = -1;
         this._gamepadActive = false;
         this._mouseActive = false;
@@ -281,6 +277,3 @@ export default class CnRayCaster extends RayCaster {
     }
 }
 
-class GamePadCaster {
-
-}
