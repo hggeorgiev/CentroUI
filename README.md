@@ -61,7 +61,7 @@ function init(bundle, parent, options) {
         raycasters: [
             new CnRayCaster(scene)
         ],
-        // Add cursorVisibility
+        // Enable cursor visibility
         cursorVisibility: "visible", 
 
         scene: scene,
