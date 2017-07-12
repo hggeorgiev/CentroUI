@@ -24,6 +24,8 @@ CentroUI is a library for building user interfaces for WebVR.
 
 ## Getting started 
 
+In your [React VR](https://facebook.github.io/react-vr/docs/getting-started.html#content) project:
+
 1. __Install via npm__
 ```
 npm install centro-ui --save
@@ -41,6 +43,35 @@ import { CnContainer } from 'centro-ui';
 <CnContainer> </CnContainer>
 ```
 
+4.  __Add interactivity__
+
+In your `vr/client.js` file, add the following:
+
+[Having trouble adding a raycaster?](https://github.com/Centroida/CentroUI/wiki/Raycaster)
+
+```
+// Import CnRayCaster and THREE.js
+import CnRayCaster from "centro-ui/utilities/cn-raycaster";
+import * as THREE from 'three'
+
+function init(bundle, parent, options) {
+    // Initialize a new Scene
+    const scene = new THREE.Scene();
+    const vr = new VRInstance(bundle, 'YourProjectName', parent, {
+        // Add a raycaster array and initialize the CnRayCaster
+        raycasters: [
+            new CnRayCaster(scene)
+        ],
+        // Add cursorVisibility
+        cursorVisibility: "visible", 
+
+        scene: scene,
+        ...options,
+    });
+
+ //...
+}
+```
 **[Read the documentation to learn more about the API](https://github.com/Centroida/CentroUI/wiki)**
 
 
