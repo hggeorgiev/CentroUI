@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import {StareRayCaster} from './stare-caster'
-import {MouseRayCaster} from './mouse-caster';
+import StareRayCaster from './stare-caster'
+import MouseRayCaster from './mouse-caster';
 
 const LEFT_ORIGIN = [-0.3, -0.5, -0.3];
 const RIGHT_ORIGIN = [0.3, -0.5, -0.3];
