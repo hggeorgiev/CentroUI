@@ -47,7 +47,6 @@ import { CnContainer } from 'centro-ui';
 
 In your `vr/client.js` file, add the following:
 
-[Having trouble adding a raycaster?](https://github.com/Centroida/CentroUI/wiki/Raycaster)
 
 ```
 // Import CnRayCaster and THREE.js
@@ -72,6 +71,10 @@ function init(bundle, parent, options) {
  //...
 }
 ```
+[Having trouble adding a raycaster?](https://github.com/Centroida/CentroUI/wiki/Raycaster)
+
+
+
 **[Read the documentation to learn more about the API](https://github.com/Centroida/CentroUI/wiki)**
 
 
