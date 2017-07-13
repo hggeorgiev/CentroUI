@@ -225,8 +225,9 @@ function init(bundle, parent, options) {
 * Enable ```cursorVisibility```
 * Set the project scene to be the scene that was added.
 
-#### *Congratulations!* You now have a raycaster that works on all devices and with all controllers!
+### *Congratulations!* You now have a raycaster that works on all devices and with all controllers!
 
+![gif](./images/raycaster.gif)
 
 # CnTextInput
 
