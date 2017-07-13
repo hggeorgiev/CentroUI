@@ -15,6 +15,54 @@ The layout engine intelligently places elements depending on context, providing 
 
 The UI elements are built according to best practices for building UI for VR and come with capabilities for zooming and highlighting to ensure the best user experience at the lowest development cost.
 
+# Getting started
+
+
+> **4. Add code below into `vr/client.js` file:**
+
+```javascript
+// Import CnRayCaster and THREE.js
+import CnRayCaster from "centro-ui/utilities/cn-raycaster";
+import * as THREE from 'three'
+
+function init(bundle, parent, options) {
+    // Initialize a new Scene
+    const scene = new THREE.Scene();
+    const vr = new VRInstance(bundle, 'YourProjectName', parent, {
+        // Add a raycaster array and initialize the CnRayCaster
+        raycasters: [
+            new CnRayCaster(scene)
+        ],
+        // Enable cursor visibility
+        cursorVisibility: "visible", 
+
+        scene: scene,
+        ...options,
+    });
+
+ //...
+}
+```
+
+In your React VR project:
+
+### 1 **Install via npm**.
+
+`npm install centro-ui --save`
+
+### 2 **Import in your project**
+
+`import { CnContainer } from 'centro-ui';`
+
+### 3 **Invoke the component(s) in your view**
+
+`<CnContainer> </CnContainer>`
+
+### 4 **Add interactivity**
+
+In your vr/client.js file, add the code on right sidebar.
+
+
 # CnCard
 
 Block which can be comprised of header, content, and footer (text/images/etc).
