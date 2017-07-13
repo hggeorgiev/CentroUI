@@ -22,12 +22,6 @@ Block which can be comprised of header, content, and footer (text/images/etc).
 
 ## Selectors
 
-* CnCardHeader
-* CnCardContent
-* CnCardFooter
-
-## Details
-
 ### CnCardHeader
 
 > **CnCardHeader:**
@@ -87,11 +81,11 @@ CnContainer is a rectangular plane that can contain various elements at a comfor
 
 # CnList
 
-> **CnListItem:**
-
 List element (collection of related items).
 
 ## CnListItem
+
+> **CnListItem:**
 
 ```html
 <CnList>
@@ -111,11 +105,11 @@ Item inside the list.
 
 # CnNavbar
 
-> **CnNavItem:**
-
 CnNavbar - section of a VR graphical user interface intended to aid visitors in accessing information.
 
 ## CnNavItem
+
+> **CnNavItem:**
 
 ```html
 <CnNavbar>
