@@ -227,6 +227,51 @@
 
 <p>The UI elements are built according to best practices for building UI for VR and come with capabilities for zooming and highlighting to ensure the best user experience at the lowest development cost.</p>
 
+<h1 id="getting-started">Getting started</h1>
+
+<blockquote>
+<p><strong>4. Add code below into <code class="prettyprint">vr/client.js</code> file:</strong></p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// Import CnRayCaster and THREE.js</span>
+<span class="kr">import</span> <span class="nx">CnRayCaster</span> <span class="nx">from</span> <span class="s2">"centro-ui/utilities/cn-raycaster"</span><span class="p">;</span>
+<span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">THREE</span> <span class="nx">from</span> <span class="s1">'three'</span>
+
+<span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">bundle</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Initialize a new Scene</span>
+    <span class="kr">const</span> <span class="nx">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
+    <span class="kr">const</span> <span class="nx">vr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VRInstance</span><span class="p">(</span><span class="nx">bundle</span><span class="p">,</span> <span class="s1">'YourProjectName'</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="p">{</span>
+        <span class="c1">// Add a raycaster array and initialize the CnRayCaster</span>
+        <span class="na">raycasters</span><span class="p">:</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">CnRayCaster</span><span class="p">(</span><span class="nx">scene</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="c1">// Enable cursor visibility</span>
+        <span class="na">cursorVisibility</span><span class="p">:</span> <span class="s2">"visible"</span><span class="p">,</span> 
+
+        <span class="na">scene</span><span class="p">:</span> <span class="nx">scene</span><span class="p">,</span>
+        <span class="p">...</span><span class="nx">options</span><span class="p">,</span>
+    <span class="p">});</span>
+
+ <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre>
+<p>In your React VR project:</p>
+
+<h3 id="1-install-via-npm">1 <strong>Install via npm</strong>.</h3>
+
+<p><code class="prettyprint">npm install centro-ui --save</code></p>
+
+<h3 id="2-import-in-your-project">2 <strong>Import in your project</strong></h3>
+
+<p><code class="prettyprint">import { CnContainer } from &#39;centro-ui&#39;;</code></p>
+
+<h3 id="3-invoke-the-component-s-in-your-view">3 <strong>Invoke the component(s) in your view</strong></h3>
+
+<p><code class="prettyprint">&lt;CnContainer&gt; &lt;/CnContainer&gt;</code></p>
+
+<h3 id="4-add-interactivity">4 <strong>Add interactivity</strong></h3>
+
+<p>In your vr/client.js file, add the code on right sidebar.</p>
+
 <h1 id="cncard">CnCard</h1>
 
 <p>Block which can be comprised of header, content, and footer (text/images/etc).</p>
