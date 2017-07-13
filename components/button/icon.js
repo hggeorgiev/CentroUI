@@ -30,7 +30,3 @@ export default class CnIcon extends React.Component {
         return null;
     }
 }
-
-
-
-

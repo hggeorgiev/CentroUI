@@ -1,6 +1,5 @@
 import React from 'react';
-import {VrButton, Text, StyleSheet} from 'react-vr';
-
+import { VrButton, Text, StyleSheet } from 'react-vr';
 
 const styles = StyleSheet.create({
         buttonStyles: {
@@ -22,8 +21,8 @@ const styles = StyleSheet.create({
     }
 );
 
-const DEFAULT_ACTIVE_BACKGROUND_COLOR = "#ccc";
-const DEFAULT_INACTIVE_BACKGROUND_COLOR = "#fff";
+const DEFAULT_ACTIVE_BACKGROUND_COLOR = '#ccc';
+const DEFAULT_INACTIVE_BACKGROUND_COLOR = '#fff';
 
 export default class CnButton extends React.Component {
     constructor(props) {
@@ -32,19 +31,22 @@ export default class CnButton extends React.Component {
             hovered: false,
             currentBackgroundColor: DEFAULT_INACTIVE_BACKGROUND_COLOR || this.props.color,
             inactiveBackgroundColor: DEFAULT_INACTIVE_BACKGROUND_COLOR || this.props.color
-
-        }
+        };
     }
 
     render() {
-
-        const {currentBackgroundColor, inactiveBackgroundColor} = this.state;
-
+        const { currentBackgroundColor, inactiveBackgroundColor } = this.state;
 
         return (
             <VrButton
-                onEnter={() => this.setState({ hovered: true, currentBackgroundColor: DEFAULT_ACTIVE_BACKGROUND_COLOR }) }
-                onExit={() => this.setState({hovered: false, currentBackgroundColor: inactiveBackgroundColor} )}
+                disabled={this.props.disabled}
+                onClick={this.props.onClick}
+                onButtonPress={this.props.onButtonPress}
+                onButtonRelease={this.props.onButtonRelease}
+                onEnter={() => this.setState({ hovered: true,
+                  currentBackgroundColor: DEFAULT_ACTIVE_BACKGROUND_COLOR })}
+                onExit={() => this.setState({ hovered: false,
+                   currentBackgroundColor: inactiveBackgroundColor })}
                 style={
                 [styles.buttonStyles,
                     {
@@ -55,11 +57,8 @@ export default class CnButton extends React.Component {
                     }]}
             >
                 {this.props.children}
-                <Text style={styles.textStyles}>Buy</Text>
+                <Text style={styles.textStyles}>{this.props.name}</Text>
             </VrButton>
         );
     }
 }
-
-
-
