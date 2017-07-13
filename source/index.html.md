@@ -17,37 +17,6 @@ The UI elements are built according to best practices for building UI for VR and
 
 # CnCard
 
-> **CnCardHeader:**
-
-```html
-<CnCard>
-    <CnCardHeader>
-        I am the header of the card!
-    </CnCardHeader>
-</CnCard>
-```
-
-> **CnCardContent:**
-
-```html
-<CnCard>
-    <CnCardContent>
-        I am inside the card! I am the content!
-    </CnCardContent>
-</CnCard>
-```
-
-> **CnCardFooter:**
-
-```html
-<CnCard>
-
-    <CnCardFooter>
-        <Text color="black">Text in the footer of the card! Yikes!</Text>
-    </CnCardFooter>
-</CnCard>
-```
-
 Block which can be comprised of header, content, and footer (text/images/etc).
 
 
@@ -61,13 +30,45 @@ Block which can be comprised of header, content, and footer (text/images/etc).
 
 ### CnCardHeader
 
+> **CnCardHeader:**
+
+```html
+<CnCard>
+    <CnCardHeader>
+        I am the header of the card!
+    </CnCardHeader>
+</CnCard>
+```
+
+
 Header of the card.
 
 ### CnCardContent
 
+> **CnCardContent:**
+
+```html
+<CnCard>
+    <CnCardContent>
+        I am inside the card! I am the content!
+    </CnCardContent>
+</CnCard>
+```
+
 Contents inside the card.
 
 ### CnCardFooter
+
+> **CnCardFooter:**
+
+```html
+<CnCard>
+
+    <CnCardFooter>
+        <Text color="black">Text in the footer of the card! Yikes!</Text>
+    </CnCardFooter>
+</CnCard>
+```
 
 Footer of the card.
 
@@ -88,6 +89,10 @@ CnContainer is a rectangular plane that can contain various elements at a comfor
 
 > **CnListItem:**
 
+List element (collection of related items).
+
+## CnListItem
+
 ```html
 <CnList>
 
@@ -102,24 +107,18 @@ CnContainer is a rectangular plane that can contain various elements at a comfor
 </CnList>
 ```
 
-List element (collection of related items).
-
-## Selectors
-
-* CnListItem
-
-## Details
-
-### CnListItem
-
 Item inside the list.
 
 # CnNavbar
 
 > **CnNavItem:**
 
+CnNavbar - section of a VR graphical user interface intended to aid visitors in accessing information.
+
+## CnNavItem
+
 ```html
-<CnNavbar>                
+<CnNavbar>
     <CnNavItem>
          Hello CentroUI
     </CnNavItem>
@@ -130,19 +129,13 @@ Item inside the list.
 </CnNavbar>
 ```
 
-CnNavbar - section of a VR graphical user interface intended to aid visitors in accessing information.
-
-## Selectors
-
-* CnNavItem
-
-## Details
-
-### CnNavItem
-
 Navigation bar item.
 
 # CnRow
+
+CnRow makes a section that horizontally stacks all elements in a CnContainer.
+
+## CnRow
 
 > **CnRow:**
 
@@ -155,16 +148,6 @@ Navigation bar item.
     </CnRow>
 </CnContainer>
 ```
-
-CnRow makes a section that horizontally stacks all elements in a CnContainer.
-
-## Selectors
-
-* CnRow
-
-## Details
-
-### CnRow
 
 Contains a single **row** of (i.e. in **row** direction). Must be part of CnContainer.
 
@@ -245,12 +228,12 @@ function init(bundle, parent, options) {
 #### *Congratulations!* You now have a raycaster that works on all devices and with all controllers!
 
 
-# TextInput
+# CnTextInput
 
-> **TextInput:**
+> **CnTextInput:**
 
 ```html
-<TextInput rows={2} cols={20}
+<CnTextInput rows={2} cols={20}
            x={2} y={-1} z={1}
            rotateY={null} rotateX={null}
            textColor={'black'} backgroundColor={'white'}
