@@ -229,34 +229,6 @@
 
 <h1 id="cncard">CnCard</h1>
 
-<blockquote>
-<p><strong>CnCardHeader:</strong></p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
-    <span class="nt">&lt;CnCardHeader&gt;</span>
-        I am the header of the card!
-    <span class="nt">&lt;/CnCardHeader&gt;</span>
-<span class="nt">&lt;/CnCard&gt;</span>
-</code></pre>
-<blockquote>
-<p><strong>CnCardContent:</strong></p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
-    <span class="nt">&lt;CnCardContent&gt;</span>
-        I am inside the card! I am the content!
-    <span class="nt">&lt;/CnCardContent&gt;</span>
-<span class="nt">&lt;/CnCard&gt;</span>
-</code></pre>
-<blockquote>
-<p><strong>CnCardFooter:</strong></p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
-
-    <span class="nt">&lt;CnCardFooter&gt;</span>
-        <span class="nt">&lt;Text</span> <span class="na">color=</span><span class="s">"black"</span><span class="nt">&gt;</span>Text in the footer of the card! Yikes!<span class="nt">&lt;/Text&gt;</span>
-    <span class="nt">&lt;/CnCardFooter&gt;</span>
-<span class="nt">&lt;/CnCard&gt;</span>
-</code></pre>
 <p>Block which can be comprised of header, content, and footer (text/images/etc).</p>
 
 <h2 id="selectors">Selectors</h2>
@@ -271,14 +243,42 @@
 
 <h3 id="cncardheader">CnCardHeader</h3>
 
+<blockquote>
+<p><strong>CnCardHeader:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
+    <span class="nt">&lt;CnCardHeader&gt;</span>
+        I am the header of the card!
+    <span class="nt">&lt;/CnCardHeader&gt;</span>
+<span class="nt">&lt;/CnCard&gt;</span>
+</code></pre>
 <p>Header of the card.</p>
 
 <h3 id="cncardcontent">CnCardContent</h3>
 
+<blockquote>
+<p><strong>CnCardContent:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
+    <span class="nt">&lt;CnCardContent&gt;</span>
+        I am inside the card! I am the content!
+    <span class="nt">&lt;/CnCardContent&gt;</span>
+<span class="nt">&lt;/CnCard&gt;</span>
+</code></pre>
 <p>Contents inside the card.</p>
 
 <h3 id="cncardfooter">CnCardFooter</h3>
 
+<blockquote>
+<p><strong>CnCardFooter:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
+
+    <span class="nt">&lt;CnCardFooter&gt;</span>
+        <span class="nt">&lt;Text</span> <span class="na">color=</span><span class="s">"black"</span><span class="nt">&gt;</span>Text in the footer of the card! Yikes!<span class="nt">&lt;/Text&gt;</span>
+    <span class="nt">&lt;/CnCardFooter&gt;</span>
+<span class="nt">&lt;/CnCard&gt;</span>
+</code></pre>
 <p>Footer of the card.</p>
 
 <h1 id="cncontainer">CnContainer</h1>
@@ -303,6 +303,10 @@
 <blockquote>
 <p><strong>CnListItem:</strong></p>
 </blockquote>
+
+<p>List element (collection of related items).</p>
+
+<h2 id="cnlistitem">CnListItem</h2>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;CnList&gt;</span>
 
     <span class="nt">&lt;CnListItem&gt;</span>
@@ -315,18 +319,6 @@
 
 <span class="nt">&lt;/CnList&gt;</span>
 </code></pre>
-<p>List element (collection of related items).</p>
-
-<h2 id="selectors">Selectors</h2>
-
-<ul>
-<li>CnListItem</li>
-</ul>
-
-<h2 id="details">Details</h2>
-
-<h3 id="cnlistitem">CnListItem</h3>
-
 <p>Item inside the list.</p>
 
 <h1 id="cnnavbar">CnNavbar</h1>
@@ -334,7 +326,11 @@
 <blockquote>
 <p><strong>CnNavItem:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnNavbar&gt;</span>                
+
+<p>CnNavbar - section of a VR graphical user interface intended to aid visitors in accessing information.</p>
+
+<h2 id="cnnavitem">CnNavItem</h2>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnNavbar&gt;</span>
     <span class="nt">&lt;CnNavItem&gt;</span>
          Hello CentroUI
     <span class="nt">&lt;/CnNavItem&gt;</span>
@@ -344,21 +340,13 @@
     <span class="nt">&lt;/CnNavItem&gt;</span>
 <span class="nt">&lt;/CnNavbar&gt;</span>
 </code></pre>
-<p>CnNavbar - section of a VR graphical user interface intended to aid visitors in accessing information.</p>
-
-<h2 id="selectors">Selectors</h2>
-
-<ul>
-<li>CnNavItem</li>
-</ul>
-
-<h2 id="details">Details</h2>
-
-<h3 id="cnnavitem">CnNavItem</h3>
-
 <p>Navigation bar item.</p>
 
 <h1 id="cnrow">CnRow</h1>
+
+<p>CnRow makes a section that horizontally stacks all elements in a CnContainer.</p>
+
+<h2 id="cnrow">CnRow</h2>
 
 <blockquote>
 <p><strong>CnRow:</strong></p>
@@ -371,18 +359,6 @@
     <span class="nt">&lt;/CnRow&gt;</span>
 <span class="nt">&lt;/CnContainer&gt;</span>
 </code></pre>
-<p>CnRow makes a section that horizontally stacks all elements in a CnContainer.</p>
-
-<h2 id="selectors">Selectors</h2>
-
-<ul>
-<li>CnRow</li>
-</ul>
-
-<h2 id="details">Details</h2>
-
-<h3 id="cnrow">CnRow</h3>
-
 <p>Contains a single <strong>row</strong> of (i.e. in <strong>row</strong> direction). Must be part of CnContainer.</p>
 
 <h1 id="raycaster">Raycaster</h1>
@@ -459,14 +435,16 @@
 <li>Set the project scene to be the scene that was added.</li>
 </ul>
 
-<h4 id="congratulations-you-now-have-a-raycaster-that-works-on-all-devices-and-with-all-controllers"><em>Congratulations!</em> You now have a raycaster that works on all devices and with all controllers!</h4>
+<h3 id="congratulations-you-now-have-a-raycaster-that-works-on-all-devices-and-with-all-controllers"><em>Congratulations!</em> You now have a raycaster that works on all devices and with all controllers!</h3>
 
-<h1 id="textinput">TextInput</h1>
+<p><img src="images/raycaster.gif" alt="gif" /></p>
+
+<h1 id="cntextinput">CnTextInput</h1>
 
 <blockquote>
-<p><strong>TextInput:</strong></p>
+<p><strong>CnTextInput:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;TextInput</span> <span class="na">rows=</span><span class="s">{2}</span> <span class="na">cols=</span><span class="s">{20}</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnTextInput</span> <span class="na">rows=</span><span class="s">{2}</span> <span class="na">cols=</span><span class="s">{20}</span>
            <span class="na">x=</span><span class="s">{2}</span> <span class="na">y=</span><span class="s">{-1}</span> <span class="na">z=</span><span class="s">{1}</span>
            <span class="na">rotateY=</span><span class="s">{null}</span> <span class="na">rotateX=</span><span class="s">{null}</span>
            <span class="na">textColor=</span><span class="s">{'black'}</span> <span class="na">backgroundColor=</span><span class="s">{'white'}</span>
