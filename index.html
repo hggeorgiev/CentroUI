@@ -215,171 +215,310 @@
         <ul class="search-results"></ul>
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h1 id="home">Home</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>CentroUI provides a set of reusable and extendable UI controls for building interfaces for WebVR applications. This library is based on <a href="https://facebook.github.io/react-vr/">ReactVR</a>, providing developers with text input controls, cards, lists, navigation items and grids, all built with cross-device and cross-browser compatibility to ensure consistent experience with any environment and device.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>The layout engine intelligently places elements depending on context, providing a predictable and structured approach to building interfaces for WebVR.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>The UI elements are built according to best practices for building UI for VR and come with capabilities for zooming and highlighting to ensure the best user experience at the lowest development cost.</p>
 
-<h1 id="authentication">Authentication</h1>
+<h1 id="cncard">CnCard</h1>
 
 <blockquote>
-<p>To authorize, use this code:</p>
+<p><strong>CnCardHeader:</strong></p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
+    <span class="nt">&lt;CnCardHeader&gt;</span>
+        I am the header of the card!
+    <span class="nt">&lt;/CnCardHeader&gt;</span>
+<span class="nt">&lt;/CnCard&gt;</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
+<p><strong>CnCardContent:</strong></p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
+    <span class="nt">&lt;CnCardContent&gt;</span>
+        I am inside the card! I am the content!
+    <span class="nt">&lt;/CnCardContent&gt;</span>
+<span class="nt">&lt;/CnCard&gt;</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p><strong>CnCardFooter:</strong></p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
 
-<h3 id="http-request">HTTP Request</h3>
+    <span class="nt">&lt;CnCardFooter&gt;</span>
+        <span class="nt">&lt;Text</span> <span class="na">color=</span><span class="s">"black"</span><span class="nt">&gt;</span>Text in the footer of the card! Yikes!<span class="nt">&lt;/Text&gt;</span>
+    <span class="nt">&lt;/CnCardFooter&gt;</span>
+<span class="nt">&lt;/CnCard&gt;</span>
+</code></pre>
+<p>Block which can be comprised of header, content, and footer (text/images/etc).</p>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<h2 id="selectors">Selectors</h2>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<ul>
+<li>CnCardHeader</li>
+<li>CnCardContent</li>
+<li>CnCardFooter</li>
+</ul>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
+<h2 id="details">Details</h2>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+<h3 id="cncardheader">CnCardHeader</h3>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>Header of the card.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h3 id="cncardcontent">CnCardContent</h3>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<p>Contents inside the card.</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h3 id="cncardfooter">CnCardFooter</h3>
+
+<p>Footer of the card.</p>
+
+<h1 id="cncontainer">CnContainer</h1>
+
+<p>CnContainer is a rectangular plane that can contain various elements at a comfortable distance from the user. Usually aligns items inside it using multiple <em>CnRows</em></p>
+
+<h2 id="selectors">Selectors</h2>
+
+<ul>
+<li>CnContainer</li>
+</ul>
+
+<h2 id="attributes">Attributes</h2>
+
+<ul>
+<li><strong>Direction</strong> - <em>left</em>, <em>right</em>, <em>back</em> (default <em>front</em>) - Defines the direction of the container.</li>
+<li><strong>Color</strong> - <em>hex, rgb</em> (default <em>rgba(255, 255, 255, 0.3)</em>) - Defines the background color of the container.</li>
+</ul>
+
+<h1 id="cnlist">CnList</h1>
+
+<blockquote>
+<p><strong>CnListItem:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnList&gt;</span>
+
+    <span class="nt">&lt;CnListItem&gt;</span>
+        List Item 1
+    <span class="nt">&lt;/CnListItem&gt;</span>
+
+    <span class="nt">&lt;CnListItem&gt;</span>
+        List Item 2
+    <span class="nt">&lt;/CnListItem&gt;</span>
+
+<span class="nt">&lt;/CnList&gt;</span>
+</code></pre>
+<p>List element (collection of related items).</p>
+
+<h2 id="selectors">Selectors</h2>
+
+<ul>
+<li>CnListItem</li>
+</ul>
+
+<h2 id="details">Details</h2>
+
+<h3 id="cnlistitem">CnListItem</h3>
+
+<p>Item inside the list.</p>
+
+<h1 id="cnnavbar">CnNavbar</h1>
+
+<blockquote>
+<p><strong>CnNavItem:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnNavbar&gt;</span>                
+    <span class="nt">&lt;CnNavItem&gt;</span>
+         Hello CentroUI
+    <span class="nt">&lt;/CnNavItem&gt;</span>
+
+    <span class="nt">&lt;CnNavItem&gt;</span>
+         Home
+    <span class="nt">&lt;/CnNavItem&gt;</span>
+<span class="nt">&lt;/CnNavbar&gt;</span>
+</code></pre>
+<p>CnNavbar - section of a VR graphical user interface intended to aid visitors in accessing information.</p>
+
+<h2 id="selectors">Selectors</h2>
+
+<ul>
+<li>CnNavItem</li>
+</ul>
+
+<h2 id="details">Details</h2>
+
+<h3 id="cnnavitem">CnNavItem</h3>
+
+<p>Navigation bar item.</p>
+
+<h1 id="cnrow">CnRow</h1>
+
+<blockquote>
+<p><strong>CnRow:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnContainer&gt;</span>
+    <span class="nt">&lt;CnRow&gt;</span>
+        <span class="nt">&lt;CnCard</span> <span class="na">hover</span><span class="nt">&gt;</span>
+            ...
+        <span class="nt">&lt;/CnCard&gt;</span>
+    <span class="nt">&lt;/CnRow&gt;</span>
+<span class="nt">&lt;/CnContainer&gt;</span>
+</code></pre>
+<p>CnRow makes a section that horizontally stacks all elements in a CnContainer.</p>
+
+<h2 id="selectors">Selectors</h2>
+
+<ul>
+<li>CnRow</li>
+</ul>
+
+<h2 id="details">Details</h2>
+
+<h3 id="cnrow">CnRow</h3>
+
+<p>Contains a single <strong>row</strong> of (i.e. in <strong>row</strong> direction). Must be part of CnContainer.</p>
+
+<h1 id="raycaster">Raycaster</h1>
+
+<p>Raycasters allow the user to target elements in 3D space. However, a raycaster should support working with different controllers (or the lack of such) depending on the environment in which the WebVR application is opened in.</p>
+
+<p>In order to ensure an optimal experience on every device, regardless of the user&rsquo;s setup, CentroUI has a raycaster with a fallback mechanism in order to ensure that the user can interact with the application and its UI.</p>
+
+<h2 id="support">Support</h2>
+
+<p>CentroUI&rsquo;s raycaster covers support for:</p>
+
+<ul>
+<li><strong>Controllers</strong> - Vive, Oculus, Daydream, GearVR</li>
+<li><strong>Mouse input</strong></li>
+<li><strong>Gaze</strong></li>
+</ul>
+
+<p>The raycaster first checks for the existence of a controller, if there is none connected, it checks for a functioning mouse. If none is found, it falls back to gaze control.</p>
+
+<h2 id="using-cnraycaster">Using CnRayCaster</h2>
+
+<blockquote>
+<p><strong>1. Importing CnRayCaster and THREE.js</strong></p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// vr/client.js</span>
+
+<span class="kr">import</span> <span class="nx">CnRayCaster</span> <span class="nx">from</span> <span class="s2">"centro-ui/utilities/cn-raycaster"</span><span class="p">;</span>
+<span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">THREE</span> <span class="nx">from</span> <span class="s1">'three'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p><strong>2. Creating three.js scene</strong></p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// vr.client.js</span>
 
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">bundle</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p><strong>3. Setting options to the VRInstance():</strong></p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// vr.client.js</span>
+<span class="c1">//...</span>
 
-<h3 id="http-request">HTTP Request</h3>
+<span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">bundle</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Initialize a new Scene</span>
+    <span class="kr">const</span> <span class="nx">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
+    <span class="kr">const</span> <span class="nx">vr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">VRInstance</span><span class="p">(</span><span class="nx">bundle</span><span class="p">,</span> <span class="s1">'YourProjectName'</span><span class="p">,</span> <span class="nx">parent</span><span class="p">,</span> <span class="p">{</span>
+         <span class="c1">// Add a raycaster array and initialize the CnRayCaster</span>
+        <span class="na">raycasters</span><span class="p">:</span> <span class="p">[</span>
+            <span class="k">new</span> <span class="nx">CnRayCaster</span><span class="p">(</span><span class="nx">scene</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="c1">// Enable cursor visibility</span>
+        <span class="na">cursorVisibility</span><span class="p">:</span> <span class="s2">"visible"</span><span class="p">,</span>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+        <span class="na">scene</span><span class="p">:</span> <span class="nx">scene</span><span class="p">,</span>
+        <span class="p">...</span><span class="nx">options</span><span class="p">,</span>
+    <span class="p">});</span>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre>
+<ol>
+<li><p>In the <code class="prettyprint">&lt;project root&gt;/vr/client.js</code> folder, import the <code class="prettyprint">CnRayCaster</code> and <code class="prettyprint">THREE.js</code>:</p></li>
+<li><p>In the <code class="prettyprint">init</code> function, create a new <code class="prettyprint">THREE.scene()</code>.</p></li>
+<li><p>Lastly, add the following options to the <code class="prettyprint">new VRInstance()</code> instantiation:</p></li>
+</ol>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
+<ul>
+<li>Add a <code class="prettyprint">raycasters: []</code> array with the <code class="prettyprint">CnRayCaster</code> in it and pass it the scene object.</li>
+<li>Enable <code class="prettyprint">cursorVisibility</code></li>
+<li>Set the project scene to be the scene that was added.</li>
+</ul>
+
+<h4 id="congratulations-you-now-have-a-raycaster-that-works-on-all-devices-and-with-all-controllers"><em>Congratulations!</em> You now have a raycaster that works on all devices and with all controllers!</h4>
+
+<h1 id="textinput">TextInput</h1>
+
+<blockquote>
+<p><strong>TextInput:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;TextInput</span> <span class="na">rows=</span><span class="s">{2}</span> <span class="na">cols=</span><span class="s">{20}</span>
+           <span class="na">x=</span><span class="s">{2}</span> <span class="na">y=</span><span class="s">{-1}</span> <span class="na">z=</span><span class="s">{1}</span>
+           <span class="na">rotateY=</span><span class="s">{null}</span> <span class="na">rotateX=</span><span class="s">{null}</span>
+           <span class="na">textColor=</span><span class="s">{'black'}</span> <span class="na">backgroundColor=</span><span class="s">{'white'}</span>
+           <span class="na">keyboardColor=</span><span class="s">{null}</span> <span class="na">keyboardOnHover=</span><span class="s">{null}</span> <span class="nt">/&gt;</span>
+</code></pre>
+<p>Field (tag) where user can enter data.</p>
+
+<h2 id="attributes">Attributes</h2>
+
+<h3 id="rows-cols">rows, cols</h3>
+
+<p>Used to specify the width/height of a keyboard.</p>
+
+<p>Rows for <em>height</em>, cols for <em>width</em>.</p>
+
+<p>Setting <code class="prettyprint">rows={2} cols={20}</code> makes keyboard of <strong>height = 2</strong> and <strong>width = 20</strong>.</p>
+
+<h3 id="x-y-z">x, y, z</h3>
+
+<p>Used to specify points on X/Y/Z axis.</p>
+
+<p>Example: <code class="prettyprint">x={2}</code></p>
+
+<h3 id="rotatex-rotatey">rotateX, rotateY</h3>
+
+<p>Keyboard rotation on X/Y axis.</p>
+
+<p>Setting <code class="prettyprint">rotateY={30}</code> rotates +30 degrees (up) on X axis.</p>
+
+<h3 id="textcolor">textColor</h3>
+
+<p>Specify color of an input text.</p>
+
+<p>Setting <code class="prettyprint">textColor={&#39;black&#39;}</code> specifies text color to be black.</p>
+
+<h3 id="backgroundcolor">backgroundColor</h3>
+
+<p>Used to specify the background color of a keyboard (base color of a keyboard).</p>
+
+<p>Setting <code class="prettyprint">backgroundColor={&#39;red&#39;}</code> makes background color of a keyboard red.</p>
+
+<h3 id="keyboardcolor">keyboardColor</h3>
+
+<p>Used to specify the color of a keyboard.</p>
+
+<p>Setting <code class="prettyprint">keyboardColor={&#39;green&#39;}</code> makes keyboard of color green.</p>
+
+<h3 id="keyboardonhover">keyboardOnHover</h3>
+
+<p>Used to select elements when you mouse over them.</p>
+
+<p>Setting <code class="prettyprint">keyboardOnHover={&#39;null&#39;}</code> specifies to do nothing while moused over.</p>
 
       </div>
       <div class="dark-box">
