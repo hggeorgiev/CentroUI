@@ -1,185 +1,306 @@
 ---
 title: API Reference
 
-
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
-
 includes:
 
 
 search: true
 ---
 
-# Introduction
+# Home
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+CentroUI provides a set of reusable and extendable UI controls for building interfaces for WebVR applications. This library is based on [ReactVR](https://facebook.github.io/react-vr/), providing developers with text input controls, cards, lists, navigation items and grids, all built with cross-device and cross-browser compatibility to ensure consistent experience with any environment and device.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+The layout engine intelligently places elements depending on context, providing a predictable and structured approach to building interfaces for WebVR.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+The UI elements are built according to best practices for building UI for VR and come with capabilities for zooming and highlighting to ensure the best user experience at the lowest development cost.
 
-# Authentication
+# CnCard
 
-> To authorize, use this code:
+> **CnCardHeader:**
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```html
+<CnCard>
+    <CnCardHeader>
+        I am the header of the card!
+    </CnCardHeader>
+</CnCard>
 ```
 
-```python
-import kittn
+> **CnCardContent:**
 
-api = kittn.authorize('meowmeowmeow')
+```html
+<CnCard>
+    <CnCardContent>
+        I am inside the card! I am the content!
+    </CnCardContent>
+</CnCard>
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+> **CnCardFooter:**
+
+```html
+<CnCard>
+
+    <CnCardFooter>
+        <Text color="black">Text in the footer of the card! Yikes!</Text>
+    </CnCardFooter>
+</CnCard>
 ```
+
+Block which can be comprised of header, content, and footer (text/images/etc).
+
+
+## Selectors
+
+* CnCardHeader
+* CnCardContent
+* CnCardFooter
+
+## Details
+
+### CnCardHeader
+
+Header of the card.
+
+### CnCardContent
+
+Contents inside the card.
+
+### CnCardFooter
+
+Footer of the card.
+
+# CnContainer
+
+CnContainer is a rectangular plane that can contain various elements at a comfortable distance from the user. Usually aligns items inside it using multiple *CnRows*
+
+## Selectors
+
+* CnContainer
+
+## Attributes
+
+* **Direction** - *left*, *right*, *back* (default *front*) - Defines the direction of the container.
+* **Color** - *hex, rgb* (default *rgba(255, 255, 255, 0.3)*) - Defines the background color of the container.
+
+# CnList
+
+> **CnListItem:**
+
+```html
+<CnList>
+
+    <CnListItem>
+        List Item 1
+    </CnListItem>
+
+    <CnListItem>
+        List Item 2
+    </CnListItem>
+
+</CnList>
+```
+
+List element (collection of related items).
+
+## Selectors
+
+* CnListItem
+
+## Details
+
+### CnListItem
+
+Item inside the list.
+
+# CnNavbar
+
+> **CnNavItem:**
+
+```html
+<CnNavbar>                
+    <CnNavItem>
+         Hello CentroUI
+    </CnNavItem>
+
+    <CnNavItem>
+         Home
+    </CnNavItem>
+</CnNavbar>
+```
+
+CnNavbar - section of a VR graphical user interface intended to aid visitors in accessing information.
+
+## Selectors
+
+* CnNavItem
+
+## Details
+
+### CnNavItem
+
+Navigation bar item.
+
+# CnRow
+
+> **CnRow:**
+
+```html
+<CnContainer>
+    <CnRow>
+        <CnCard hover>
+            ...
+        </CnCard>
+    </CnRow>
+</CnContainer>
+```
+
+CnRow makes a section that horizontally stacks all elements in a CnContainer.
+
+## Selectors
+
+* CnRow
+
+## Details
+
+### CnRow
+
+Contains a single **row** of (i.e. in **row** direction). Must be part of CnContainer.
+
+# Raycaster
+
+Raycasters allow the user to target elements in 3D space. However, a raycaster should support working with different controllers (or the lack of such) depending on the environment in which the WebVR application is opened in.
+
+In order to ensure an optimal experience on every device, regardless of the user's setup, CentroUI has a raycaster with a fallback mechanism in order to ensure that the user can interact with the application and its UI.
+
+## Support
+
+CentroUI's raycaster covers support for:
+
+* **Controllers** - Vive, Oculus, Daydream, GearVR
+* **Mouse input**
+* **Gaze**
+
+The raycaster first checks for the existence of a controller, if there is none connected, it checks for a functioning mouse. If none is found, it falls back to gaze control.
+
+
+## Using CnRayCaster
+
+> **1. Importing CnRayCaster and THREE.js**
 
 ```javascript
-const kittn = require('kittn');
+// vr/client.js
 
-let api = kittn.authorize('meowmeowmeow');
+import CnRayCaster from "centro-ui/utilities/cn-raycaster";
+import * as THREE from 'three'
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+> **2. Creating three.js scene**
 
 ```javascript
-const kittn = require('kittn');
+// vr.client.js
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+function init(bundle, parent, options) {
+    const scene = new THREE.Scene();
+    //...
 }
 ```
 
-This endpoint retrieves a specific kitten.
+> **3. Setting options to the VRInstance():**
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+```javascript
+// vr.client.js
+//...
 
-### HTTP Request
+function init(bundle, parent, options) {
+    // Initialize a new Scene
+    const scene = new THREE.Scene();
+    const vr = new VRInstance(bundle, 'YourProjectName', parent, {
+         // Add a raycaster array and initialize the CnRayCaster
+        raycasters: [
+            new CnRayCaster(scene)
+        ],
+        // Enable cursor visibility
+        cursorVisibility: "visible",
 
-`GET http://example.com/kittens/<ID>`
+        scene: scene,
+        ...options,
+    });
 
-### URL Parameters
+//...
+}
+```
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+1. In the ```<project root>/vr/client.js``` folder, import the ```CnRayCaster``` and ```THREE.js```:
 
+2. In the ```init``` function, create a new ```THREE.scene()```.
+
+3. Lastly, add the following options to the ```new VRInstance()``` instantiation:
+
+* Add a ```raycasters: []``` array with the ```CnRayCaster``` in it and pass it the scene object.
+* Enable ```cursorVisibility```
+* Set the project scene to be the scene that was added.
+
+#### *Congratulations!* You now have a raycaster that works on all devices and with all controllers!
+
+
+# TextInput
+
+> **TextInput:**
+
+```html
+<TextInput rows={2} cols={20}
+           x={2} y={-1} z={1}
+           rotateY={null} rotateX={null}
+           textColor={'black'} backgroundColor={'white'}
+           keyboardColor={null} keyboardOnHover={null} />
+```
+
+Field (tag) where user can enter data.
+
+## Attributes
+
+### rows, cols
+
+Used to specify the width/height of a keyboard.
+
+Rows for *height*, cols for *width*.
+
+Setting ```rows={2} cols={20}``` makes keyboard of **height = 2** and **width = 20**.
+
+### x, y, z
+
+Used to specify points on X/Y/Z axis.
+
+Example: ```x={2}```
+
+### rotateX, rotateY
+
+Keyboard rotation on X/Y axis.
+
+Setting ```rotateY={30}``` rotates +30 degrees (up) on X axis.
+
+### textColor
+
+Specify color of an input text.
+
+Setting ```textColor={'black'}``` specifies text color to be black.
+
+### backgroundColor
+
+Used to specify the background color of a keyboard (base color of a keyboard).
+
+Setting ```backgroundColor={'red'}``` makes background color of a keyboard red.
+
+### keyboardColor
+
+Used to specify the color of a keyboard.
+
+Setting ```keyboardColor={'green'}``` makes keyboard of color green.
+
+### keyboardOnHover
+
+Used to select elements when you mouse over them.
+
+Setting ```keyboardOnHover={'null'}``` specifies to do nothing while moused over.
