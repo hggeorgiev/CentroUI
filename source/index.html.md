@@ -63,6 +63,47 @@ In your React VR project:
 In your vr/client.js file, add the code on right sidebar.
 
 
+
+
+# CnContainer
+
+CnContainer is a rectangular plane that can contain various elements at a comfortable distance from the user. Usually aligns items inside it using multiple *CnRows*
+
+## Selectors
+
+* CnContainer
+
+## Attributes
+
+* **Direction** - *left*, *right*, *back* (default *front*) - Defines the direction of the container.
+* **Color** - *hex, rgb* (default *rgba(255, 255, 255, 0.3)*) - Defines the background color of the container.
+
+
+# CnRow
+
+CnRow makes a section that horizontally stacks all elements in a CnContainer.
+
+## CnRow
+
+> **CnRow:**
+
+```html
+<CnContainer>
+    <CnRow>
+        <CnCard hover>
+            ...
+        </CnCard>
+    </CnRow>
+</CnContainer>
+```
+
+Contains a single **row** of (i.e. in **row** direction). Must be part of CnContainer.
+
+The CnButton component represents a wrapper of the React VR button with a the following
+
+additional properties.
+
+
 # CnCard
 
 Block which can be comprised of header, content, and footer (text/images/etc).
@@ -114,19 +155,6 @@ Contents inside the card.
 
 Footer of the card.
 
-# CnContainer
-
-CnContainer is a rectangular plane that can contain various elements at a comfortable distance from the user. Usually aligns items inside it using multiple *CnRows*
-
-## Selectors
-
-* CnContainer
-
-## Attributes
-
-* **Direction** - *left*, *right*, *back* (default *front*) - Defines the direction of the container.
-* **Color** - *hex, rgb* (default *rgba(255, 255, 255, 0.3)*) - Defines the background color of the container.
-
 # CnList
 
 List element (collection of related items).
@@ -173,27 +201,62 @@ CnNavbar - section of a VR graphical user interface intended to aid visitors in 
 
 Navigation bar item.
 
-# CnRow
 
-CnRow makes a section that horizontally stacks all elements in a CnContainer.
+# CnButton
 
-## CnRow
 
-> **CnRow:**
 
-```html
-<CnContainer>
-    <CnRow>
-        <CnCard hover>
-            ...
-        </CnCard>
-    </CnRow>
-</CnContainer>
+## Props
+
+> **CnButton an CnIcon:**
+
+```javascript
+
+    
+    <CnButton>
+        <CnIcon name="shopping-cart" />
+    <CnButton/>
+
+
+
+    
 ```
 
-Contains a single **row** of (i.e. in **row** direction). Must be part of CnContainer.
+* name
 
-# Raycaster
+This property is used to define the name of the button (e.g. **"Buy",** **"Add to cart"**).
+
+* color
+
+This property is used to define the color of the button (e.g. **red**, **blue**, **yellow**).
+
+* shape
+
+This property is used to define the shape of the button and it can be either **rectangle** or
+
+**circle**.
+
+
+
+
+## CnIcon
+The **CnButton** can have a **CnIcon** as a child element.
+
+```javascript
+    <CnButton
+        name="Add to Cart"
+        shape="circle"
+        color="blue">
+        <CnIcon name="shopping-cart" />
+    <CnButton/>
+```
+
+**CnIcon** in it terms has only a name property, which sets the icon of the button (e.g. “shopping-
+cart”). We intend to use FontAwesome icons (not implemented yet).
+
+
+
+# CnRayCaster
 
 Raycasters allow the user to target elements in 3D space. However, a raycaster should support working with different controllers (or the lack of such) depending on the environment in which the WebVR application is opened in.
 
@@ -285,7 +348,7 @@ function init(bundle, parent, options) {
 
 Field (tag) where user can enter data.
 
-## Attributes
+## Props
 
 ### rows, cols
 
