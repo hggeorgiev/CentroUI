@@ -17,6 +17,7 @@ UI components for WebVR
 
 **CentroUI** is a set of reusable and extendable UI components and utilities for building interfaces for WebVR applications. Based on [React VR](https://github.com/facebook/react-vr), CentroUI gives developers with plug-and-play text input controls, cards, lists, navigation items and grids, all built with cross-device and cross-browser compatibility to ensure consistent experience with any environment and device.
 
+### This project is still in a very early stage. Do not use in production. [Contributions are welcome!](https://github.com/Centroida/CentroUI#contributing)
 
 ## Resources
 * [Wiki](https://centroida.github.io/CentroUI/)
@@ -26,7 +27,7 @@ UI components for WebVR
 
 In your [React VR](https://facebook.github.io/react-vr/docs/getting-started.html#content) project:
 
-0. __Make sure you have the right dependencies__
+0. __Make sure you have the right dependency versions__
 
 ```
     "ovrui": "1.4.0",
