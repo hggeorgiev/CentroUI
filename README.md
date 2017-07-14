@@ -27,8 +27,6 @@ UI components for WebVR
 In your [React VR](https://facebook.github.io/react-vr/docs/getting-started.html#content) project:
 
 0. __Make sure you have the right dependencies__
-Make sure you have the dependencies locked to these versions. Otherwise you may encounter issue
-when importing CentroUI components:
 
 ```
     "ovrui": "1.4.0",
@@ -38,6 +36,7 @@ when importing CentroUI components:
     "react-vr": "1.4.0",
     "react-vr-web": "1.4.0"
 ```
+If you don't have the correct dependency issues, you may encounter issues when importing components in your projects.
 1. __Install via npm__
 ```
 npm install centro-ui --save
