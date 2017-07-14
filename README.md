@@ -9,7 +9,7 @@
 </div>
 
 <h5 align="center">
-CentroUI is a library for building user interfaces for WebVR.
+UI components for WebVR
 </h5>
 
 
@@ -19,7 +19,7 @@ CentroUI is a library for building user interfaces for WebVR.
 
 
 ## Resources
-* [Wiki](https://github.com/Centroida/CentroUI/wiki)
+* [Wiki](https://centroida.github.io/CentroUI/)
 * [Example](https://github.com/Centroida/CentroUI#example)
 
 ## Getting started 
@@ -75,7 +75,7 @@ function init(bundle, parent, options) {
 
 
 
-**[Read the documentation to learn more about the API](https://github.com/Centroida/CentroUI/wiki)**
+**[Read the documentation to learn more about the API](https://centroida.github.io/CentroUI/)**
 
 
 ## Example
@@ -160,11 +160,14 @@ function init(bundle, parent, options) {
 ```
 
 ## Contributing
-*Coming soon*
+If you're interested in contributing to the CentroUI, we'd love to have you involved. CentroUI is open to contributors of all skill levels and we are ready and willing to help beginners work through issues. Please read the guidelines for contributing before doing so. We're also looking forward to learn which features and use cases you're interested to see in the future so that we know what to focus on. 
 
+If you don't want to write code or you don't have a lot of spare time, you still can help! Testing the various demos to make sure we haven't broken any features and filing issues when we do is very important.
+
+Another way you can support this project is by [hiring us](https://www.centroida.co/contact.html). We will do our best to enable you to fully utilize our component library and find the shortest path to developing your WebVR project.
 ## License Information
 
-This project has been released under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html), the text of which is included below. This license applies ONLY to the source of this repository and does not extend to any other CentroUI distribution or variant, or any other 3rd party libraries used in a repository. For licensing information about CentroUI, see the [License Agreements page (Coming Soon)]() at [CentroUI.com](http://www.kendoui.com).
+This project has been released under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html), the text of which is included below. This license applies ONLY to the source of this repository and does not extend to any other CentroUI distribution or variant, or any other 3rd party libraries used in a repository. For licensing information about CentroUI, see the [License Agreements page (Coming Soon)]() at [CentroUI.com](http://www.centroui.com).
 
 > Copyright © 2017 Centroida
 
