@@ -15,6 +15,19 @@ The layout engine intelligently places elements depending on context, providing 
 
 The UI elements are built according to best practices for building UI for VR and come with capabilities for zooming and highlighting to ensure the best user experience at the lowest development cost.
 
+###  Contributing
+
+
+If you're interested in contributing to the [CentroUI](https://github.com/Centroida/CentroUI), we'd love to have you involved. CentroUI is open to contributors of all skill levels and we are ready and willing to help beginners work through issues. Please read the guidelines for contributing before doing so. We're also looking forward to learn which features and use cases you're interested to see in the future so that we know what to focus on. 
+
+If you don't want to write code or you don't have a lot of spare time, you still can help! Testing the various demos to make sure we haven't broken any features and filing issues when we do is very important.
+
+Another way you can support this project is by [hiring us](https://www.centroida.co/contact.html). We will do our best to enable you to fully utilize our component library and find the shortest path to developing your WebVR project.
+
+
+
+[Source Code on Github](https://github.com/Centroida/CentroUI)
+
 # Getting started
 
 
