@@ -335,6 +335,20 @@
 <li><strong>row</strong> - <em>boolean</em> - Sets a horizontal orientation of the card.</li>
 </ul>
 
+<blockquote>
+<p><strong>CnCard orientation:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
+    <span class="nt">&lt;Text&gt;</span>
+        In a vertical card
+    <span class="nt">&lt;/Text&gt;</span>    
+<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;CnCard</span> <span class="na">row</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Text&gt;</span>
+        In a horizontal card
+    <span class="nt">&lt;/Text&gt;</span>    
+<span class="nt">&lt;/CnCard&gt;</span>
+</code></pre>
 <h3 id="content-alignment">content alignment</h3>
 
 <ul>
@@ -348,6 +362,51 @@
 <li><strong>push</strong> - <em>boolean</em> - Distributes items in the card content evenly along the orientation <strong><em>without card padding</em></strong></li>
 </ul>
 
+<blockquote>
+<p><strong>CnCard content alignment:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
+    <span class="nt">&lt;Text&gt;</span>
+        Centered vertically and horizontally by default
+    <span class="nt">&lt;/Text&gt;</span>    
+<span class="nt">&lt;/CnCard&gt;</span>
+
+<span class="nt">&lt;CnCard</span> <span class="na">vstart</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Text&gt;</span>
+        At the top, but horizontally centered by default
+    <span class="nt">&lt;/Text&gt;</span>    
+<span class="nt">&lt;/CnCard&gt;</span>
+
+<span class="nt">&lt;CnCard</span> <span class="na">vstart</span> <span class="na">hstart</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Text&gt;</span>
+        At the top and to the left
+    <span class="nt">&lt;/Text&gt;</span>    
+<span class="nt">&lt;/CnCard&gt;</span>
+
+<span class="nt">&lt;CnCard</span> <span class="na">spread</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Text&gt;</span>
+        I am at the top but not touching the card borders
+    <span class="nt">&lt;/Text&gt;</span>    
+    <span class="nt">&lt;Text&gt;</span>
+        I am centered but not touching my neighbors
+    <span class="nt">&lt;/Text&gt;</span>    
+    <span class="nt">&lt;Text&gt;</span>
+        I am at the bottom but not touching the card borders
+    <span class="nt">&lt;/Text&gt;</span>    
+<span class="nt">&lt;/CnCard&gt;</span>
+
+<span class="nt">&lt;CnCard</span> <span class="na">push</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Text&gt;</span>
+        I am at the top AND TOUCHING the card borders
+    <span class="nt">&lt;/Text&gt;</span>    
+    <span class="nt">&lt;Text&gt;</span>
+        I am centered but not touching my neighbors
+    <span class="nt">&lt;/Text&gt;</span>    
+    <span class="nt">&lt;Text&gt;</span>
+        I am at the bottom AND TOUCHING the card borders
+    <span class="nt">&lt;/Text&gt;</span>    
+<span class="nt">&lt;/CnCard&gt;</span>
+</code></pre>
 <h3 id="padding">padding</h3>
 
 <ul>
