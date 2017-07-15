@@ -336,19 +336,24 @@
 </ul>
 
 <blockquote>
-<p><strong>CnCard orientation:</strong></p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
-    <span class="nt">&lt;Text&gt;</span>
+<p><strong>CnCard column:</strong>
+<code class="prettyprint">html
+&lt;CnCard&gt;
+    &lt;Text&gt;
         In a vertical card
-    <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
-<span class="nt">&lt;CnCard</span> <span class="na">row</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Text&gt;</span>
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code>
+<strong>CnCard row:</strong>
+<code class="prettyprint">html
+&lt;CnCard row&gt;
+    &lt;Text&gt;
         In a horizontal card
-    <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
-</code></pre>
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code></p>
+</blockquote>
+
 <h3 id="content-alignment">content alignment</h3>
 
 <ul>
@@ -363,50 +368,60 @@
 </ul>
 
 <blockquote>
-<p><strong>CnCard content alignment:</strong></p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
-    <span class="nt">&lt;Text&gt;</span>
+<p><strong>CnCard default content alignment:</strong>
+<code class="prettyprint">html
+&lt;CnCard&gt;
+    &lt;Text&gt;
         Centered vertically and horizontally by default
-    <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
-
-<span class="nt">&lt;CnCard</span> <span class="na">vstart</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Text&gt;</span>
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code>
+<strong>CnCard vertical alignment:</strong>
+<code class="prettyprint">html
+&lt;CnCard vstart&gt;
+    &lt;Text&gt;
         At the top, but horizontally centered by default
-    <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
-
-<span class="nt">&lt;CnCard</span> <span class="na">vstart</span> <span class="na">hstart</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Text&gt;</span>
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code>
+<strong>CnCard vertical and horizontal content alignment:</strong>
+<code class="prettyprint">html
+&lt;CnCard vstart hstart&gt;
+    &lt;Text&gt;
         At the top and to the left
-    <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
-
-<span class="nt">&lt;CnCard</span> <span class="na">spread</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Text&gt;</span>
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code>
+<strong>CnCard spread:</strong>
+<code class="prettyprint">html
+&lt;CnCard spread&gt;
+    &lt;Text&gt;
         I am at the top but not touching the card borders
-    <span class="nt">&lt;/Text&gt;</span>    
-    <span class="nt">&lt;Text&gt;</span>
+    &lt;/Text&gt;    
+    &lt;Text&gt;
         I am centered but not touching my neighbors
-    <span class="nt">&lt;/Text&gt;</span>    
-    <span class="nt">&lt;Text&gt;</span>
+    &lt;/Text&gt;    
+    &lt;Text&gt;
         I am at the bottom but not touching the card borders
-    <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
-
-<span class="nt">&lt;CnCard</span> <span class="na">push</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Text&gt;</span>
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code>
+<strong>CnCard push:</strong>
+<code class="prettyprint">html
+&lt;CnCard push&gt;
+    &lt;Text&gt;
         I am at the top AND TOUCHING the card borders
-    <span class="nt">&lt;/Text&gt;</span>    
-    <span class="nt">&lt;Text&gt;</span>
+    &lt;/Text&gt;    
+    &lt;Text&gt;
         I am centered but not touching my neighbors
-    <span class="nt">&lt;/Text&gt;</span>    
-    <span class="nt">&lt;Text&gt;</span>
+    &lt;/Text&gt;    
+    &lt;Text&gt;
         I am at the bottom AND TOUCHING the card borders
-    <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
-</code></pre>
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code></p>
+</blockquote>
+
 <h3 id="padding">padding</h3>
 
 <ul>
@@ -416,6 +431,25 @@
 <li><strong>pt</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the top padding of the card.</li>
 <li><strong>pb</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the bottom padding of the card.</li>
 </ul>
+
+<blockquote>
+<p><strong>CnCard padding:</strong>
+<code class="prettyprint">html
+&lt;CnCard p={0.05}&gt;
+    &lt;Text&gt;
+        Away from all borders by 0.05    
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code>
+<strong>CnCard padding left and top:</strong>
+<code class="prettyprint">html
+&lt;CnCard pl={0.05} pt={0.07}&gt;
+    &lt;Text&gt;
+        Away from left border by 0.05 and from top border by 0.07
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code></p>
+</blockquote>
 
 <h3 id="style">style</h3>
 
@@ -435,6 +469,33 @@
 <li><strong>right</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border right width</li>
 </ul></li>
 </ul>
+
+<blockquote>
+<p><strong>CnCard hover:</strong>
+<code class="prettyprint">html
+&lt;CnCard hover&gt;
+    &lt;Text&gt;
+        Card will change its backround color *(default)* and border color *(default)* when hovered
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code>
+<strong>CnCard hover color:</strong>
+<code class="prettyprint">html
+&lt;CnCard hover hoverColor=&#39;red&#39;&gt;
+    &lt;Text&gt;
+        Card will change its backround color to red and border color *(default)* when hovered
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code>
+<strong>CnCard hover color and background:</strong>
+<code class="prettyprint">html
+&lt;CnCard hover hoverColor=&#39;red&#39; bg=&#39;green&#39;&gt;
+    &lt;Text&gt;
+        Card have a green background color but when hovered it will change it to red
+    &lt;/Text&gt;    
+&lt;/CnCard&gt;
+</code></p>
+</blockquote>
 
 <h3 id="cncardheader">CnCardHeader</h3>
 
