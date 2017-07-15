@@ -344,34 +344,37 @@
 <li><strong>hcenter</strong> - <em>boolean</em> (default <em>true</em>) - Centers the card content horizontally</li>
 <li><strong>hstart</strong> - <em>boolean</em> - Positions the card content horizontally in the beginning</li>
 <li><strong>hend</strong> - <em>boolean</em> - Positions the card content horizontally in the end</li>
-<li><strong>spread</strong> - <em>boolean</em> - Distributes items in the card content evenly along the orientation, <strong><em>with card padding</em></strong></li>
-<li><strong>push</strong> - <em>boolean</em> - Distributes items in the card content evenly along the orientation, <em>without card padding</em>**</li>
+<li><strong>spread</strong> - <em>boolean</em> - Distributes items in the card content evenly along the orientation <strong><em>with card padding</em></strong></li>
+<li><strong>push</strong> - <em>boolean</em> - Distributes items in the card content evenly along the orientation <strong><em>without card padding</em></strong></li>
 </ul>
 
 <h3 id="padding">padding</h3>
 
 <ul>
 <li><strong>p</strong> - <em>integer</em> (default <em>0</em>) - Defines the padding of the card.</li>
-<li><strong>pl</strong> - <em>integer</em> (default <em>0</em>) - Defines the left padding of the card.</li>
-<li><strong>pr</strong> - <em>integer</em> (default <em>0</em>) - Defines the right padding of the card.</li>
-<li><strong>pt</strong> - <em>integer</em> (default <em>0</em>) - Defines the top padding of the card.</li>
-<li><strong>pb</strong> - <em>integer</em> (default <em>0</em>) - Defines the bottom padding of the card.</li>
+<li><strong>pl</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the left padding of the card.</li>
+<li><strong>pr</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the right padding of the card.</li>
+<li><strong>pt</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the top padding of the card.</li>
+<li><strong>pb</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the bottom padding of the card.</li>
 </ul>
 
 <h3 id="style">style</h3>
 
 <ul>
 <li><strong>hover</strong> - <em>boolean</em> (default <em>false</em>) - Defines whether the card should react to hover</li>
-<li><strong>hoverColor</strong> - <em>hex, rgb</em> (default <em>#eceeef</em>) - Defines the background color of the card when <em>hovered</em>**. </li>
-<li><strong>bg</strong> - <em>hex, rgb</em> (default <em>#fff</em>) - Defines the background color of the card when <em>NOT hovered</em>**. </li>
-<li><strong>border</strong> - <em>Object</em> - An object defining border styles of the card. It accepts the following properties:
-..* <strong>color</strong> - <em>hex, rgb</em> (default <em>#eceeef</em>) - Border color when the card is <em>not hovered</em>** (inactive color)
-..* <strong>activeColor</strong> - <em>hex, rgb</em> (default <em>#0275d8</em>) - Border color when the card is <em>hovered</em>** (active color)
-..* <strong>width</strong> - <em>integer</em> (default <em>0</em>) - Border width
-..* <strong>top</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border top width
-..* <strong>bottom</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border bottom width
-..* <strong>left</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border left width
-..* <strong>right</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border right width</li>
+<li><strong>hoverColor</strong> - <em>hex, rgb</em> (default <em>#eceeef</em>) - Defines the background color of the card when <strong><em>hovered</em></strong>. </li>
+<li><strong>bg</strong> - <em>hex, rgb</em> (default <em>#fff</em>) - Defines the background color of the card when <strong><em>NOT hovered</em></strong>. </li>
+<li><strong>border</strong> - <em>Object</em> - An object, defining border styles of the card. It accepts the following properties:
+
+<ul>
+<li><strong>color</strong> - <em>hex, rgb</em> (default <em>#eceeef</em>) - Border color when the card is <em>not hovered</em>** (inactive color)</li>
+<li><strong>activeColor</strong> - <em>hex, rgb</em> (default <em>#0275d8</em>) - Border color when the card is <em>hovered</em>** (active color)</li>
+<li><strong>width</strong> - <em>integer</em> (default <em>0</em>) - Border width</li>
+<li><strong>top</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border top width</li>
+<li><strong>bottom</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border bottom width</li>
+<li><strong>left</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border left width</li>
+<li><strong>right</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border right width</li>
+</ul></li>
 </ul>
 
 <h3 id="cncardheader">CnCardHeader</h3>
