@@ -122,7 +122,174 @@ additional properties.
 Block which can be comprised of header, content, and footer (text/images/etc).
 
 
-## Selectors
+## Props
+
+### orientation
+* **column** - *boolean* (default *true*) - Sets a vertical orientation of the card.
+* **row** - *boolean* - Sets a horizontal orientation of the card.
+
+> **CnCard column:**
+
+```html
+<CnCard>
+    <Text>
+        In a vertical card
+    </Text>    
+</CnCard>
+```
+> **CnCard row:**
+
+```html
+<CnCard row>
+    <Text>
+        In a horizontal card
+    </Text>    
+</CnCard>
+```
+
+### content alignment
+* **vcenter** - *boolean* (default *true*) - Centers the card content vertically
+* **vstart** - *boolean* - Positions the card content vertically in the beginning
+* **vend** - *boolean* - Positions the card content vertically in the end
+* **hcenter** - *boolean* (default *true*) - Centers the card content horizontally
+* **hstart** - *boolean* - Positions the card content horizontally in the beginning
+* **hend** - *boolean* - Positions the card content horizontally in the end
+* **spread** - *boolean* - Distributes items in the card content evenly along the orientation **_with card padding_**
+* **push** - *boolean* - Distributes items in the card content evenly along the orientation **_without card padding_**
+
+> **CnCard default content alignment:**
+
+```html
+<CnCard>
+    <Text>
+        Centered vertically and horizontally by default
+    </Text>    
+</CnCard>
+```
+> **CnCard vertical alignment:**
+
+```html
+<CnCard vstart>
+    <Text>
+        At the top, but horizontally centered by default
+    </Text>    
+</CnCard>
+```
+> **CnCard vertical and horizontal content alignment:**
+
+```html
+<CnCard vstart hstart>
+    <Text>
+        At the top and to the left
+    </Text>    
+</CnCard>
+```
+> **CnCard spread:**
+
+```html
+<CnCard spread>
+    <Text>
+        I am at the top but not touching the card borders
+    </Text>    
+    <Text>
+        I am centered but not touching my neighbors
+    </Text>    
+    <Text>
+        I am at the bottom but not touching the card borders
+    </Text>    
+</CnCard>
+```
+> **CnCard push:**
+
+```html
+<CnCard push>
+    <Text>
+        I am at the top AND TOUCHING the card borders
+    </Text>    
+    <Text>
+        I am centered but not touching my neighbors
+    </Text>    
+    <Text>
+        I am at the bottom AND TOUCHING the card borders
+    </Text>    
+</CnCard>
+```
+
+### padding
+* **p** - *integer* (default *0*) - Defines the padding of the card.
+* **pl** - *integer* (default *0* or *p*) - Defines the left padding of the card.
+* **pr** - *integer* (default *0* or *p*) - Defines the right padding of the card.
+* **pt** - *integer* (default *0* or *p*) - Defines the top padding of the card.
+* **pb** - *integer* (default *0* or *p*) - Defines the bottom padding of the card.
+
+> **CnCard padding:**
+
+```html
+<CnCard p={0.05}>
+    <Text>
+        Away from all borders by 0.05    
+    </Text>    
+</CnCard>
+```
+> **CnCard padding left and top:**
+
+```html
+<CnCard pl={0.05} pt={0.07}>
+    <Text>
+        Away from left border by 0.05 and from top border by 0.07
+    </Text>    
+</CnCard>
+```
+
+### style
+* **hover** - *boolean* (default *false*) - Defines whether the card should react to hover
+* **hoverColor** - *hex, rgb* (default *#eceeef*) - Defines the background color of the card when **_hovered_**. 
+* **bg** - *hex, rgb* (default *#fff*) - Defines the background color of the card when **_NOT hovered_**. 
+* **border** - *Object* - An object, defining border styles of the card. It accepts the following properties:
+  - **color** - *hex, rgb* (default *#eceeef*) - Border color when the card is **_NOT hovered_**
+  - **activeColor** - *hex, rgb* (default *#0275d8*) - Border color when the card is **_hovered_**
+  - **width** - *integer* (default *0*) - Border width
+  - **top** - *integer* (default *width* or *0*) - Border top width
+  - **bottom** - *integer* (default *width* or *0*) - Border bottom width
+  - **left** - *integer* (default *width* or *0*) - Border left width
+  - **right** - *integer* (default *width* or *0*) - Border right width
+
+> **CnCard hover:**
+
+```html
+<CnCard hover>
+    <Text>
+        Card will change its backround color *(default)* and border color *(default)* when hovered
+    </Text>    
+</CnCard>
+```
+> **CnCard hover color:**
+
+```html
+<CnCard hover hoverColor='red'>
+    <Text>
+        Card will change its backround color to red and border color *(default)* when hovered
+    </Text>    
+</CnCard>
+```
+> **CnCard hover color and background:**
+
+```html
+<CnCard hover hoverColor='red' bg='green'>
+    <Text>
+        Card has a green background color but when hovered it will change it to red
+    </Text>    
+</CnCard>
+```
+> **CnCard border:**
+
+```html
+<CnCard border={{width: 0.09, left: 0.05, color: 'blue', activeColor: 'yellow'}} hover>
+    <Text>
+        The entire border of the card is wide 0.09 except the left border which has a width of 0.05. The border is blue but when hovered it becomes yellow (don't forget to add hover property to the card)
+    </Text>    
+</CnCard>
+```
 
 ### CnCardHeader
 
