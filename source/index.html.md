@@ -82,21 +82,31 @@ In your vr/client.js file, add the code on right sidebar.
 
 CnContainer is a rectangular plane that can contain various elements at a comfortable distance from the user. Usually aligns items inside it using multiple *CnRows*
 
-## Selectors
 
-* CnContainer
+> **CnContainer:**
 
-## Attributes
+```html
+<CnContainer direction="left">
 
-* **Direction** - *left*, *right*, *back* (default *front*) - Defines the direction of the container.
-* **Color** - *hex, rgb* (default *rgba(255, 255, 255, 0.3)*) - Defines the background color of the container.
+</CnContainer>
+```
+
+## Props
+
+Prop | Type | Description | Required | Default |
+-------------- | -------------- | -------------- |  -------------- | -------------- | 
+direction | string | Defines the direction of the container | false | "front"
+color | string | Defines the background color of the container | false | "rgba(255, 255, 255, 0.3)"
+
+
 
 
 # CnRow
 
 CnRow makes a section that horizontally stacks all elements in a CnContainer.
 
-## CnRow
+
+
 
 > **CnRow:**
 
@@ -110,11 +120,6 @@ CnRow makes a section that horizontally stacks all elements in a CnContainer.
 </CnContainer>
 ```
 
-Contains a single **row** of (i.e. in **row** direction). Must be part of CnContainer.
-
-The CnButton component represents a wrapper of the React VR button with a the following
-
-additional properties.
 
 
 # CnCard
@@ -124,7 +129,7 @@ Block which can be comprised of header, content, and footer (text/images/etc).
 
 ## Props
 
-### orientation
+### Orientation
 * **column** - *boolean* (default *true*) - Sets a vertical orientation of the card.
 * **row** - *boolean* - Sets a horizontal orientation of the card.
 
