@@ -286,24 +286,43 @@
 
 <p>CnContainer is a rectangular plane that can contain various elements at a comfortable distance from the user. Usually aligns items inside it using multiple <em>CnRows</em></p>
 
-<h2 id="selectors">Selectors</h2>
+<blockquote>
+<p><strong>CnContainer:</strong></p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;CnContainer</span> <span class="na">direction=</span><span class="s">"left"</span><span class="nt">&gt;</span>
 
-<ul>
-<li>CnContainer</li>
-</ul>
+<span class="nt">&lt;/CnContainer&gt;</span>
+</code></pre>
+<h2 id="props">Props</h2>
 
-<h2 id="attributes">Attributes</h2>
-
-<ul>
-<li><strong>Direction</strong> - <em>left</em>, <em>right</em>, <em>back</em> (default <em>front</em>) - Defines the direction of the container.</li>
-<li><strong>Color</strong> - <em>hex, rgb</em> (default <em>rgba(255, 255, 255, 0.3)</em>) - Defines the background color of the container.</li>
-</ul>
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>Defines the direction of the container</td>
+<td>false</td>
+<td>&ldquo;front&rdquo;</td>
+</tr>
+<tr>
+<td>color</td>
+<td>string</td>
+<td>Defines the background color of the container</td>
+<td>false</td>
+<td>&ldquo;rgba(255, 255, 255, 0.3)&rdquo;</td>
+</tr>
+</tbody></table>
 
 <h1 id="cnrow">CnRow</h1>
 
 <p>CnRow makes a section that horizontally stacks all elements in a CnContainer.</p>
-
-<h2 id="cnrow">CnRow</h2>
 
 <blockquote>
 <p><strong>CnRow:</strong></p>
@@ -316,19 +335,13 @@
     <span class="nt">&lt;/CnRow&gt;</span>
 <span class="nt">&lt;/CnContainer&gt;</span>
 </code></pre>
-<p>Contains a single <strong>row</strong> of (i.e. in <strong>row</strong> direction). Must be part of CnContainer.</p>
-
-<p>The CnButton component represents a wrapper of the React VR button with a the following</p>
-
-<p>additional properties.</p>
-
 <h1 id="cncard">CnCard</h1>
 
 <p>Block which can be comprised of header, content, and footer (text/images/etc).</p>
 
 <h2 id="props">Props</h2>
 
-<h3 id="orientation">orientation</h3>
+<h3 id="orientation">Orientation</h3>
 
 <ul>
 <li><strong>column</strong> - <em>boolean</em> (default <em>true</em>) - Sets a vertical orientation of the card.</li>
