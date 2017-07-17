@@ -13,7 +13,7 @@ const DEFAULT_HOVER_COLOR = "#eceeef"
 const DEFAULT_ACTIVE_BORDER_COLOR = "#0275d8";
 const DEFAULT_INACTIVE_BORDER_COLOR = "#eceeef";
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     base: {
         display: 'flex',
         flex: 1,
