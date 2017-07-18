@@ -6,8 +6,7 @@ styles = StyleSheet.create({
         width: 0.2,
         height: 0.2,
         alignSelf: 'center',
-        justifyContent: 'center',
-        marginLeft: 0.1
+        justifyContent: 'center'
     }
 });
 
@@ -24,7 +23,7 @@ export default class CnIcon extends React.Component {
         //Will fix it later
         if (this.props.name === 'shopping-cart') {
             return (
-                <Image source={require('../../static_assets/shopping-cart-icon.png')} style={styles.iconStyles}/>
+                <Image source={require('../../static_assets/plus.png')} style={styles.iconStyles}/>
             );
         }
         return null;

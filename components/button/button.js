@@ -2,23 +2,24 @@ import React from 'react';
 import { VrButton, Text, StyleSheet } from 'react-vr';
 
 const styles = StyleSheet.create({
-        buttonStyles: {
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'stretch',
-            margin: 0.01,
-            borderWidth: 0.015,
-            borderColor: '#ccc'
-        },
-        textStyles: {
-            fontSize: 0.15,
-            fontWeight: '400',
-            alignSelf: 'center',
-            color: 'black',
-            marginRight: 0.05,
-            marginLeft: 0.05
-        }
+    buttonStyles: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 0.01,
+        borderWidth: 0.015,
+        borderColor: '#ccc'
+    },
+    textStyles: {
+        fontSize: 0.15,
+        fontWeight: '400',
+        alignSelf: 'center',
+        color: 'black',
+        marginRight: 0.05,
+        marginLeft: 0.05
     }
+}
 );
 
 const DEFAULT_ACTIVE_BACKGROUND_COLOR = '#ccc';
@@ -29,8 +30,8 @@ export default class CnButton extends React.Component {
         super(props);
         this.state = {
             hovered: false,
-            currentBackgroundColor: DEFAULT_INACTIVE_BACKGROUND_COLOR || this.props.color,
-            inactiveBackgroundColor: DEFAULT_INACTIVE_BACKGROUND_COLOR || this.props.color
+            currentBackgroundColor: this.props.color || DEFAULT_INACTIVE_BACKGROUND_COLOR,
+            inactiveBackgroundColor: this.props.color || DEFAULT_INACTIVE_BACKGROUND_COLOR
         };
     }
 
@@ -43,21 +44,27 @@ export default class CnButton extends React.Component {
                 onClick={this.props.onClick}
                 onButtonPress={this.props.onButtonPress}
                 onButtonRelease={this.props.onButtonRelease}
-                onEnter={() => this.setState({ hovered: true,
-                  currentBackgroundColor: DEFAULT_ACTIVE_BACKGROUND_COLOR })}
-                onExit={() => this.setState({ hovered: false,
-                   currentBackgroundColor: inactiveBackgroundColor })}
+                onEnter={() => this.setState({
+                    hovered: true,
+                    currentBackgroundColor: DEFAULT_ACTIVE_BACKGROUND_COLOR
+                })}
+                onExit={() => this.setState({
+                    hovered: false,
+                    currentBackgroundColor: inactiveBackgroundColor
+                })}
                 style={
-                [styles.buttonStyles,
+                    [this.props.style, styles.buttonStyles,
                     {
                         backgroundColor: currentBackgroundColor,
                         // Put conditional styles
-                        height: this.props.shape === 'circle' ? 0.5 : 0.5,
-                        borderRadius: this.props.shape === 'circle' ? 0.5 : 0
-                    }]}
+                        width: this.props.w,
+                        height: this.props.h,
+                        borderWidth: this.props.borderWidth,
+                        borderRadius: this.props.shape === 'circle' ? 0.5 : 0,
+                    }, this.props.style]}
             >
                 {this.props.children}
-                <Text style={styles.textStyles}>{this.props.name}</Text>
+                {this.props.name ? <Text style={styles.textStyles}>{this.props.name}</Text> : null}
             </VrButton>
         );
     }

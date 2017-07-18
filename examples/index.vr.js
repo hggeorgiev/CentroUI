@@ -8,48 +8,19 @@ import CnCardContent from '../components/card/card-content';
 import CnCardFooter from '../components/card/card-footer';
 import CnCardHeader from '../components/card/card-header';
 import CnRow from '../components/core/row';
+import {
+    AddProperty,
+    MainMenu,
+    PropertyDetails
+} from './walls'
 
 export default class Example extends React.Component {
     render() {
         return (
             <View>
-                <CnContainer>
-                    <CnRow>
-                        <CnCard hover>
-                            <CnCardHeader>
-                                test
-                            </CnCardHeader>
-                            <CnCardContent>
-
-                            </CnCardContent>
-                            <CnCardFooter>
-                                <CnButton
-                                >
-
-                                    <CnIcon name="shopping-cart" />
-                                </CnButton>
-                                <CnButton
-                                >
-
-                                </CnButton>
-                            </CnCardFooter>
-
-                        </CnCard>
-                        <CnCard hover>
-                            <CnCardHeader>
-                                test
-                            </CnCardHeader>
-                            <CnCardContent>
-
-                            </CnCardContent>
-                            <CnCardFooter>
-
-                            </CnCardFooter>
-
-                        </CnCard>
-                    </CnRow>
-
-                </CnContainer>
+                <AddProperty />
+                <MainMenu />
+                <PropertyDetails />
             </View>
         );
     }

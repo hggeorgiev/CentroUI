@@ -25,21 +25,21 @@ export default class CnContainer extends React.Component {
 
     setDireciton() {
         switch (this.props.direction) {
-            case 'left': {
-                this.state.direction = [5, 5.5, 0];
+            case 'right': {
+                this.state.direction = [5, 1.5, 0];
                 this.state.rotation = -90;
 
                 break;
             }
             case 'back': {
-                this.state.direction = [0, 9, 5.5];
+                this.state.direction = [0, 1.5, 5.5];
                 this.state.rotation = 180;
 
                 break;
             }
 
-            case 'right': {
-                this.state.direction = [-5.5, 9, 0];
+            case 'left': {
+                this.state.direction = [-5, 1.5, 0];
                 this.state.rotation = 90;
 
                 break;
@@ -78,9 +78,9 @@ export default class CnContainer extends React.Component {
                 flexWrap: 'wrap',
                 flex: 12,
                 width: 8,
-                height: 4,
                 justifyContent: 'flex-start',
                 flexDirection: 'column',
+                position: 'absolute',
                 transform: [{translate: this.state.direction}, {rotateY : this.state.rotation}],
                 backgroundColor: this.state.backgroundColor,
             }}>

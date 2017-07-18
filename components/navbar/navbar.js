@@ -37,7 +37,7 @@ export default class CnNavbar extends React.Component {
                     flexDirection: 'row',
                     alignItems: 'stretch',
                     height: 0.5,
-                    backgroundColor: "#0275d8"
+                    backgroundColor: this.props.backgroundColor || "#0275d8"
                   }}>
 
                 {this.props.children}

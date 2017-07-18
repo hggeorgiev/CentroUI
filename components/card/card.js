@@ -18,9 +18,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flex: 1,
         margin: 0.02,
-        minHeight: 0.5,
-        maxWidth: 2,
-        borderWidth: 0.020,
+        borderWidth: 0,
     },
 })
 
@@ -83,7 +81,7 @@ export default class CnCard extends React.Component {
     }
 
     getItemsAlignment() {
-        const { row, vstart, vend, hstart, hend, spread, push } = this.props
+        const { row, vstart, vend, hstart, hend, spread, push, stretch } = this.props
         var style = { flexDirection: row ? 'row' : "column" }
 
         var vprop = row ? 'alignItems' : "justifyContent"
@@ -109,6 +107,11 @@ export default class CnCard extends React.Component {
         if (push) {
             style['justifyContent'] = "space-between"
         }
+
+        if (stretch) {
+            style['alignItems'] = "stretch"
+        }
+
         return style
     }
 
@@ -152,13 +155,22 @@ export default class CnCard extends React.Component {
 
     render() {
         const { currentBackgroundColor } = this.state
+        const { flex, w, h } = this.props
+        var widthHeightStyle = {}
+        if (w) {
+            widthHeightStyle['width'] = w
+        } if (h) {
+            widthHeightStyle['height'] = h
+        }
         return (
             <View style={[styles.base, {
                 backgroundColor: currentBackgroundColor,
                 ...this.getBorderStyle(),
                 ...this.getItemsAlignment(),
                 ...this.getPadding(),
-            }]}
+                flex: flex || 1,
+                overflow: 'hidden'
+            }, widthHeightStyle]}
                 onEnter={this.onEnter.bind(this)}
                 onExit={this.onExit.bind(this)}>
                 {this.props.children}
