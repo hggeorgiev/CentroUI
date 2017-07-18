@@ -153,13 +153,12 @@ export default class CnCard extends React.Component {
     render() {
         const { currentBackgroundColor } = this.state
         return (
-            <View style={{
-                ...styles.base,
+            <View style={[styles.base, {
                 backgroundColor: currentBackgroundColor,
                 ...this.getBorderStyle(),
                 ...this.getItemsAlignment(),
                 ...this.getPadding(),
-            }}
+            }]}
                 onEnter={this.onEnter.bind(this)}
                 onExit={this.onExit.bind(this)}>
                 {this.props.children}
