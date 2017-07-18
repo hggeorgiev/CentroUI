@@ -177,6 +177,10 @@ If you're interested in contributing to the CentroUI, we'd love to have you invo
 If you don't want to write code or you don't have a lot of spare time, you still can help! Testing the various demos to make sure we haven't broken any features and filing issues when we do is very important.
 
 Another way you can support this project is by [hiring us](https://www.centroida.co/contact.html). We will do our best to enable you to fully utilize our component library and find the shortest path to developing your WebVR project.
+
+## Community
+-  Fllow us on [Twitter](https://twitter.com/Centro_UI) to get the most recent updates and examples
+
 ## License Information
 
 This project has been released under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html), the text of which is included below. This license applies ONLY to the source of this repository and does not extend to any other CentroUI distribution or variant, or any other 3rd party libraries used in a repository. For licensing information about CentroUI, see the [License Agreements page (Coming Soon)]() at [CentroUI.com](http://www.centroui.com).
