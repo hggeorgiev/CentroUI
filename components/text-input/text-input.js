@@ -1,9 +1,9 @@
-import React  from 'react';
-import { View, VrButton,  Text } from 'react-vr';
+import React from 'react';
+import { View, VrButton, Text } from 'react-vr';
 import Keyboard from './keyboard';
 import Scroll from './text-input-scroll'
 
-class CnTextInput  extends React.Component {
+class CnTextInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,9 +17,9 @@ class CnTextInput  extends React.Component {
             showScroll: false,
             toggleCursor: true,
             x: this.props.x || -1,
-            y: this.props.y|| 0.2,
+            y: this.props.y || 0.2,
             z: this.props.z || -1.5,
-            pages : 0,
+            pages: 0,
             focus: false,
             counter: 0,
             opacity: 0,
@@ -32,10 +32,10 @@ class CnTextInput  extends React.Component {
 
         var index;
         var results = [];
-        for(var i = s.length - 1 ; i >= 0; i--) {
-            if(s[i] === ' ') {
+        for (var i = s.length - 1; i >= 0; i--) {
+            if (s[i] === ' ') {
                 index = i;
-                if(s.slice(0, index + 1).length > this.state.columns + 1) { //11 = cols + 1
+                if (s.slice(0, index + 1).length > this.state.columns + 1) { //11 = cols + 1
                     continue;
                 } else {
                     index = i;
@@ -43,7 +43,7 @@ class CnTextInput  extends React.Component {
                 }
             }
         }
-        if(index) {
+        if (index) {
             results[0] = s.slice(0, index + 1);
             results[1] = s.slice(index + 1);
         } else {
@@ -59,17 +59,17 @@ class CnTextInput  extends React.Component {
         var index;
         var results = [];
 
-        for(var i = 0; i < s.length; i++) {
-            if(s[i] === ' ') {
+        for (var i = 0; i < s.length; i++) {
+            if (s[i] === ' ') {
                 index = i;
                 break;
             }
         }
 
-        if(index) {
+        if (index) {
             return [s.slice(0, index + 1), s.slice(index + 1)];
-        } else  {
-            return[s, null];
+        } else {
+            return [s, null];
         }
     }
 
@@ -79,9 +79,9 @@ class CnTextInput  extends React.Component {
         var index;
         //find the string that has the cursor
         var arr = this.state.displayArray;
-        for(var i = 0; i < arr.length; i++) {
-            if(arr[i]) {
-                if(arr[i].includes('|'))  {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i]) {
+                if (arr[i].includes('|')) {
                     index = i;
                     break;
                 }
@@ -90,14 +90,14 @@ class CnTextInput  extends React.Component {
 
         //check if the string with the cursor is in the window of start and end, if not move them in the correct direction till the string with the cursor shows up
 
-        if(index > end) {
+        if (index > end) {
             var found = false;
-            while(!found) {
+            while (!found) {
                 start++;
                 end++;
 
-                for(i = start; i <= end; i++) {
-                    if(arr[i].includes('|')) {
+                for (i = start; i <= end; i++) {
+                    if (arr[i].includes('|')) {
                         found = true;
                         break;
                     }
@@ -105,13 +105,13 @@ class CnTextInput  extends React.Component {
             }
         } else if (index < start) {
             found = false;
-            while(!found) {
+            while (!found) {
 
                 start--;
                 end--;
 
-                for(i = start; i <= end; i++) {
-                    if(arr[i].includes('|')) {
+                for (i = start; i <= end; i++) {
+                    if (arr[i].includes('|')) {
                         found = true;
                         break;
                     }
@@ -132,14 +132,14 @@ class CnTextInput  extends React.Component {
     // ---------------
 
     focus() {
-        this.setState({focus: true});
+        this.setState({ focus: true });
     }
 
     // ---------------
 
     handleAllLetters(val) {
-        if(val === '                                                         '){
-            val=' ';
+        if (val === '                                                         ') {
+            val = ' ';
         }
         var start = this.state.start;
         var end = this.state.end;
@@ -162,15 +162,15 @@ class CnTextInput  extends React.Component {
         //add the current character at position CP
 
         var cp = arr[index].indexOf('|');
-        arr[index] = arr[index].slice(0,cp) + val + arr[index].slice(cp);
+        arr[index] = arr[index].slice(0, cp) + val + arr[index].slice(cp);
         console.log(arr);
 
         //if the current string has exceeded its length after adding a character ...
 
-        if(arr[index].length > cols + 1) {
+        if (arr[index].length > cols + 1) {
             // in a loop pass the values of the array to the calculate function to get back properly trimmed strings
             var done = false;
-            while(!done) {
+            while (!done) {
                 //get back an array called list which will have the two parts that the string is split up in
                 var list = this.calculateAdd(arr[index]);
                 // add the first item of list to the array
@@ -179,9 +179,9 @@ class CnTextInput  extends React.Component {
                 index++;
 
                 // if there is a second item in list then append the next entry in the array to it and repeat the calculate function
-                if(list[1]) {
+                if (list[1]) {
 
-                    if(arr[index]) {
+                    if (arr[index]) {
                         var s = list[1] + arr[index];
                         console.log('s ', s);
                     } else {
@@ -195,7 +195,7 @@ class CnTextInput  extends React.Component {
                     start = tempArray[1];
                     end = tempArray[2];
 
-                    if(s.length <= cols + 1) {
+                    if (s.length <= cols + 1) {
                         done = true;
                     }
                     console.log('done is ' + done + ' for ' + s);
@@ -207,7 +207,7 @@ class CnTextInput  extends React.Component {
             displayArray: arr,
             start: start,
             end: end
-        }, function(){
+        }, function () {
             console.log('new value of start ', this.state.start);
             console.log('new value of end ', this.state.end);
         });
@@ -218,7 +218,7 @@ class CnTextInput  extends React.Component {
 
     handleDelete() {
         console.log('this.state.displayArray')
-        if(this.state.displayArray[0][0] !== '|') {
+        if (this.state.displayArray[0][0] !== '|') {
             var arr = this.state.displayArray;
             var start = this.state.start;
             var end = this.state.end;
@@ -234,7 +234,7 @@ class CnTextInput  extends React.Component {
             var cp = arr[index].indexOf('|');
 
             //if cp is the first character of the string, then move the cursor to the previous string
-            if(cp === 0) {
+            if (cp === 0) {
                 arr[index] = arr[index].slice(1);
                 arr[index - 1] = arr[index - 1] + '|';
                 cp = arr[index - 1].length - 1;
@@ -251,12 +251,12 @@ class CnTextInput  extends React.Component {
             console.log(arr);
             //if the string with the cursor is lesser in length than cols + 1 then find the next string, append it etc. till all strings have moved correctly ...
 
-            if(arr[index].length < cols + 1) {
+            if (arr[index].length < cols + 1) {
                 var done = false;
-                while(!done) {
+                while (!done) {
                     //if the cursor is in the last string of the array, then there is nothing to do
                     console.log('index, arr.length -1 ', index, arr.length - 1);
-                    if(!arr[index + 1]) {
+                    if (!arr[index + 1]) {
                         done = true;
                         tempArray = this.findPosition(start, end);
                         index = tempArray[0];
@@ -268,12 +268,12 @@ class CnTextInput  extends React.Component {
 
                     //find the sub-word till after the first space in the string at index +1 and add it to string at index
                     // console.log('next string ', arr[index + 1]);
-                    var list  = this.calculateDelete(arr[index + 1]);
+                    var list = this.calculateDelete(arr[index + 1]);
                     // console.log('calculated list ', list);
                     //if the length of this new string is = cols + 1 then index++ and find the new window - might not need this
 
                     //if the length of this new string is > cols + 1 then index++ and find the new window
-                    if((arr[index] + list[0]).length > cols + 1) {
+                    if ((arr[index] + list[0]).length > cols + 1) {
                         index++;
                     } else {
                         arr[index] = arr[index] + list[0];
@@ -286,7 +286,7 @@ class CnTextInput  extends React.Component {
                 }
             }
 
-            if(arr[arr.length - 1] === null)  {
+            if (arr[arr.length - 1] === null) {
                 arr = arr.slice(0, arr.length - 1);
             }
 
@@ -302,7 +302,7 @@ class CnTextInput  extends React.Component {
     // ------
 
     handleBack() {
-        if(this.state.displayArray[0][0] !== '|') {
+        if (this.state.displayArray[0][0] !== '|') {
             var arr = this.state.displayArray;
             var start = this.state.start;
             var end = this.state.end;
@@ -317,7 +317,7 @@ class CnTextInput  extends React.Component {
 
             var cp = arr[index].indexOf('|');
 
-            if(cp === 0) {
+            if (cp === 0) {
                 console.log('cp = 0 in handleBack');
                 arr[index] = arr[index].slice(1);
                 arr[index - 1] = arr[index - 1] + '|';
@@ -327,7 +327,7 @@ class CnTextInput  extends React.Component {
                 end = tempArray[2];
 
             } else {
-                arr[index] = arr[index].slice(0,cp - 1) + '|' + arr[index][cp - 1] + arr[index].slice(cp + 1);
+                arr[index] = arr[index].slice(0, cp - 1) + '|' + arr[index][cp - 1] + arr[index].slice(cp + 1);
             }
 
             this.setState({
@@ -342,7 +342,7 @@ class CnTextInput  extends React.Component {
     // ------
 
     handleForward() {
-        if(this.state.displayArray[this.state.displayArray.length - 1][this.state.displayArray[this.state.displayArray.length - 1].length - 1] !== '|' && (this.state.displayArray[this.state.end + 1] !== '' )) {
+        if (this.state.displayArray[this.state.displayArray.length - 1][this.state.displayArray[this.state.displayArray.length - 1].length - 1] !== '|' && (this.state.displayArray[this.state.end + 1] !== '')) {
             var arr = this.state.displayArray;
             var start = this.state.start;
             var end = this.state.end;
@@ -357,10 +357,10 @@ class CnTextInput  extends React.Component {
 
             var cp = arr[index].indexOf('|');
 
-            if(cp === arr[index].length - 1) {
+            if (cp === arr[index].length - 1) {
                 console.log('cp = length - 1 in handleForward');
                 arr[index] = arr[index].slice(0, arr[index].length - 1);
-                arr[index + 1] = '|' + arr[index + 1]  ;
+                arr[index + 1] = '|' + arr[index + 1];
                 console.log('array[index] ', arr[index]);
                 tempArray = this.findPosition(start, end);
                 index = tempArray[0];
@@ -368,7 +368,7 @@ class CnTextInput  extends React.Component {
                 end = tempArray[2];
 
             } else {
-                arr[index] = arr[index].slice(0, cp)  + arr[index][cp + 1] + '|' + arr[index].slice(cp + 2);
+                arr[index] = arr[index].slice(0, cp) + arr[index][cp + 1] + '|' + arr[index].slice(cp + 2);
             }
 
             this.setState({
@@ -385,7 +385,7 @@ class CnTextInput  extends React.Component {
     handleSubmit() {
         var submitArray = this.state.displayArray;
         for (let i = 0; i < submitArray.length; i++) {
-            submitArray[i] = submitArray[i].split("").filter( (element) => {return element !== '|'}).join("");
+            submitArray[i] = submitArray[i].split("").filter((element) => { return element !== '|' }).join("");
         }
         this.setState({
             start: 0,
@@ -433,8 +433,8 @@ class CnTextInput  extends React.Component {
     showScroll() {
 
         var total = 0;
-        for(var i = 0; i < this.state.displayArray.length; i++) {
-            if(this.state.displayArray[i] != '') total++;
+        for (var i = 0; i < this.state.displayArray.length; i++) {
+            if (this.state.displayArray[i] != '') total++;
         }
 
         return total > this.state.rows ? 1 : this.state.opacity;
@@ -447,19 +447,19 @@ class CnTextInput  extends React.Component {
         var end = this.state.end;
         var displayString = '';
 
-        for(var i = start; i <= end; i++) {
-            if(arr[i]) {
+        for (var i = start; i <= end; i++) {
+            if (arr[i]) {
                 displayString += arr[i] + '\n';
             }
         }
 
         displayString = displayString.slice(0, displayString.length - 1);
 
-        return(
-            <View  style={{display:  'flex', flex: 1, transform: [{rotateY: this.props.rotateY || 0}, {rotateX: this.props.rotateX || 0}]}}>
-                <View style={{borderColor: "#eceeef", borderWidth: 0.015, width: this.state.columns / 20, opacity: 0.8, height: this.state.rows / 10}} >
+        return (
+            <View style={{ display: 'flex', flex: 1, transform: [{ rotateY: this.props.rotateY || 0 }, { rotateX: this.props.rotateX || 0 }] }}>
+                <View style={[{ borderColor: "#eceeef", borderWidth: 0.015, width: this.state.columns / 20, opacity: 0.8, height: this.state.rows / 10 }, this.props.style]} >
                     <VrButton onClick={this.focus.bind(this)}>
-                        <Text  style={{borderColor: "#eceeef", borderWidth: 0.015,textAlign: 'center', backgroundColor: this.state.backgroundColor, color: this.state.textColor, margin: 0, fontSize: 0.08}}>
+                        <Text style={[{ borderColor: "#eceeef", borderWidth: 0.015, textAlign: 'center', backgroundColor: this.state.backgroundColor, color: this.state.textColor, margin: 0, fontSize: 0.08 }, this.props.style]}>
                             {displayString}
                         </Text>
                     </VrButton>
@@ -473,17 +473,17 @@ class CnTextInput  extends React.Component {
                 </View>
                 {this.state.focus ? (
                     //The keyboard has to be fixed next to the user - otherwise it is difficult to use
-                        <View style={{ width: 2 , transform: [ { translate: [this.state.x -0.2, this.state.y, this.state.z] }, {rotateX: -30}] }}>
-                            <Keyboard
-                                keyboardOnHover={this.props.keyboardOnHover}
-                                keyboardColor={this.props.keyboardColor}
-                                handleAllLetters={this.handleAllLetters.bind(this)}
-                                handleDelete={this.handleDelete.bind(this)}
-                                handleBack={this.handleBack.bind(this)}
-                                handleForward={this.handleForward.bind(this)}
-                                handleSubmit={this.handleSubmit.bind(this)}
-                            />
-                        </View> ) : (<View/>)}
+                    <View style={{ width: 2, transform: [{ translate: [this.state.x - 0.2, this.state.y, this.state.z] }, { rotateX: -30 }] }}>
+                        <Keyboard
+                            keyboardOnHover={this.props.keyboardOnHover}
+                            keyboardColor={this.props.keyboardColor}
+                            handleAllLetters={this.handleAllLetters.bind(this)}
+                            handleDelete={this.handleDelete.bind(this)}
+                            handleBack={this.handleBack.bind(this)}
+                            handleForward={this.handleForward.bind(this)}
+                            handleSubmit={this.handleSubmit.bind(this)}
+                        />
+                    </View>) : (<View />)}
             </View>);
     }
 }

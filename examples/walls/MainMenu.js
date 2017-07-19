@@ -50,27 +50,27 @@ class MainMenu extends React.Component {
 				<CnCard row stretch border={{ width: 0 }} bg="#1C1C1C">
 					<CnButton style={{ flex: 1, width: 2, height: 1.5 }} color="#393939">
 						<CnCard vstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-							<Image source={require('../../static_assets/house1.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
+							<Image source={require('../../static_assets/house4.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
 							<Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
-								Exotic Caribbean House
+								The rich guy's house
 							</Text>
 						</CnCard>
 					</CnButton>
 					<View style={{flex: 0.1}}/>
 					<CnButton style={{ flex: 1, width: 2, height: 1.5 }} color="#393939">
 						<CnCard vstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-							<Image source={require('../../static_assets/house2.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
+							<Image source={require('../../static_assets/house5.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
 							<Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
-								Small Hawaii House
+								Puerto rico house
 							</Text>
 						</CnCard>
 					</CnButton>
 					<View style={{flex: 0.1}}/>
 					<CnButton style={{ flex: 1, width: 2, height: 1.5 }} color="#393939">
 						<CnCard vstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-							<Image source={require('../../static_assets/house3.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
+							<Image source={require('../../static_assets/house6.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
 							<Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
-								Big Australian House
+								Huge castle-like house
 							</Text>
 						</CnCard>
 					</CnButton>
@@ -108,9 +108,9 @@ class MainMenu extends React.Component {
 				</CnButton>
 				<CnButton style={{ flex: 1 }} color="#393939">
 					<CnCard row hstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-						<Image source={require('../../static_assets/house.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
+						<Image source={require('../../static_assets/office.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
 						<Text style={{ marginLeft: 0.2, fontSize: 0.2 }}>
-							Houses
+							Offices
 					</Text>
 					</CnCard>
 				</CnButton>
@@ -123,10 +123,13 @@ class MainMenu extends React.Component {
 			<View>
 				<CnContainer backgroundColor="transparent">
 					<CnNavbar backgroundColor="#393939">
-						<CnCard hstart bg='transparent' border={{ width: 0 }}>
+						<CnCard row hstart bg='transparent' border={{ width: 0 }}>
 							<CnButton w={0.4} h={0.4} color="#1C1C1C">
 								<Image source={require('../../static_assets/plus.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2, tintColor: '#fff' }} />
 							</CnButton >
+							<CnCard bg='transparent' border={{ width: 0 }}>
+								<Text style={{ fontSize: 0.2 }}>Properties</Text>
+							</CnCard>
 						</CnCard>
 					</CnNavbar>
 					<CnCard row bg="#1C1C1C">
