@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, View, Text, Image } from 'react-vr';
+import { AppRegistry, View, Text, Image, asset } from 'react-vr';
 import CnContainer from '../../components/core/container';
 import CnCard from '../../components/card/card';
 import CnButton from '../../components/button/button';
@@ -21,14 +21,14 @@ class PropertyDetails extends React.Component {
 			<CnCard stretch flex={2} p={0.2} bg="#1C1C1C">
 				<CnCard row stretch border={{ width: 0 }} bg="#1C1C1C">
 					<CnCard border={{ width: 0 }} bg="#393939">
-						<Image source={require('../../static_assets/bedroom.gif')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
+						<Image source={asset('../../static_assets/bedroom.gif')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
 						<Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
 							Bedroom
 							</Text>
 					</CnCard>
 					<View style={{ flex: 0.1 }} />
 					<CnCard border={{ width: 0 }} bg="#393939">
-						<Image source={require('../../static_assets/bathroom.jpg')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
+						<Image source={asset('../../static_assets/bathroom.jpg')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
 						<Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
 							Bathroom
 							</Text>
@@ -36,14 +36,14 @@ class PropertyDetails extends React.Component {
 				</CnCard>
 				<CnCard row stretch border={{ width: 0 }} bg="#1C1C1C">
 					<CnCard border={{ width: 0 }} bg="#393939">
-						<Image source={require('../../static_assets/living_room.jpg')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
+						<Image source={asset('../../static_assets/living_room.jpg')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
 						<Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
 							Lounge / Living room
 							</Text>
 					</CnCard>
 					<View style={{ flex: 0.1 }} />
 					<CnCard border={{ width: 0 }} bg="#393939">
-						<Image source={require('../../static_assets/kitchen.jpg')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
+						<Image source={asset('../../static_assets/kitchen.jpg')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
 						<Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
 							Kitchen
 							</Text>
@@ -57,22 +57,22 @@ class PropertyDetails extends React.Component {
 		return (
 			<CnCard stretch bg="#1C1C1C">
 				<CnCard border={{ width: 0 }} bg="#393939">
-					<Image source={require('../../static_assets/house1.jpg')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
+					<Image source={asset('../../static_assets/house1.jpg')} resizeMode='contain' style={{ width: 2, height: 1.5 }} />
 				</CnCard>
 				<CnCard row hstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="#393939">
-					<Image source={require('../../static_assets/tag.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
+					<Image source={asset('../../static_assets/tag.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
 					<Text style={{ marginLeft: 0.2, fontSize: 0.15, textAlign: 'center' }}>
 						Exotic Caribbean House
 					</Text>
 				</CnCard>
 				<CnCard row hstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="#393939">
-					<Image source={require('../../static_assets/address.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
+					<Image source={asset('../../static_assets/address.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
 					<Text style={{ marginLeft: 0.2, fontSize: 0.15, textAlign: 'center' }}>
 						123 6th St. Melbourne, FL 32904
 					</Text>
 				</CnCard>
 				<CnCard row hstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="#393939">
-					<Image source={require('../../static_assets/measure.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
+					<Image source={asset('../../static_assets/measure.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
 					<Text style={{ marginLeft: 0.2, fontSize: 0.15, textAlign: 'center' }}>
 						3000 sq. ft.
 					</Text>

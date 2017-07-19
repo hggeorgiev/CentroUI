@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, View, Text, Image } from 'react-vr';
+import { AppRegistry, View, Text, Image, asset } from 'react-vr';
 import CnContainer from '../../components/core/container';
 import CnCard from '../../components/card/card';
 import CnButton from '../../components/button/button';
@@ -22,7 +22,7 @@ class AddProperty extends React.Component {
                 <CnCard row stretch border={{ width: 0 }} bg="#1C1C1C">
                     <CnButton style={{ flex: 1, width: 2, height: 1.5 }} color="#393939">
                         <CnCard vstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                            <Image source={require('../../static_assets/house1.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
+                            <Image source={asset('../../static_assets/house1.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
                             <Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
                                 Exotic Caribbean House
 							</Text>
@@ -31,7 +31,7 @@ class AddProperty extends React.Component {
                     <View style={{ flex: 0.1 }} />
                     <CnButton style={{ flex: 1, width: 2, height: 1.5 }} color="#393939">
                         <CnCard vstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                            <Image source={require('../../static_assets/house2.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
+                            <Image source={asset('../../static_assets/house2.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
                             <Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
                                 Small Hawaii House
 							</Text>
@@ -40,7 +40,7 @@ class AddProperty extends React.Component {
                     <View style={{ flex: 0.1 }} />
                     <CnButton style={{ flex: 1, width: 2, height: 1.5 }} color="#393939">
                         <CnCard vstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                            <Image source={require('../../static_assets/house3.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
+                            <Image source={asset('../../static_assets/house3.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
                             <Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
                                 Big Australian House
 							</Text>
@@ -50,7 +50,7 @@ class AddProperty extends React.Component {
                 <CnCard row stretch border={{ width: 0 }} bg="#1C1C1C">
                     <CnButton style={{ flex: 1, width: 2, height: 1.5 }} color="#393939">
                         <CnCard vstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                            <Image source={require('../../static_assets/house1.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
+                            <Image source={asset('../../static_assets/house1.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
                             <Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
                                 Exotic Caribbean House
 							</Text>
@@ -59,7 +59,7 @@ class AddProperty extends React.Component {
                     <View style={{ flex: 0.1 }} />
                     <CnButton style={{ flex: 1, width: 2, height: 1.5 }} color="#393939">
                         <CnCard vstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                            <Image source={require('../../static_assets/house2.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
+                            <Image source={asset('../../static_assets/house2.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
                             <Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
                                 Small Hawaii House
 							</Text>
@@ -68,7 +68,7 @@ class AddProperty extends React.Component {
                     <View style={{ flex: 0.1 }} />
                     <CnButton style={{ flex: 1, width: 2, height: 1.5 }} color="#393939">
                         <CnCard vstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                            <Image source={require('../../static_assets/house3.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
+                            <Image source={asset('../../static_assets/house3.jpg')} resizeMode='contain' style={{ width: 1, height: 0.6 }} />
                             <Text style={{ marginLeft: 0.2, fontSize: 0.1 }}>
                                 Big Australian House
 							</Text>
@@ -84,7 +84,7 @@ class AddProperty extends React.Component {
             <CnCard stretch bg="#1C1C1C">
                 <CnButton style={{ flex: 1 }} color="#393939">
                     <CnCard row hstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                        <Image source={require('../../static_assets/house.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
+                        <Image source={asset('../../static_assets/house.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
                         <Text style={{ marginLeft: 0.2, fontSize: 0.2 }}>
                             Houses
 					</Text>
@@ -92,7 +92,7 @@ class AddProperty extends React.Component {
                 </CnButton>
                 <CnButton style={{ flex: 1 }} color="#393939">
                     <CnCard row hstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                        <Image source={require('../../static_assets/apartment.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
+                        <Image source={asset('../../static_assets/apartment.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
                         <Text style={{ marginLeft: 0.2, fontSize: 0.2 }}>
                             Apartments
 					</Text>
@@ -100,7 +100,7 @@ class AddProperty extends React.Component {
                 </CnButton>
                 <CnButton style={{ flex: 1 }} color="#393939">
                     <CnCard row hstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                        <Image source={require('../../static_assets/store.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
+                        <Image source={asset('../../static_assets/store.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
                         <Text style={{ marginLeft: 0.2, fontSize: 0.2 }}>
                             Stores
 					</Text>
@@ -108,7 +108,7 @@ class AddProperty extends React.Component {
                 </CnButton>
                 <CnButton style={{ flex: 1 }} color="#393939">
                     <CnCard row hstart pl={0.2} pr={0.2} border={{ width: 0 }} bg="transparent">
-                        <Image source={require('../../static_assets/house.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
+                        <Image source={asset('../../static_assets/house.png')} resizeMode='contain' style={{ width: 0.2, height: 0.2 }} />
                         <Text style={{ marginLeft: 0.2, fontSize: 0.2 }}>
                             Houses
 					</Text>
@@ -136,7 +136,7 @@ class AddProperty extends React.Component {
                                         1st Street, Ocean Avenue
 							        </Text>
                                 </View>
-                                <Image source={require('../../static_assets/house3.jpg')} resizeMode='contain' style={{ width: 2.8, height: 1.3 }} />
+                                <Image source={asset('../../static_assets/house3.jpg')} resizeMode='contain' style={{ width: 2.8, height: 1.3 }} />
                                 <View style={{ width: 2.8, alignItems: 'center' }}>
                                     <Text style={{ fontSize: 0.2 }}>
                                         My pretty house
