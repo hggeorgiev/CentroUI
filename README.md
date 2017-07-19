@@ -91,7 +91,7 @@ function init(bundle, parent, options) {
 
 
 ## Example
-#### [Live demo](https://www.centroida.co/vr/)
+#### [Live demo](https://www.centroida.co/vr/demo)
 
 
 ![Video](http://i.imgur.com/ElGHkgj.gif)
