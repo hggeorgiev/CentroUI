@@ -91,7 +91,7 @@ function init(bundle, parent, options) {
 
 
 ## Example
-#### [Live demo](https://www.centroida.co/vr/)
+#### [Live demo](https://www.centroida.co/vr/demo)
 
 
 ![Video](http://i.imgur.com/ElGHkgj.gif)
@@ -179,7 +179,7 @@ If you don't want to write code or you don't have a lot of spare time, you still
 Another way you can support this project is by [hiring us](https://www.centroida.co/contact.html). We will do our best to enable you to fully utilize our component library and find the shortest path to developing your WebVR project.
 
 ## Community
--  Fllow us on [Twitter](https://twitter.com/Centro_UI) to get the most recent updates and examples
+-  Follow us on [Twitter](https://twitter.com/Centro_UI) to get the most recent updates and examples
 
 ## License Information
 
