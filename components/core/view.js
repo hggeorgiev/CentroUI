@@ -81,7 +81,7 @@ export default class View extends React.Component {
         const { row, vstart, vcenter, hcenter, vend, hstart, hend, spread, push, flex } = this.props
         var style = { flexDirection: row ? 'row' : "column" }
 
-        if(flex){
+        if (flex) {
             style['flex'] = flex || 1
         }
 
@@ -111,6 +111,19 @@ export default class View extends React.Component {
         }
         if (push) {
             style['justifyContent'] = "space-between"
+        }
+        return style
+    }
+
+    getDimensions() {
+        const { w, h } = this.props
+        var style = {}
+
+        if (w) {
+            style['width'] = w
+        }
+        if (h) {
+            style['height'] = h
         }
         return style
     }
@@ -161,7 +174,8 @@ export default class View extends React.Component {
                 ...this.getBorderStyle(),
                 ...this.getItemsAlignment(),
                 ...this.getPadding(),
-            }]}
+                ...this.getDimensions(),
+            }, this.props.style]}
                 onEnter={this.onEnter.bind(this)}
                 onExit={this.onExit.bind(this)}>
                 {this.props.children}
