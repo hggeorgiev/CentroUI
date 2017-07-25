@@ -3,7 +3,7 @@ import {
     asset,
     Pano,
     Text,
-    View,
+    View as VrView,
     Plane,
     StyleSheet
 } from 'react-vr';
@@ -16,15 +16,10 @@ const DEFAULT_INACTIVE_BORDER_COLOR = "#eceeef";
 const styles = StyleSheet.create({
     base: {
         display: 'flex',
-        flex: 1,
-        margin: 0.02,
-        minHeight: 0.5,
-        maxWidth: 2,
-        borderWidth: 0.020,
     },
 })
 
-export default class CnCard extends React.Component {
+export default class View extends React.Component {
 
     constructor(props) {
         super(props);
@@ -83,11 +78,17 @@ export default class CnCard extends React.Component {
     }
 
     getItemsAlignment() {
-        const { row, vstart, vend, hstart, hend, spread, push } = this.props
+        const { row, vstart, vcenter, hcenter, vend, hstart, hend, spread, push, flex } = this.props
         var style = { flexDirection: row ? 'row' : "column" }
 
+        if(flex){
+            style['flex'] = flex || 1
+        }
+
         var vprop = row ? 'alignItems' : "justifyContent"
-        style[vprop] = "center"
+        if (vcenter) {
+            style[vprop] = "center"
+        }
         if (vstart) {
             style[vprop] = "flex-start"
         }
@@ -96,7 +97,9 @@ export default class CnCard extends React.Component {
         }
 
         var hprop = row ? "justifyContent" : 'alignItems'
-        style[hprop] = "center"
+        if (hcenter) {
+            style[hprop] = "center"
+        }
         if (hstart) {
             style[hprop] = "flex-start"
         }
@@ -153,7 +156,7 @@ export default class CnCard extends React.Component {
     render() {
         const { currentBackgroundColor } = this.state
         return (
-            <View style={[styles.base, {
+            <VrView style={[styles.base, {
                 backgroundColor: currentBackgroundColor,
                 ...this.getBorderStyle(),
                 ...this.getItemsAlignment(),
@@ -162,7 +165,7 @@ export default class CnCard extends React.Component {
                 onEnter={this.onEnter.bind(this)}
                 onExit={this.onExit.bind(this)}>
                 {this.props.children}
-            </View>
+            </VrView>
         );
     }
 };
