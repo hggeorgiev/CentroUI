@@ -8,16 +8,10 @@ import {
     StyleSheet
 } from 'react-vr';
 
-const DEFAULT_BACKGROUND_COLOR = "#fff"
+const DEFAULT_BACKGROUND_COLOR = "transparent"
 const DEFAULT_HOVER_COLOR = "#eceeef"
 const DEFAULT_ACTIVE_BORDER_COLOR = "#0275d8";
 const DEFAULT_INACTIVE_BORDER_COLOR = "#eceeef";
-
-const styles = StyleSheet.create({
-    base: {
-        display: 'flex',
-    },
-})
 
 export default class View extends React.Component {
 
@@ -82,7 +76,7 @@ export default class View extends React.Component {
         var style = { flexDirection: row ? 'row' : "column" }
 
         if (flex) {
-            style['flex'] = flex || 1
+            style['flex'] = 1
         }
 
         var vprop = row ? 'alignItems' : "justifyContent"
@@ -169,7 +163,7 @@ export default class View extends React.Component {
     render() {
         const { currentBackgroundColor } = this.state
         return (
-            <VrView style={[styles.base, {
+            <VrView style={[{
                 backgroundColor: currentBackgroundColor,
                 ...this.getBorderStyle(),
                 ...this.getItemsAlignment(),
