@@ -7,9 +7,9 @@ import {
     Plane,
 } from 'react-vr';
 import View from '../core/view'
-import CnButton from '../button/button'
+import Button from '../button/button'
 
-export default class CnList extends React.Component {
+export default class List extends React.Component {
 
     constructor(props) {
         super(props);
@@ -73,19 +73,19 @@ export default class CnList extends React.Component {
         var disabledDown = startRowsIndex + visibleRows >= data.length
         return (
             <View {...this.props}>
-                <CnButton onClick={this.scrollUp} disabled={disabledUp} bg="transparent">
+                <Button onClick={this.scrollUp} disabled={disabledUp} bg="transparent">
                     <View hcenter h={0.1}>
                         <Text style={{fontSize: 0.09}}>{disabledUp ? " " : "..."}</Text>
                     </View>
-                </CnButton>
+                </Button>
                 <View border={{width: 0.01}}>
                     {this.renderRows()}
                 </View>
-                <CnButton onClick={this.scrollDown} disabled={disabledDown} bg="transparent">
+                <Button onClick={this.scrollDown} disabled={disabledDown} bg="transparent">
                     <View hcenter h={0.1}>
                         <Text style={{fontSize: 0.09}}>{disabledDown ? " " : "..."}</Text>
                     </View>
-                </CnButton>
+                </Button>
             </View>
         );
     }
