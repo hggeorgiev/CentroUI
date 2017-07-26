@@ -218,7 +218,7 @@ push | boolean | Distributes items in the view content evenly along the orientat
 </VrView >
 ```
 
-### Padding
+#### Padding
 
 Prop | Type | Description | Required | Default |
 -------------- | -------------- | -------------- |  -------------- | -------------- | 
@@ -249,7 +249,7 @@ pb | integer | Defines the bottom padding of the view. | false | 0 or <code> p <
 </VrView >
 ```
 
-### Style
+#### Style
 
 Prop | Type | Description | Required | Default |
 -------------- | -------------- | -------------- |  -------------- | -------------- | 
@@ -307,26 +307,27 @@ border { right } | integer | Border right width | false |  0 or <code> width </c
 
 
 
-# CnList
+# List
 
-List element (collection of related items).
+The list element contains multiple <code>ListItem</code> components. It can be initialized with an array of items
+and have list items automatically created for each or simply by manually nesting <code>ListItem</code>s.
 
 ## CnListItem
 
 > **CnListItem:**
 
 ```html
-<CnList>
+<List>
 
-    <CnListItem>
+    <ListItem>
         List Item 1
-    </CnListItem>
+    </ListItem>
 
-    <CnListItem>
+    <ListItem>
         List Item 2
-    </CnListItem>
+    </ListItem>
 
-</CnList>
+</List>
 ```
 
 Item inside the list.
@@ -354,56 +355,56 @@ CnNavbar - section of a VR graphical user interface intended to aid visitors in 
 Navigation bar item.
 
 
-# CnButton
+# Button
 
-
+The CentroUI button offers the same functionality as React VR's [VrButton](https://facebook.github.io/react-vr/docs/vrbutton.html), but
+with added support for theming and styles:
 
 ## Props
 
-> **CnButton an CnIcon:**
+
+
+
+Prop | Type | Description | Required | Default |
+-------------- | -------------- | -------------- |  -------------- | -------------- | 
+circle | boolean | Gives the button a circular shape | false |  false
+rectangle | boolean | Gives the button a rectangular shape | false | true
+bg | color | Defines the default background color of the button | false | "#fff"
+
+
+
+> **Button and an Icon:**
 
 ```javascript
 
     
-    <CnButton>
-        <CnIcon name="shopping-cart" />
-    </CnButton>
+    <Button>
+        <Icon name="shopping-cart" />
+    </Button>
 
 
 
     
 ```
 
-* name
-
-This property is used to define the name of the button (e.g. **"Buy",** **"Add to cart"**).
-
-* color
-
-This property is used to define the color of the button (e.g. **red**, **blue**, **yellow**).
-
-* shape
-
-This property is used to define the shape of the button and it can be either **rectangle** or
-
-**circle**.
 
 
 
 
-## CnIcon
-The **CnButton** can have a **CnIcon** as a child element.
+# Icon
+
+Icons are currently **not functional**. They are used only for conceptual purposes.
 
 ```javascript
-    <CnButton
+    <Button
         name="Add to Cart"
         shape="circle"
-        color="blue">
-        <CnIcon name="shopping-cart" />
-    <CnButton/>
+        color="blue" >
+        <Icon name="shopping-cart" />
+    <Button/>
 ```
 
-**CnIcon** in it terms has only a name property, which sets the icon of the button (e.g. “shopping-
+**Icon**  has only a name property, which sets the icon of the button (e.g. “shopping-
 cart”). We intend to use FontAwesome icons (not implemented yet).
 
 
