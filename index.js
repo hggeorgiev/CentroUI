@@ -2,7 +2,7 @@
 import CnContainer from "./components/core/container"
 import CnNavbar from "./components/navbar/navbar"
 import CnNavItem from "./components/navbar/nav-item"
-import CnCard from "./components/card/card"
+import View from "./components/core/view"
 import CnRow from "./components/core/row"
 import CnCardHeader from "./components/card/card-header"
 import CnCardContent from "./components/card/card-content"
@@ -15,11 +15,11 @@ import CnListItem from "./components/list/list-item"
 
 
 export {
+    View,
     CnContainer,
     CnRow,
     CnNavbar,
     CnNavItem,
-    CnCard,
     CnCardHeader,
     CnCardContent,
     CnCardFooter,
