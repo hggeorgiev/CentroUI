@@ -367,7 +367,7 @@ Navigation bar item.
     
     <CnButton>
         <CnIcon name="shopping-cart" />
-    <CnButton/>
+    </CnButton>
 
 
 
