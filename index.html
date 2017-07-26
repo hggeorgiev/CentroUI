@@ -221,7 +221,7 @@
       <div class="content">
         <h1 id="home">Home</h1>
 
-<p>CentroUI provides a set of reusable and extendable UI controls for building interfaces for WebVR applications. This library is based on <a href="https://facebook.github.io/react-vr/">ReactVR</a>, providing developers with text input controls, cards, lists, navigation items and grids, all built with cross-device and cross-browser compatibility to ensure consistent experience with any environment and device.</p>
+<p>CentroUI provides a set of reusable and extendable UI controls for building interfaces for WebVR applications. This library is based on <a href="https://facebook.github.io/react-vr/">ReactVR</a>, providing developers with text input controls, views, lists, navigation items and grids, all built with cross-device and cross-browser compatibility to ensure consistent experience with any environment and device.</p>
 
 <p>The layout engine intelligently places elements depending on context, providing a predictable and structured approach to building interfaces for WebVR.</p>
 
@@ -320,245 +320,392 @@
 </tr>
 </tbody></table>
 
-<h1 id="cnrow">CnRow</h1>
+<h1 id="vrview">VrView</h1>
 
-<p>CnRow makes a section that horizontally stacks all elements in a CnContainer.</p>
+<p>VrView is one of the core building blocks of CentroUI and a foundational element for custom
+components. It provides an easy interface for two types of property groups:</p>
 
-<blockquote>
-<p><strong>CnRow:</strong></p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnContainer&gt;</span>
-    <span class="nt">&lt;CnRow&gt;</span>
-        <span class="nt">&lt;CnCard</span> <span class="na">hover</span><span class="nt">&gt;</span>
-            ...
-        <span class="nt">&lt;/CnCard&gt;</span>
-    <span class="nt">&lt;/CnRow&gt;</span>
-<span class="nt">&lt;/CnContainer&gt;</span>
-</code></pre>
-<h1 id="cncard">CnCard</h1>
-
-<p>Block which can be comprised of header, content, and footer (text/images/etc).</p>
+<ul>
+<li>Layout properties:  Orientation, content alignment and padding</li>
+<li>Style properties: Border color and width, hover color and state and background color</li>
+</ul>
 
 <h2 id="props">Props</h2>
 
 <h3 id="orientation">Orientation</h3>
 
-<ul>
-<li><strong>column</strong> - <em>boolean</em> (default <em>true</em>) - Sets a vertical orientation of the card.</li>
-<li><strong>row</strong> - <em>boolean</em> - Sets a horizontal orientation of the card.</li>
-</ul>
+<p>By default, the orientation of a VrView is a column.</p>
+
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>column</td>
+<td>boolean</td>
+<td>Sets a vertical orientation of the view.</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>row</td>
+<td>boolean</td>
+<td>Sets a horizontal orientation of the view.</td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody></table>
 
 <blockquote>
-<p><strong>CnCard column:</strong></p>
+<p><strong>VrView  column:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span> <span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
-        In a vertical card
+        In a vertical view
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
 <blockquote>
-<p><strong>CnCard row:</strong></p>
+<p><strong>VrView  row:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">row</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">row</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
-        In a horizontal card
+        In a horizontal view
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
-<h3 id="content-alignment">content alignment</h3>
+<h3 id="content-alignment">Content alignment</h3>
 
-<ul>
-<li><strong>vcenter</strong> - <em>boolean</em> (default <em>true</em>) - Centers the card content vertically</li>
-<li><strong>vstart</strong> - <em>boolean</em> - Positions the card content vertically in the beginning</li>
-<li><strong>vend</strong> - <em>boolean</em> - Positions the card content vertically in the end</li>
-<li><strong>hcenter</strong> - <em>boolean</em> (default <em>true</em>) - Centers the card content horizontally</li>
-<li><strong>hstart</strong> - <em>boolean</em> - Positions the card content horizontally in the beginning</li>
-<li><strong>hend</strong> - <em>boolean</em> - Positions the card content horizontally in the end</li>
-<li><strong>spread</strong> - <em>boolean</em> - Distributes items in the card content evenly along the orientation <strong><em>with card padding</em></strong></li>
-<li><strong>push</strong> - <em>boolean</em> - Distributes items in the card content evenly along the orientation <strong><em>without card padding</em></strong></li>
-</ul>
+<p>By default, the content in a VrView is centered vertically and horizontally.</p>
+
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vcenter</td>
+<td>boolean</td>
+<td>Centers the view content vertically</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>vstart</td>
+<td>boolean</td>
+<td>Positions the view content vertically in the beginning</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>vend</td>
+<td>boolean</td>
+<td>Positions the view content vertically in the end</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>hcenter</td>
+<td>boolean</td>
+<td>Centers the view content horizontally</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>hstart</td>
+<td>boolean</td>
+<td>Positions the view content horizontally in the beginning</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>hend</td>
+<td>boolean</td>
+<td>Positions the view content horizontally in the end</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>spread</td>
+<td>boolean</td>
+<td>Distributes items in the view content evenly along the orientation <strong><em>with view padding</em></strong></td>
+<td>falsee</td>
+<td>false</td>
+</tr>
+<tr>
+<td>push</td>
+<td>boolean</td>
+<td>Distributes items in the view content evenly along the orientation <strong><em>without view padding</em></strong></td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody></table>
 
 <blockquote>
-<p><strong>CnCard default content alignment:</strong></p>
+<p><strong>VrView  default content alignment:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span> <span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
         Centered vertically and horizontally by default
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
 <blockquote>
-<p><strong>CnCard vertical alignment:</strong></p>
+<p><strong>VrView  vertical alignment:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">vstart</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">vstart</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
         At the top, but horizontally centered by default
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
 <blockquote>
-<p><strong>CnCard vertical and horizontal content alignment:</strong></p>
+<p><strong>VrView  vertical and horizontal content alignment:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">vstart</span> <span class="na">hstart</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">vstart</span> <span class="na">hstart</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
         At the top and to the left
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
 <blockquote>
-<p><strong>CnCard spread:</strong></p>
+<p><strong>VrView  spread:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">spread</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">spread</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
-        I am at the top but not touching the card borders
+        I am at the top but not touching the view borders
     <span class="nt">&lt;/Text&gt;</span>    
     <span class="nt">&lt;Text&gt;</span>
         I am centered but not touching my neighbors
     <span class="nt">&lt;/Text&gt;</span>    
     <span class="nt">&lt;Text&gt;</span>
-        I am at the bottom but not touching the card borders
+        I am at the bottom but not touching the view borders
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
 <blockquote>
-<p><strong>CnCard push:</strong></p>
+<p><strong>VrView  push:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">push</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">push</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
-        I am at the top AND TOUCHING the card borders
+        I am at the top AND TOUCHING the view borders
     <span class="nt">&lt;/Text&gt;</span>    
     <span class="nt">&lt;Text&gt;</span>
         I am centered but not touching my neighbors
     <span class="nt">&lt;/Text&gt;</span>    
     <span class="nt">&lt;Text&gt;</span>
-        I am at the bottom AND TOUCHING the card borders
+        I am at the bottom AND TOUCHING the view borders
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
-<h3 id="padding">padding</h3>
+<h3 id="padding">Padding</h3>
 
-<ul>
-<li><strong>p</strong> - <em>integer</em> (default <em>0</em>) - Defines the padding of the card.</li>
-<li><strong>pl</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the left padding of the card.</li>
-<li><strong>pr</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the right padding of the card.</li>
-<li><strong>pt</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the top padding of the card.</li>
-<li><strong>pb</strong> - <em>integer</em> (default <em>0</em> or <em>p</em>) - Defines the bottom padding of the card.</li>
-</ul>
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>p</td>
+<td>integer</td>
+<td>Defines the padding of the view.</td>
+<td>false</td>
+<td>0</td>
+</tr>
+<tr>
+<td>pl</td>
+<td>integer</td>
+<td>Defines the left padding of the view.</td>
+<td>false</td>
+<td>0 or <code>p</code></td>
+</tr>
+<tr>
+<td>pr</td>
+<td>integer</td>
+<td>Defines the left padding of the view.</td>
+<td>false</td>
+<td>0 or <code>p</code></td>
+</tr>
+<tr>
+<td>pr</td>
+<td>integer</td>
+<td>Defines the left padding of the view.</td>
+<td>false</td>
+<td>0 or <code>p</code></td>
+</tr>
+<tr>
+<td>pt</td>
+<td>integer</td>
+<td>Defines the top padding of the view.</td>
+<td>false</td>
+<td>0 or <code>p</code></td>
+</tr>
+<tr>
+<td>pb</td>
+<td>integer</td>
+<td>Defines the bottom padding of the view.</td>
+<td>false</td>
+<td>0 or <code> p </code></td>
+</tr>
+</tbody></table>
 
 <blockquote>
-<p><strong>CnCard padding:</strong></p>
+<p><strong>VrView  padding:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">p=</span><span class="s">{0.05}</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">p=</span><span class="s">{0.05}</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
         Away from all borders by 0.05    
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
 <blockquote>
-<p><strong>CnCard padding left and top:</strong></p>
+<p><strong>VrView  padding left and top:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">pl=</span><span class="s">{0.05}</span> <span class="na">pt=</span><span class="s">{0.07}</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">pl=</span><span class="s">{0.05}</span> <span class="na">pt=</span><span class="s">{0.07}</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
         Away from left border by 0.05 and from top border by 0.07
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
-<h3 id="style">style</h3>
+<h3 id="style">Style</h3>
 
-<ul>
-<li><strong>hover</strong> - <em>boolean</em> (default <em>false</em>) - Defines whether the card should react to hover</li>
-<li><strong>hoverColor</strong> - <em>hex, rgb</em> (default <em>#eceeef</em>) - Defines the background color of the card when <strong><em>hovered</em></strong>. </li>
-<li><strong>bg</strong> - <em>hex, rgb</em> (default <em>#fff</em>) - Defines the background color of the card when <strong><em>NOT hovered</em></strong>. </li>
-<li><strong>border</strong> - <em>Object</em> - An object, defining border styles of the card. It accepts the following properties:
-
-<ul>
-<li><strong>color</strong> - <em>hex, rgb</em> (default <em>#eceeef</em>) - Border color when the card is <strong><em>NOT hovered</em></strong></li>
-<li><strong>activeColor</strong> - <em>hex, rgb</em> (default <em>#0275d8</em>) - Border color when the card is <strong><em>hovered</em></strong></li>
-<li><strong>width</strong> - <em>integer</em> (default <em>0</em>) - Border width</li>
-<li><strong>top</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border top width</li>
-<li><strong>bottom</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border bottom width</li>
-<li><strong>left</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border left width</li>
-<li><strong>right</strong> - <em>integer</em> (default <em>width</em> or <em>0</em>) - Border right width</li>
-</ul></li>
-</ul>
+<table><thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>hover</td>
+<td>boolean</td>
+<td>Defines whether the view should react to hover</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>hoverColor</td>
+<td><em>color</em></td>
+<td>Defines the background color of the view when <strong><em>hovered</em></strong>.</td>
+<td>false</td>
+<td>#eceeef</td>
+</tr>
+<tr>
+<td>bg</td>
+<td>*color</td>
+<td>Defines the background color of the view when <strong><em>NOT hovered</em></strong>.</td>
+<td>false</td>
+<td>#fff</td>
+</tr>
+<tr>
+<td>border</td>
+<td>Object</td>
+<td>Defines border styles of the view.</td>
+<td>false</td>
+<td>-</td>
+</tr>
+<tr>
+<td>border { color }</td>
+<td>color</td>
+<td>Border color when the view is <strong><em>NOT hovered</em></strong></td>
+<td>false</td>
+<td>#eceeef</td>
+</tr>
+<tr>
+<td>border { activeColor }</td>
+<td>color</td>
+<td>Border color when the view is <strong><em>hovered</em></strong></td>
+<td>false</td>
+<td>#0275d8</td>
+</tr>
+<tr>
+<td>border { width }</td>
+<td>integer</td>
+<td>Border width</td>
+<td>false</td>
+<td>0</td>
+</tr>
+<tr>
+<td>border { top }</td>
+<td>integer</td>
+<td>Border top width</td>
+<td>false</td>
+<td>0 or <code> width </code></td>
+</tr>
+<tr>
+<td>border { bottom }</td>
+<td>integer</td>
+<td>Border bottom width</td>
+<td>false</td>
+<td>0 or <code> width </code></td>
+</tr>
+<tr>
+<td>border { left }</td>
+<td>integer</td>
+<td>Border left width</td>
+<td>false</td>
+<td>0 or <code> width </code></td>
+</tr>
+<tr>
+<td>border { right }</td>
+<td>integer</td>
+<td>Border right width</td>
+<td>false</td>
+<td>0 or <code> width </code></td>
+</tr>
+</tbody></table>
 
 <blockquote>
-<p><strong>CnCard hover:</strong></p>
+<p><strong>VrView  hover:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">hover</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">hover</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
-        Card will change its backround color *(default)* and border color *(default)* when hovered
+        View will change its background color *(default)* and border color *(default)* when hovered
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
 <blockquote>
-<p><strong>CnCard hover color:</strong></p>
+<p><strong>VrView  hover color:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">hover</span> <span class="na">hoverColor=</span><span class="s">'red'</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">hover</span> <span class="na">hoverColor=</span><span class="s">'red'</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
-        Card will change its backround color to red and border color *(default)* when hovered
+        View will change its background color to red and border color *(default)* when hovered
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
 <blockquote>
-<p><strong>CnCard hover color and background:</strong></p>
+<p><strong>VrView  hover color and background:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">hover</span> <span class="na">hoverColor=</span><span class="s">'red'</span> <span class="na">bg=</span><span class="s">'green'</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">hover</span> <span class="na">hoverColor=</span><span class="s">'red'</span> <span class="na">bg=</span><span class="s">'green'</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
-        Card has a green background color but when hovered it will change it to red
+        View has a green background color but when hovered it will change it to red
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
 <blockquote>
-<p><strong>CnCard border:</strong></p>
+<p><strong>VrView  border:</strong></p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard</span> <span class="na">border=</span><span class="s">{{width:</span> <span class="na">0</span><span class="err">.</span><span class="na">09</span><span class="err">,</span> <span class="na">left:</span> <span class="na">0</span><span class="err">.</span><span class="na">05</span><span class="err">,</span> <span class="na">color:</span> <span class="err">'</span><span class="na">blue</span><span class="err">',</span> <span class="na">activeColor:</span> <span class="err">'</span><span class="na">yellow</span><span class="err">'}}</span> <span class="na">hover</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;VrView</span>  <span class="na">border=</span><span class="s">{{width:</span> <span class="na">0</span><span class="err">.</span><span class="na">09</span><span class="err">,</span> <span class="na">left:</span> <span class="na">0</span><span class="err">.</span><span class="na">05</span><span class="err">,</span> <span class="na">color:</span> <span class="err">'</span><span class="na">blue</span><span class="err">',</span> <span class="na">activeColor:</span> <span class="err">'</span><span class="na">yellow</span><span class="err">'}}</span> <span class="na">hover</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Text&gt;</span>
-        The entire border of the card is wide 0.09 except the left border which has a width of 0.05. The border is blue but when hovered it becomes yellow (don't forget to add hover property to the card)
+        The entire border of the view is wide 0.09 except the left border which has a width of 0.05. The border is blue but when hovered it becomes yellow (don't forget to add hover property to the view)
     <span class="nt">&lt;/Text&gt;</span>    
-<span class="nt">&lt;/CnCard&gt;</span>
+<span class="nt">&lt;/VrView &gt;</span>
 </code></pre>
-<h3 id="cncardheader">CnCardHeader</h3>
-
-<blockquote>
-<p><strong>CnCardHeader:</strong></p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
-    <span class="nt">&lt;CnCardHeader&gt;</span>
-        I am the header of the card!
-    <span class="nt">&lt;/CnCardHeader&gt;</span>
-<span class="nt">&lt;/CnCard&gt;</span>
-</code></pre>
-<p>Header of the card.</p>
-
-<h3 id="cncardcontent">CnCardContent</h3>
-
-<blockquote>
-<p><strong>CnCardContent:</strong></p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
-    <span class="nt">&lt;CnCardContent&gt;</span>
-        I am inside the card! I am the content!
-    <span class="nt">&lt;/CnCardContent&gt;</span>
-<span class="nt">&lt;/CnCard&gt;</span>
-</code></pre>
-<p>Contents inside the card.</p>
-
-<h3 id="cncardfooter">CnCardFooter</h3>
-
-<blockquote>
-<p><strong>CnCardFooter:</strong></p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;CnCard&gt;</span>
-
-    <span class="nt">&lt;CnCardFooter&gt;</span>
-        <span class="nt">&lt;Text</span> <span class="na">color=</span><span class="s">"black"</span><span class="nt">&gt;</span>Text in the footer of the card! Yikes!<span class="nt">&lt;/Text&gt;</span>
-    <span class="nt">&lt;/CnCardFooter&gt;</span>
-<span class="nt">&lt;/CnCard&gt;</span>
-</code></pre>
-<p>Footer of the card.</p>
-
 <h1 id="cnlist">CnList</h1>
 
 <p>List element (collection of related items).</p>
@@ -614,8 +761,8 @@
 
     <span class="o">&lt;</span><span class="nx">CnButton</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">CnIcon</span> <span class="nx">name</span><span class="o">=</span><span class="s2">"shopping-cart"</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;</span><span class="nx">CnButton</span><span class="o">/&gt;</span>
-
+    <span class="o">&lt;</span><span class="sr">/CnButton</span><span class="err">&gt;
+</span>
 
 
 
