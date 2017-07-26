@@ -65,11 +65,11 @@ In your React VR project:
 
 ### 2 **Import in your project**
 
-`import { CnContainer } from 'centro-ui';`
+`import { Container } from 'centro-ui';`
 
 ### 3 **Invoke the component(s) in your view**
 
-`<CnContainer> </CnContainer>`
+`<Container> </Container>`
 
 ### 4 **Add interactivity**
 
@@ -78,17 +78,17 @@ In your vr/client.js file, add the code on right sidebar.
 
 
 
-# CnContainer
+# Container
 
-CnContainer is a rectangular plane that can contain various elements at a comfortable distance from the user. Usually aligns items inside it using multiple *CnRows*
+The CnetroUI container is a rectangular plane that can contain various elements at a comfortable distance from the user. Usually aligns items inside it using multiple *CnRows*
 
 
-> **CnContainer:**
+> **Container:**
 
 ```html
-<CnContainer direction="left">
+<Container direction="left">
 
-</CnContainer>
+</Container>
 ```
 
 ## Props
@@ -312,9 +312,19 @@ border { right } | integer | Border right width | false |  0 or <code> width </c
 The list element contains multiple <code>ListItem</code> components. It can be initialized with an array of items
 and have list items automatically created for each or simply by manually nesting <code>ListItem</code>s.
 
-## CnListItem
 
-> **CnListItem:**
+## Props
+Prop | Type | Description | Required | Default |
+-------------- | -------------- | -------------- |  -------------- | -------------- | 
+data | Array<any> | Data to be displayed as a list | false |  []
+alignment | string | Whether the list to be vertical or horizontal | false | 'vertical' 
+visibleRows | integer | Number of rows visible in the list | false | 5
+
+
+## ListItem
+
+
+> **ListItem:**
 
 ```html
 <List>
@@ -332,24 +342,24 @@ and have list items automatically created for each or simply by manually nesting
 
 Item inside the list.
 
-# CnNavbar
+# Navbar
 
-CnNavbar - section of a VR graphical user interface intended to aid visitors in accessing information.
+The CentroUI navbar is by default a horizontal row containing `NavItem`s.
 
-## CnNavItem
+## NavItem
 
-> **CnNavItem:**
+> **NavItem:**
 
 ```html
-<CnNavbar>
-    <CnNavItem>
+<Navbar>
+    <NavItem>
          Hello CentroUI
-    </CnNavItem>
+    </NavItem>
 
-    <CnNavItem>
+    <NavItem>
          Home
-    </CnNavItem>
-</CnNavbar>
+    </NavItem>
+</Navbar>
 ```
 
 Navigation bar item.
@@ -384,7 +394,7 @@ bg | color | Defines the default background color of the button | false | "#fff"
 
 
 
-    
+      
 ```
 
 
@@ -487,12 +497,12 @@ function init(bundle, parent, options) {
 
 ![gif](./images/raycaster.gif)
 
-# CnTextInput
+# TextInput
 
-> **CnTextInput:**
+> **TextInput:**
 
 ```html
-<CnTextInput rows={2} cols={20}
+<TextInput rows={2} cols={20}
            x={2} y={-1} z={1}
            rotateY={null} rotateX={null}
            textColor={'black'} backgroundColor={'white'}
