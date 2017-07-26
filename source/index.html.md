@@ -9,7 +9,7 @@ search: true
 
 # Home
 
-CentroUI provides a set of reusable and extendable UI controls for building interfaces for WebVR applications. This library is based on [ReactVR](https://facebook.github.io/react-vr/), providing developers with text input controls, cards, lists, navigation items and grids, all built with cross-device and cross-browser compatibility to ensure consistent experience with any environment and device.
+CentroUI provides a set of reusable and extendable UI controls for building interfaces for WebVR applications. This library is based on [ReactVR](https://facebook.github.io/react-vr/), providing developers with text input controls, views, lists, navigation items and grids, all built with cross-device and cross-browser compatibility to ensure consistent experience with any environment and device.
 
 The layout engine intelligently places elements depending on context, providing a predictable and structured approach to building interfaces for WebVR.
 
@@ -100,245 +100,212 @@ color | string | Defines the background color of the container | false | "rgba(2
 
 
 
+# VrView
 
-# CnRow
-
-CnRow makes a section that horizontally stacks all elements in a CnContainer.
-
-
-
-
-> **CnRow:**
-
-```html
-<CnContainer>
-    <CnRow>
-        <CnCard hover>
-            ...
-        </CnCard>
-    </CnRow>
-</CnContainer>
-```
+VrView is one of the core building blocks of CentroUI and a foundational element for custom
+components. It provides an easy interface for two types of property groups:
+ 
+ - Layout properties:  Orientation, content alignment and padding
+ - Style properties: Border color and width, hover color and state and background color
 
 
-
-# CnCard
-
-Block which can be comprised of header, content, and footer (text/images/etc).
 
 
 ## Props
 
 ### Orientation
-* **column** - *boolean* (default *true*) - Sets a vertical orientation of the card.
-* **row** - *boolean* - Sets a horizontal orientation of the card.
 
-> **CnCard column:**
+By default, the orientation of a VrView is a column.
+
+Prop | Type | Description | Required | Default |
+-------------- | -------------- | -------------- |  -------------- | -------------- | 
+column | boolean |Sets a vertical orientation of the view.| false |  true
+row | boolean | Sets a horizontal orientation of the view. | false | false
+
+
+
+> **VrView  column:**
 
 ```html
-<CnCard>
+<VrView >
     <Text>
-        In a vertical card
+        In a vertical view
     </Text>    
-</CnCard>
+</VrView >
 ```
-> **CnCard row:**
+> **VrView  row:**
 
 ```html
-<CnCard row>
+<VrView  row>
     <Text>
-        In a horizontal card
+        In a horizontal view
     </Text>    
-</CnCard>
+</VrView >
 ```
 
-### content alignment
-* **vcenter** - *boolean* (default *true*) - Centers the card content vertically
-* **vstart** - *boolean* - Positions the card content vertically in the beginning
-* **vend** - *boolean* - Positions the card content vertically in the end
-* **hcenter** - *boolean* (default *true*) - Centers the card content horizontally
-* **hstart** - *boolean* - Positions the card content horizontally in the beginning
-* **hend** - *boolean* - Positions the card content horizontally in the end
-* **spread** - *boolean* - Distributes items in the card content evenly along the orientation **_with card padding_**
-* **push** - *boolean* - Distributes items in the card content evenly along the orientation **_without card padding_**
+### Content alignment
 
-> **CnCard default content alignment:**
+By default, the content in a VrView is centered vertically and horizontally.
+
+Prop | Type | Description | Required | Default |
+-------------- | -------------- | -------------- |  -------------- | -------------- | 
+vcenter | boolean | Centers the view content vertically| false |  true
+vstart | boolean | Positions the view content vertically in the beginning | false |  false
+vend | boolean | Positions the view content vertically in the end | false |  false
+hcenter | boolean | Centers the view content horizontally | false | true
+hstart | boolean | Positions the view content horizontally in the beginning | false | false
+hend | boolean | Positions the view content horizontally in the end | false | false
+spread | boolean | Distributes items in the view content evenly along the orientation **_with view padding_** | falsee | false
+push | boolean | Distributes items in the view content evenly along the orientation **_without view padding_** | false | false
+
+
+
+> **VrView  default content alignment:**
 
 ```html
-<CnCard>
+<VrView >
     <Text>
         Centered vertically and horizontally by default
     </Text>    
-</CnCard>
+</VrView >
 ```
-> **CnCard vertical alignment:**
+> **VrView  vertical alignment:**
 
 ```html
-<CnCard vstart>
+<VrView  vstart>
     <Text>
         At the top, but horizontally centered by default
     </Text>    
-</CnCard>
+</VrView >
 ```
-> **CnCard vertical and horizontal content alignment:**
+> **VrView  vertical and horizontal content alignment:**
 
 ```html
-<CnCard vstart hstart>
+<VrView  vstart hstart>
     <Text>
         At the top and to the left
     </Text>    
-</CnCard>
+</VrView >
 ```
-> **CnCard spread:**
+> **VrView  spread:**
 
 ```html
-<CnCard spread>
+<VrView  spread>
     <Text>
-        I am at the top but not touching the card borders
+        I am at the top but not touching the view borders
     </Text>    
     <Text>
         I am centered but not touching my neighbors
     </Text>    
     <Text>
-        I am at the bottom but not touching the card borders
+        I am at the bottom but not touching the view borders
     </Text>    
-</CnCard>
+</VrView >
 ```
-> **CnCard push:**
+> **VrView  push:**
 
 ```html
-<CnCard push>
+<VrView  push>
     <Text>
-        I am at the top AND TOUCHING the card borders
+        I am at the top AND TOUCHING the view borders
     </Text>    
     <Text>
         I am centered but not touching my neighbors
     </Text>    
     <Text>
-        I am at the bottom AND TOUCHING the card borders
+        I am at the bottom AND TOUCHING the view borders
     </Text>    
-</CnCard>
+</VrView >
 ```
 
-### padding
-* **p** - *integer* (default *0*) - Defines the padding of the card.
-* **pl** - *integer* (default *0* or *p*) - Defines the left padding of the card.
-* **pr** - *integer* (default *0* or *p*) - Defines the right padding of the card.
-* **pt** - *integer* (default *0* or *p*) - Defines the top padding of the card.
-* **pb** - *integer* (default *0* or *p*) - Defines the bottom padding of the card.
+### Padding
 
-> **CnCard padding:**
+Prop | Type | Description | Required | Default |
+-------------- | -------------- | -------------- |  -------------- | -------------- | 
+p | integer | Defines the padding of the view. | false |  0
+pl | integer | Defines the left padding of the view. | false | 0 or <code>p</code>
+pr | integer | Defines the left padding of the view. | false | 0 or <code>p</code>
+pr | integer | Defines the left padding of the view. | false | 0 or <code>p</code>
+pt | integer | Defines the top padding of the view. | false | 0 or <code>p</code>
+pb | integer | Defines the bottom padding of the view. | false | 0 or <code> p </code>
+
+
+> **VrView  padding:**
 
 ```html
-<CnCard p={0.05}>
+<VrView  p={0.05}>
     <Text>
         Away from all borders by 0.05    
     </Text>    
-</CnCard>
+</VrView >
 ```
-> **CnCard padding left and top:**
+> **VrView  padding left and top:**
 
 ```html
-<CnCard pl={0.05} pt={0.07}>
+<VrView  pl={0.05} pt={0.07}>
     <Text>
         Away from left border by 0.05 and from top border by 0.07
     </Text>    
-</CnCard>
+</VrView >
 ```
 
-### style
-* **hover** - *boolean* (default *false*) - Defines whether the card should react to hover
-* **hoverColor** - *hex, rgb* (default *#eceeef*) - Defines the background color of the card when **_hovered_**. 
-* **bg** - *hex, rgb* (default *#fff*) - Defines the background color of the card when **_NOT hovered_**. 
-* **border** - *Object* - An object, defining border styles of the card. It accepts the following properties:
-  - **color** - *hex, rgb* (default *#eceeef*) - Border color when the card is **_NOT hovered_**
-  - **activeColor** - *hex, rgb* (default *#0275d8*) - Border color when the card is **_hovered_**
-  - **width** - *integer* (default *0*) - Border width
-  - **top** - *integer* (default *width* or *0*) - Border top width
-  - **bottom** - *integer* (default *width* or *0*) - Border bottom width
-  - **left** - *integer* (default *width* or *0*) - Border left width
-  - **right** - *integer* (default *width* or *0*) - Border right width
+### Style
 
-> **CnCard hover:**
+Prop | Type | Description | Required | Default |
+-------------- | -------------- | -------------- |  -------------- | -------------- | 
+hover | boolean | Defines whether the view should react to hover | false |  false
+hoverColor | *color* | Defines the background color of the view when **_hovered_**. | false | #eceeef
+bg | *color | Defines the background color of the view when **_NOT hovered_**. | false | #fff
+border | Object | Defines border styles of the view. | false | - |
+border { color } | color| Border color when the view is **_NOT hovered_** | false | #eceeef
+border { activeColor } | color | Border color when the view is **_hovered_** | false | #0275d8
+border { width } | integer | Border width | false | 0
+border { top } | integer | Border top width | false | 0 or <code> width </code>
+border { bottom } | integer | Border bottom width | false | 0 or <code> width </code>
+border { left } | integer | Border left width | false | 0 or <code> width </code>
+border { right } | integer | Border right width | false |  0 or <code> width </code>
+
+
+> **VrView  hover:**
 
 ```html
-<CnCard hover>
+<VrView  hover>
     <Text>
-        Card will change its backround color *(default)* and border color *(default)* when hovered
+        View will change its background color *(default)* and border color *(default)* when hovered
     </Text>    
-</CnCard>
+</VrView >
 ```
-> **CnCard hover color:**
+> **VrView  hover color:**
 
 ```html
-<CnCard hover hoverColor='red'>
+<VrView  hover hoverColor='red'>
     <Text>
-        Card will change its backround color to red and border color *(default)* when hovered
+        View will change its background color to red and border color *(default)* when hovered
     </Text>    
-</CnCard>
+</VrView >
 ```
-> **CnCard hover color and background:**
+> **VrView  hover color and background:**
 
 ```html
-<CnCard hover hoverColor='red' bg='green'>
+<VrView  hover hoverColor='red' bg='green'>
     <Text>
-        Card has a green background color but when hovered it will change it to red
+        View has a green background color but when hovered it will change it to red
     </Text>    
-</CnCard>
+</VrView >
 ```
-> **CnCard border:**
+> **VrView  border:**
 
 ```html
-<CnCard border={{width: 0.09, left: 0.05, color: 'blue', activeColor: 'yellow'}} hover>
+<VrView  border={{width: 0.09, left: 0.05, color: 'blue', activeColor: 'yellow'}} hover>
     <Text>
-        The entire border of the card is wide 0.09 except the left border which has a width of 0.05. The border is blue but when hovered it becomes yellow (don't forget to add hover property to the card)
+        The entire border of the view is wide 0.09 except the left border which has a width of 0.05. The border is blue but when hovered it becomes yellow (don't forget to add hover property to the view)
     </Text>    
-</CnCard>
-```
-
-### CnCardHeader
-
-> **CnCardHeader:**
-
-```html
-<CnCard>
-    <CnCardHeader>
-        I am the header of the card!
-    </CnCardHeader>
-</CnCard>
+</VrView >
 ```
 
 
-Header of the card.
 
-### CnCardContent
 
-> **CnCardContent:**
-
-```html
-<CnCard>
-    <CnCardContent>
-        I am inside the card! I am the content!
-    </CnCardContent>
-</CnCard>
-```
-
-Contents inside the card.
-
-### CnCardFooter
-
-> **CnCardFooter:**
-
-```html
-<CnCard>
-
-    <CnCardFooter>
-        <Text color="black">Text in the footer of the card! Yikes!</Text>
-    </CnCardFooter>
-</CnCard>
-```
-
-Footer of the card.
 
 # CnList
 
