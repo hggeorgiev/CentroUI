@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: CentroUI API Reference
 
 includes:
 
