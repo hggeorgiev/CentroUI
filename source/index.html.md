@@ -31,7 +31,25 @@ Another way you can support this project is by [hiring us](https://www.centroida
 # Getting started
 
 
-> **4. Add code below into `vr/client.js` file:**
+
+In your React VR project:
+
+### 1 **Install via npm**.
+
+`npm install centro-ui --save`
+
+### 2 **Import in your project**
+
+`import { Container } from 'centro-ui';`
+
+### 3 **Invoke the component(s) in your view**
+
+`<Container> </Container>`
+
+### 4 **Add interactivity**
+
+In your `vr/client.js` file:
+
 
 ```javascript
 // Import CnRayCaster and THREE.js
@@ -57,30 +75,10 @@ function init(bundle, parent, options) {
 }
 ```
 
-In your React VR project:
-
-### 1 **Install via npm**.
-
-`npm install centro-ui --save`
-
-### 2 **Import in your project**
-
-`import { Container } from 'centro-ui';`
-
-### 3 **Invoke the component(s) in your view**
-
-`<Container> </Container>`
-
-### 4 **Add interactivity**
-
-In your vr/client.js file, add the code on right sidebar.
-
-
-
 
 # Container
 
-The CnetroUI container is a rectangular plane that can contain various elements at a comfortable distance from the user. Usually aligns items inside it using multiple *CnRows*
+The CentroUI container is a rectangular plane that can contain various elements at a comfortable distance from the user. 
 
 
 > **Container:**
@@ -103,7 +101,7 @@ color | string | Defines the background color of the container | false | "rgba(2
 # VrView
 
 VrView is one of the core building blocks of CentroUI and a foundational element for custom
-components. It provides an easy interface for two types of property groups:
+components. It has two types of property groups:
  
  - Layout properties:  Orientation, content alignment and padding
  - Style properties: Border color and width, hover color and state and background color
@@ -305,8 +303,6 @@ border { right } | integer | Border right width | false |  0 or <code> width </c
 
 
 
-
-
 # List
 
 The list element contains multiple <code>ListItem</code> components. It can be initialized with an array of items
@@ -340,7 +336,7 @@ visibleRows | integer | Number of rows visible in the list | false | 5
 </List>
 ```
 
-Item inside the list.
+ListItem is used to automatically place and align content inside the list component.
 
 # Navbar
 
@@ -362,7 +358,7 @@ The CentroUI navbar is by default a horizontal row containing `NavItem`s.
 </Navbar>
 ```
 
-Navigation bar item.
+NavItems are used to automatically align content inside a `Navbar`.
 
 
 # Button
@@ -377,10 +373,10 @@ with added support for theming and styles:
 
 Prop | Type | Description | Required | Default |
 -------------- | -------------- | -------------- |  -------------- | -------------- | 
+name | string | The text content of the button | false | ""
 circle | boolean | Gives the button a circular shape | false |  false
 rectangle | boolean | Gives the button a rectangular shape | false | true
 bg | color | Defines the default background color of the button | false | "#fff"
-
 
 
 > **Button and an Icon:**
@@ -392,9 +388,6 @@ bg | color | Defines the default background color of the button | false | "#fff"
         <Icon name="shopping-cart" />
     </Button>
 
-
-
-      
 ```
 
 
@@ -405,18 +398,43 @@ bg | color | Defines the default background color of the button | false | "#fff"
 
 Icons are currently **not functional**. They are used only for conceptual purposes.
 
-```javascript
-    <Button
-        name="Add to Cart"
-        shape="circle"
-        color="blue" >
-        <Icon name="shopping-cart" />
-    <Button/>
-```
 
 **Icon**  has only a name property, which sets the icon of the button (e.g. “shopping-
 cart”). We intend to use FontAwesome icons (not implemented yet).
 
+
+# TextInput
+
+> **TextInput:**
+
+```html
+<TextInput rows={2} cols={20}
+           x={2} y={-1} z={1}
+           rotateY={null} rotateX={null}
+           textColor={'black'} backgroundColor={'white'}
+           keyboardColor={null} keyboardOnHover={null} />
+```
+
+Field where the user can enter data.
+TextInput comes with its own keyboard that is shown once the use 
+clicks on the component.
+
+## Props
+
+Prop | Type | Description | Required | Default |
+-------------- | -------------- | -------------- |  -------------- | -------------- | 
+rows | number | Set the height  | true | 4
+cols | number | Set the width  | true |  50
+onSubmit | function | Called when the user presses a button. | true | null
+x    | number | Set the horizontal position | true |
+y    | number | Set the vertical position | true |
+z    | number | Set the depth | true |
+rotateX | number | Set the horizontal rotation of the keyboard | false | 0
+rotateY | number | Set the vertical rotation of the keyboard | false | 30
+textColor | color | Set the color of the text | false | 'white'
+bg | color | Set the color of the field | false | 'grey'
+keyboardColor | color | Set the color of the keyboard | true | null
+keyboardOnHover | function | Called when a raycaster hovers over the keyboard | false | null
 
 
 # CnRayCaster
@@ -497,62 +515,3 @@ function init(bundle, parent, options) {
 
 ![gif](./images/raycaster.gif)
 
-# TextInput
-
-> **TextInput:**
-
-```html
-<TextInput rows={2} cols={20}
-           x={2} y={-1} z={1}
-           rotateY={null} rotateX={null}
-           textColor={'black'} backgroundColor={'white'}
-           keyboardColor={null} keyboardOnHover={null} />
-```
-
-Field (tag) where user can enter data.
-
-## Props
-
-### rows, cols
-
-Used to specify the width/height of a keyboard.
-
-Rows for *height*, cols for *width*.
-
-Setting ```rows={2} cols={20}``` makes keyboard of **height = 2** and **width = 20**.
-
-### x, y, z
-
-Used to specify points on X/Y/Z axis.
-
-Example: ```x={2}```
-
-### rotateX, rotateY
-
-Keyboard rotation on X/Y axis.
-
-Setting ```rotateY={30}``` rotates +30 degrees (up) on X axis.
-
-### textColor
-
-Specify color of an input text.
-
-Setting ```textColor={'black'}``` specifies text color to be black.
-
-### backgroundColor
-
-Used to specify the background color of a keyboard (base color of a keyboard).
-
-Setting ```backgroundColor={'red'}``` makes background color of a keyboard red.
-
-### keyboardColor
-
-Used to specify the color of a keyboard.
-
-Setting ```keyboardColor={'green'}``` makes keyboard of color green.
-
-### keyboardOnHover
-
-Used to select elements when you mouse over them.
-
-Setting ```keyboardOnHover={'null'}``` specifies to do nothing while moused over.
