@@ -13,7 +13,7 @@ import {
 
 //TODO Refactor
 
-const DEFAULT_BACKGROUND_COLOR = "#fff";
+const DEFAULT_BACKGROUND_COLOR = "transparent";
 const DEFAULT_HOVER_COLOR = "#000";
 
 export default class CnNavItem extends React.Component {
@@ -36,8 +36,8 @@ export default class CnNavItem extends React.Component {
     }
 
     render() {
-        const { hover, hoverColor, bg } = this.props
-        const { currentBackgroundColor } = this.state
+        const { hover, hoverColor, bg } = this.props;
+        const { currentBackgroundColor } = this.state;
         return (
             <View style={{
                 display: 'flex',
@@ -47,7 +47,7 @@ export default class CnNavItem extends React.Component {
             }}
                 onEnter={hover ? () => this.setState({ hovered: true, currentBackgroundColor: hoverColor || DEFAULT_HOVER_COLOR }) : null}
                 onExit={hover ? () => this.setState({ hovered: false, currentBackgroundColor: bg || DEFAULT_BACKGROUND_COLOR }) : null}>
-                <Text style={{ color: "#000", fontSize: 0.2, textAlign: 'center' }}>
+                <Text style={{ color: "white", fontSize: 0.2, textAlign: 'center' }}>
                     {this.props.children}
                 </Text>
             </View>

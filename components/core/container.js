@@ -7,7 +7,7 @@ import {
 } from 'react-vr';
 
 
-export default class CnContainer extends React.Component {
+export default class Container extends React.Component {
 
 
     constructor(props) {

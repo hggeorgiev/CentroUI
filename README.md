@@ -46,13 +46,13 @@ npm install centro-ui --save
 2. __Import in your project__
 
 ```
-import { CnContainer } from 'centro-ui';
+import { Container } from 'centro-ui';
 ```
 
 3. __Invoke the component(s) in your view__
 
 ```
-<CnContainer> </CnContainer>
+<Container> </Container>
 ```
 
 4.  __Add interactivity__
@@ -104,11 +104,11 @@ function init(bundle, parent, options) {
                 <Pano source={asset('bg3.jpg')}/>
 
 
-                /* CnContainer acts as a screen that contains all components. Can be placed in different directions */
-                <CnContainer backgroundColor="transparent">
+                /* Container acts as a screen that contains all components. Can be placed in different directions */
+                <Container backgroundColor="transparent">
 
                     /* Add a navbar  */
-                    <CnNavbar>
+                    <Navbar>
                         <CnNavItem>
                             Hello CentroUI
                         </CnNavItem>
@@ -124,20 +124,20 @@ function init(bundle, parent, options) {
                         <CnNavItem>
                             Home
                         </CnNavItem>
-                    </CnNavbar>
+                    </Navbar>
 
                     /* CnRow contains all items in a given row */
                     <CnRow>
                         /* List different items */
-                        <CnList>
-                            <CnListItem>
+                        <List>
+                            <ListItem>
                                 List Item 1
-                            </CnListItem>
+                            </ListItem>
 
-                            <CnListItem>
+                            <ListItem>
                                 List Item 2
-                            </CnListItem>
-                        </CnList>
+                            </ListItem>
+                        </List>
 
                         /* Simple card for displaying different types of content */
                         <CnCard>
@@ -166,7 +166,7 @@ function init(bundle, parent, options) {
                             </CnCardFooter>
                         </CnCard>
                     </CnRow>
-                </CnContainer>
+                </Container>
 
             </View>
 ```

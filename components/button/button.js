@@ -15,7 +15,7 @@ const DEFAULT_ACTIVE_COLOR = "rgba(0,0,0,0.2)"
 const DEFAULT_ACTIVE_BORDER_COLOR = "#0275d8";
 const DEFAULT_INACTIVE_BORDER_COLOR = "#eceeef";
 
-export default class CnButton extends React.Component {
+export default class Button extends React.Component {
     constructor(props) {
         super(props);
     }
