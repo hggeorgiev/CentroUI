@@ -344,6 +344,14 @@ The CentroUI navbar is by default a horizontal row containing `NavItem`s.
 
 ## NavItem
 
+### Props
+
+Prop | Type | Description | Required | Default |
+-------------- | -------------- | -------------- |  -------------- | -------------- | 
+hover | boolean | Set whether the input should react to hover events  | false | false
+bg | color | Set a background color | false | 'transparent'
+hoverColor | color | Set a background color on hover | false | '#000'
+
 > **NavItem:**
 
 ```html
