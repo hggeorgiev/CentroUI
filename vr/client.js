@@ -4,15 +4,15 @@
 
 // Auto-generated content.
 import {VRInstance} from 'react-vr-web';
-import CnAdvancedRayCaster from "../utilities/cn-raycaster";
+import CnRayCaster from "../utilities/cn-raycaster";
 import * as THREE from 'three'
 
 function init(bundle, parent, options) {
   const scene = new THREE.Scene();
-  console.log(CnAdvancedRayCaster);
+
   const vr = new VRInstance(bundle, 'Example', parent, {
       raycasters: [
-          new CnAdvancedRayCaster(scene)
+          new CnRayCaster(scene)
       ],
       cursorVisibility: "visible", // Add cursorVisibility
       // Add scene to render the custom Raycasters

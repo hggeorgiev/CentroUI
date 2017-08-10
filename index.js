@@ -1,4 +1,6 @@
 
+
+import Slider from "./components/slider/slider"
 import Container from "./components/core/container"
 import Navbar from "./components/navbar/navbar"
 import NavItem from "./components/navbar/nav-item"
@@ -10,7 +12,9 @@ import Button from "./components/button/button"
 
 
 
+
 export {
+    Slider,
     View,
     Container,
     Navbar,
@@ -19,4 +23,5 @@ export {
     TextInput,
     List,
     ListItem,
+
 };
