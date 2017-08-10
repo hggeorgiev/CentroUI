@@ -3,7 +3,7 @@ import { View, VrButton,  Text } from 'react-vr';
 import Keyboard from './keyboard';
 import Scroll from './text-input-scroll'
 
-class CnTextInput  extends React.Component {
+class TextInput  extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -488,4 +488,4 @@ class CnTextInput  extends React.Component {
     }
 }
 
-export default CnTextInput;
+export default TextInput;

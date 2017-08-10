@@ -11,7 +11,7 @@ import {
 } from 'react-vr';
 
 
-export default class CnNavbar extends React.Component {
+export default class Navbar extends React.Component {
 
     constructor(props) {
         super(props);

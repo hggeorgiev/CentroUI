@@ -1,63 +1,117 @@
 import React from 'react';
+import View from "../core/view"
 import { VrButton, Text, StyleSheet } from 'react-vr';
 
 const styles = StyleSheet.create({
-        buttonStyles: {
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'stretch',
-            margin: 0.01,
-            borderWidth: 0.015,
-            borderColor: '#ccc'
-        },
-        textStyles: {
-            fontSize: 0.15,
-            fontWeight: '400',
-            alignSelf: 'center',
-            color: 'black',
-            marginRight: 0.05,
-            marginLeft: 0.05
-        }
+    textStyles: {
+        fontSize: 0.15,
+        color: 'black',
     }
-);
+});
 
-const DEFAULT_ACTIVE_BACKGROUND_COLOR = '#ccc';
-const DEFAULT_INACTIVE_BACKGROUND_COLOR = '#fff';
+const DEFAULT_BACKGROUND_COLOR = "#fff"
+const DEFAULT_HOVERED_COLOR = "rgba(255,255,255,0.5)"
+const DEFAULT_ACTIVE_COLOR = "rgba(0,0,0,0.2)"
+const DEFAULT_ACTIVE_BORDER_COLOR = "#0275d8";
+const DEFAULT_INACTIVE_BORDER_COLOR = "#eceeef";
 
-export default class CnButton extends React.Component {
+export default class Button extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+    }
+
+    state = {
+        hovered: false,
+        pressed: false,
+    }
+
+    getBorderStyle = () => {
+        const { border } = this.props
+        const { hovered } = this.state
+        var style = {}
+        if (border) {
+            var borderColor = hovered ? border.activeColor || border.color || DEFAULT_ACTIVE_BORDER_COLOR : border.inactiveColor || border.color || DEFAULT_INACTIVE_BORDER_COLOR
+            style = {
+                borderColor,
+                borderWidth: border.width,
+                borderTopWidth: border.top || border.width,
+                borderBottomWidth: border.bottom || border.width,
+                borderLeftWidth: border.left || border.width,
+                borderRightWidth: border.right || border.width
+            }
+        }
+        return style
+    }
+
+    getDimensions = () => {
+        const { w, h } = this.props
+        var style = {}
+
+        if (w) {
+            style['width'] = w
+        }
+        if (h) {
+            style['height'] = h
+        }
+        return style
+    }
+
+    getBackgroundColor = () => {
+        const { pressed, hovered } = this.state
+        const { bg, hoverColor, activeColor } = this.props
+        var color = bg || DEFAULT_BACKGROUND_COLOR
+        if (hovered) {
+            color = hoverColor || DEFAULT_HOVERED_COLOR
+        }
+        if (pressed) {
+            color = activeColor || DEFAULT_ACTIVE_COLOR
+        }
+        return color
+    }
+
+    onEnter = () => {
+        this.setState({
+            hovered: true,
+        })
+    }
+
+    onExit = () => {
+        this.setState({
             hovered: false,
-            currentBackgroundColor: DEFAULT_INACTIVE_BACKGROUND_COLOR || this.props.color,
-            inactiveBackgroundColor: DEFAULT_INACTIVE_BACKGROUND_COLOR || this.props.color
-        };
+        })
+    }
+
+    buttonPressed = () => {
+        this.setState({
+            pressed: true
+        })
+    }
+
+    buttonReleased = () => {
+        this.setState({
+            pressed: false
+        })
     }
 
     render() {
-        const { currentBackgroundColor, inactiveBackgroundColor } = this.state;
-
+        var backgroundColor = this.getBackgroundColor()
         return (
             <VrButton
+                onButtonPress={this.buttonPressed}
+                onButtonRelease={this.buttonReleased}
                 disabled={this.props.disabled}
                 onClick={this.props.onClick}
-                onButtonPress={this.props.onButtonPress}
-                onButtonRelease={this.props.onButtonRelease}
-                onEnter={() => this.setState({ hovered: true,
-                  currentBackgroundColor: DEFAULT_ACTIVE_BACKGROUND_COLOR })}
-                onExit={() => this.setState({ hovered: false,
-                   currentBackgroundColor: inactiveBackgroundColor })}
-                style={
-                [styles.buttonStyles,
-                    {
-                        backgroundColor: currentBackgroundColor,
-                        // Put conditional styles
-                        height: this.props.shape === 'circle' ? 0.5 : 0.5,
-                        borderRadius: this.props.shape === 'circle' ? 0.5 : 0
-                    }]}
+                onEnter={this.onEnter}
+                onExit={this.onExit}
+                style={[{
+                    borderRadius: this.props.shape === 'circle' ? 0.5 : 0,
+                    backgroundColor
+                },
+                this.getDimensions()]}
             >
-                {this.props.children}
-                <Text style={styles.textStyles}>{this.props.name}</Text>
+                {this.props.children ? this.props.children : <View {...this.props} bg={backgroundColor}>
+                    <Text style={styles.textStyles}>{this.props.name}</Text>
+                </View>}
             </VrButton>
         );
     }
